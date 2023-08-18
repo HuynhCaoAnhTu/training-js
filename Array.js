@@ -1,4 +1,4 @@
-let a = [];
+const a = [];
 a.push(4);
 a.unshift(0);
 a.unshift(-2, -1);
@@ -8,27 +8,27 @@ a.pop();
 a.shift();
 console.log(a);
 
-let b = [1, 2];
+const b = [1, 2];
 const c = a.concat(b);
 console.log(c);
 
 // ----find()-------
-let products = [
+const products = [
   { id: 1, name: 'Product A' },
   { id: 2, name: 'Product B' },
-  { id: 3, name: 'Product C' }
+  { id: 3, name: 'Product C' },
 ];
-let targetProductId = 2;
-let targetProduct = products.find(product => product.id === targetProductId);
-console.log(targetProduct)
+const targetProductId = 2;
+const targetProduct = products.find((product) => product.id === targetProductId);
+console.log(targetProduct);
 
 // ----findIndex()-------
-let index = c.findIndex(a => a === 2);
+const index = c.findIndex((number) => number === 2);
 console.log(index);
 
 // ----includes()-------
 if (a.includes(0)) {
-  console.log("Chuỗi con được tìm thấy trong chuỗi chính.");
+  console.log('Chuỗi con được tìm thấy trong chuỗi chính.');
 } else {
-  console.log("Chuỗi con không tồn tại trong chuỗi chính.");
+  console.log('Chuỗi con không tồn tại trong chuỗi chính.');
 }

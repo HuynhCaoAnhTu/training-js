@@ -1,10 +1,10 @@
-let a =true;
-let b =false;
+const a = true;
+const b = false;
 
-let result_and = a && b;
-let result_or = a || b;
-let result_not = !a;
+const ResultAnd = a && b;
+const ResultOr = a || b;
+const ResultNot = !a;
 
-console.log("Result when a&&b: "+result_and)
-console.log("Result when a||b: "+result_or)
-console.log("Result when !a: "+result_not)
+console.log(`Result when a&&b: ${ResultAnd}`);
+console.log(`Result when a||b: ${ResultOr}`);
+console.log(`Result when !a: ${ResultNot}`);

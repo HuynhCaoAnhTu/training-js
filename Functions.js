@@ -1,6 +1,6 @@
 function greet(name) {
-    return "Hello, " + name + "!";
+  return `Hello, ${name}!`;
 }
 
-let message = greet("Tu");
+const message = greet('Tu');
 console.log(message);

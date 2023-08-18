@@ -1,7 +1,7 @@
-let a = 1;
-let b = "1";
+const a = 1;
+const b = '1';
 
-let c= a == b ? true : false; 
-let d= a === b ? true : false; 
+const c = a == b;
+const d = a === b;
 
-console.log("Compare 'a == b' : " +c+ "\nCompare 'a === b': "+d)
+console.log(`Compare 'a == b' : ${c}\nCompare 'a === b': ${d}`);

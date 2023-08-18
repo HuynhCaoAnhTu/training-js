@@ -10,8 +10,8 @@ class Person {
   }
 }
 
-const person1 = new Person("John", "Doe", 30);
-person1.introduce(); 
+const person1 = new Person('John', 'Doe', 30);
+person1.introduce();
 
-const person2 = new Person("Alice", "Smith", 25);
-person2.introduce()
+const person2 = new Person('Alice', 'Smith', 25);
+person2.introduce();
