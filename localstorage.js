@@ -60,7 +60,7 @@ async function checkDataInStorageOrFetchAndSave(apiUrl, key) {
   }
 }
 
-const apiUrl = 'https://api.publicapis.org/entries';
+const apiUrl = 'http://localhost:3000/entries';
 const key = 'apiData';
 
 // Gọi hàm để truy xuất và hiển thị dữ liệu từ localStorage
