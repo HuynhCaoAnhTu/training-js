@@ -1,0 +1,99 @@
+.main-header {
+  display: flex;
+  flex-direction: row;
+  padding-left: 140px;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 0 20px;
+  gap: 10px;
+}
+
+.header-title-welcome {
+  font-family: Poppins-SemiBold;
+  font-size: 26px;
+}
+
+.header-title-des {
+  font-family: Poppins-Light;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gray-color);
+}
+
+.search-box {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding: 20px 20px 20px 0;
+  position: relative;
+}
+
+.header-search {
+  width: 360px;
+  padding: 20px 0 20px 48px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.search-icon {
+  height: 25px;
+  width: 25x;
+  position: absolute;
+  top: 37px;
+  left: 20px;
+}
+
+.header-user {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  padding: 20px 30px 20px 30px;
+  background-color: #ffffff;
+}
+
+.user-content {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: fill;
+}
+
+.user-infor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px
+}
+
+.notification-icon {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  cursor: pointer;
+}
+
+
+.user-role {
+  font-family: Poppins-Light;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-color);
+}
+
+.user-name {
+  font-family: Poppins-SemiBold;
+  font-size: 16px;
+
+}
