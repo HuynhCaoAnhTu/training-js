@@ -1,0 +1,11 @@
+@font-face {
+	font-family: Poppins-SemiBold;
+	src: url(../../assets/fonts/Poppins/Poppins-SemiBold.woff) format("woff2");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Poppins-Light;
+	src: url(../../assets/fonts/Poppins/Poppins-Light.woff) format("woff2");
+	font-display: swap;
+}
