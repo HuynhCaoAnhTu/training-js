@@ -1,0 +1,30 @@
+.slide {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  top: 0px;
+  padding-top: 15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.slide-logo-image {
+  width: 60px;
+  padding: 5px;
+  background-color: #ffede3;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.slide-lists{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.navigation-icon {
+  height: 50px;
+}
