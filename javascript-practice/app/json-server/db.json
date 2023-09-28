@@ -1,0 +1,39 @@
+{
+    "categories": [
+      {
+        "categoryId": 1,
+        "categoryName": "All menu",
+        "categoryImg": "https://i.ibb.co/qNkc7Vq/cup-with-straw-icon.png" 
+      },
+      {
+        "categoryId": 2,
+        "categoryName": "Coffee",
+        "categoryImg": "https://i.ibb.co/p3FkjS6/coffee-cup-icon.png"
+      },
+      {
+        "categoryId": 3,
+        "categoryName": "Miky milk",
+        "categoryImg": "https://i.ibb.co/znHLXYK/milk-cup-icon.png"
+      }
+      ,
+      {
+        "categoryId": 4,
+        "categoryName": "Baboon",
+        "categoryImg": "https://i.ibb.co/1GghrzS/bubble-tea-icon.png" 
+       
+      }
+      ,
+      {
+        "categoryId": 5,
+        "categoryName": "Ice cream",
+        "categoryImg": "https://i.ibb.co/fX6xZQ7/ice-cream-icon.png"
+      }
+      ,
+      {
+        "categoryId": 6,
+        "categoryName": "Dessert",
+        "categoryImg": "https://i.ibb.co/SnNPrgv/dessert-icon.png"
+      }
+    ]
+  }
+  
