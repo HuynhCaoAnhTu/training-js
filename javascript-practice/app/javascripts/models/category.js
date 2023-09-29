@@ -1,9 +1,9 @@
 // model.js
 class Category {
-  constructor(data) {
-    this.categoryId = data.categoryId;
-    this.categoryName = data.categoryName;
-    this.categoryImg = data.categoryImg;
+  constructor(id, name, url) {
+    this.categoryId = id
+    this.categoryName = name
+    this.categoryImg = url
   }
 }
 export default Category;
