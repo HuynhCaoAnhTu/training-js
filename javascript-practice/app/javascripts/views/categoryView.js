@@ -5,14 +5,12 @@ class CategoryView {
     this.CategoryListEl = document.getElementById('categories');
   }
   renderCategoryList = (categoryList) => {
-    const categoryArray = [categoryList];
-
-    console.log(categoryArray);
     this.CategoryListEl.innerHTML = "";
-    Object.values(categoryList).forEach(Category => {
+    categoryList.forEach(Category => {
       this.renderCategory(Category);
     })
   }
+
   renderCategory = (Category) => {
     this.CategoryListEl.innerHTML += `  
     <li class="category-item" category-id="${Category.categoryId}">

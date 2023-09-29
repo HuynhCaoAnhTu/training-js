@@ -1,25 +1,22 @@
+import LocalStorageService from "./localstorageService";
+import { API_BASE_URL } from "../constants/resoureAPI";
+import { CATEGORIES_ENDPOINT } from "../constants/resoureAPI";
 class CategoryService {
-	constructor(baseUrl) {
-		this.baseUrl = baseUrl;
-	}
 
 	async getCategories() {
 		try {
 			let categoriesData = [];
-
-			const storedData = localStorage.getItem('categoriesData');
+			const storedData = LocalStorageService.getCategoryList();
 			if (storedData) {
 				categoriesData = JSON.parse(storedData);
-				console.log(categoriesData)
 			} else {
-				const response = await fetch('http://localhost:3000/categories');
+				const response = await fetch(`${API_BASE_URL}${CATEGORIES_ENDPOINT}`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
 				categoriesData = await response.json();
-				localStorage.setItem('categoriesData', JSON.stringify(categoriesData));
+				LocalStorageService.saveListToStorage('categoriesData', categoriesData);
 			}
-
 			return categoriesData;
 		} catch (error) {
 			throw error;
