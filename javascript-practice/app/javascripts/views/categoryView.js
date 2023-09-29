@@ -5,7 +5,6 @@ class CategoryView {
     this.CategoryListEl = document.getElementById('categories');
   }
   renderCategoryList = (categoryList) => {
-    console.log(categoryList)
     this.CategoryListEl.innerHTML = "";
     categoryList.forEach(Category => {
       this.renderCategory(Category);
