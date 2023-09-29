@@ -17,8 +17,6 @@ class AppController {
   }
 
   loadListCategoryList = () => {
-    console.log(this.model.categoryList)
-    console.log(this.model.categoryList.getCategoryList())
     const categories = this.model.categoryList.getCategoryList();
     this.view.categories.renderCategoryList(categories);
   }
