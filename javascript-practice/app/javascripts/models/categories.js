@@ -8,14 +8,9 @@ class CategoryList {
   }
 
   init = async () => {
-
     const data = await this.service.getCategories();
-    this.categoryList = this.parseData(data);
-
-  }
-
-  parseData = (data) => {
-    return data.map((item) => new Category(item));
+    console.log(data)
+    this.categoryList = data;
   }
 
   getCategoryList = () => {
