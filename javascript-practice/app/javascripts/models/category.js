@@ -1,9 +1,9 @@
 // model.js
 class Category {
-  constructor(id, name, image) {
+  constructor(id, name, url) {
     this.categoryId = id
     this.categoryName = name
-    this.categoryImg = image
+    this.categoryUrl = url
   }
 }
 export default Category;
