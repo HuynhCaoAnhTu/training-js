@@ -1,0 +1,48 @@
+.categories {
+    padding: 40px 40px 40px 140px;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #e3e3e2;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #fbf1e8;
+    border: 2px solid #ef9f6f;
+}
+
+.active .category-name {
+    color: #805948;
+}
+
+.category-img {
+    height: 80px;
+}
+
+.category-name {
+    font-family: Poppins-Light;
+    font-size: 16px;
+    font-weight: 600;
+    color: #c2bbb9;
+}
+
+.category-name .active {
+    font-family: Poppins-Light;
+    font-size: 16px;
+    font-weight: 600;
+    color: #c2bbb9;
+}
