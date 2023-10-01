@@ -1,0 +1,50 @@
+.item-container {
+  display: flex;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 30px;
+  cursor: pointer;
+}
+
+.item-list {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-img {
+  height: 170px;
+  border-radius: 20px;
+}
+
+.item-name {
+  font-family: Poppins-SemiBold;
+  font-size: 22px;
+}
+
+.item-des {
+  color: #c2bbb9;
+  font-family: Poppins-Light;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.item-price {
+  font-family: Poppins-Bold;
+  font-size: 30px;
+}
