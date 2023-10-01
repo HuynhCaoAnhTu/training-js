@@ -34,5 +34,73 @@
         "categoryName": "Dessert",
         "categoryUrl": "https://i.ibb.co/SnNPrgv/dessert-icon.png"
       }
+    ],
+
+    "items": [
+      {
+        "itemId": 1,
+        "itemName": "All menu",
+        "itemDes": "123",
+        "categoryId" : 1 ,
+        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "itemPrice": 200,
+        "itemNoteSugar": "",
+        "itemNoteIce": ""
+      },
+      {
+        "itemId": 2,
+        "itemName": "All menu",
+        "itemDes": "123",
+        "categoryId" : 1 ,
+        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "itemPrice": 200,
+        "itemNoteSugar": "",
+        "itemNoteIce": ""
+      }, {
+        "itemId": 3,
+        "itemName": "All menu",
+        "itemDes": "123",
+        "categoryId" : 1 ,
+        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "itemPrice": 200,
+        "itemNoteSugar": "",
+        "itemNoteIce": ""
+      }, {
+        "itemId": 4,
+        "itemName": "All menu",
+        "itemDes": "123",
+        "categoryId" : 1 ,
+        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "itemPrice": 200,
+        "itemNoteSugar": "",
+        "itemNoteIce": ""
+      }, {
+        "itemId": 5,
+        "itemName": "All menu",
+        "itemDes": "123",
+        "categoryId" : 1 ,
+        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "itemPrice": 200,
+        "itemNoteSugar": "",
+        "itemNoteIce": ""
+      }, {
+        "itemId": 6,
+        "itemName": "All menu",
+        "itemDes": "123",
+        "categoryId" : 1 ,
+        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "itemPrice": 200,
+        "itemNoteSugar": "",
+        "itemNoteIce": ""
+      }, {
+        "itemId": 7,
+        "itemName": "All menu",
+        "itemDes": "123",
+        "categoryId" : 1 ,
+        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "itemPrice": 200,
+        "itemNoteSugar": "",
+        "itemNoteIce": ""
+      }
     ]
   }
