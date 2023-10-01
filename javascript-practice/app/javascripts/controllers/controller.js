@@ -8,9 +8,11 @@ class AppController {
   init = async () => {
 
     await this.initCategoryList();
+    await this.initItemList();
 
   }
 
+  // CONTROLLER CATEGORY
   initCategoryList = async () => {
     await this.model.categoryList.init();
     this.loadListCategoryList();
@@ -20,5 +22,17 @@ class AppController {
     const categories = this.model.categoryList.getCategoryList();
     this.view.categories.renderCategoryList(categories);
   }
+
+  // CONTROLLER ITEM
+  initItemList = async () => {
+    await this.model.itemList.init();
+    this.loadListItemList();
+  }
+
+  loadListItemList = () => {
+    const items = this.model.itemList.getItemList();
+    this.view.items.renderItemList(items);
+  }
+
 }
 export default AppController;
