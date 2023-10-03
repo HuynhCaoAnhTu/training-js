@@ -3,9 +3,11 @@ class ItemView {
 
   constructor() {
     this.ItemListEl = document.getElementById('items');
+    this.MenuTitle = document.querySelector('.menu-title');
     this.ItemTotal = document.getElementById('menu-total');
   }
-  renderItemList = (itemList) => {
+  renderItemList = (itemList,categoryName) => {
+    this.MenuTitle.innerHTML= categoryName;
     this.ItemTotal.innerHTML= `${itemList.length} result`;
     this.ItemListEl.innerHTML = "";
     itemList.forEach(Item => {
