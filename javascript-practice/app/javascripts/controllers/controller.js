@@ -14,7 +14,34 @@ class AppController {
 
     await this.initCategoryList();
     await this.initItemList();
+    this.searchHandle();
+
   }
+
+  searchHandle() {
+    var searchInput = document.querySelector('.header-search');
+    searchInput.addEventListener('input', e => {
+      const value = e.target.value;
+      // Set all item hidden 
+      var allItems = document.querySelectorAll(`.item`)
+      allItems.forEach(hiddenItem => {
+        hiddenItem.classList.add('hidden');
+      });
+      // Check 
+      this.currentItems.forEach(item => {
+        if (item.itemName.includes(value)) {
+          var visibleItems = document.querySelector(`[item-id="${item.itemId}"]`)
+          visibleItems.classList.remove('hidden');
+        }
+      })
+      if (value == null) {
+        allItems.classList.remove('hidden');
+      }
+      var hiddenItems = document.querySelectorAll(`.hidden`)
+      this.view.items.ItemTotal.innerHTML = `${allItems.length - hiddenItems.length} result`;
+    })
+  }
+
 
   // CONTROLLER CATEGORY
   initCategoryList = async () => {
@@ -73,6 +100,7 @@ class AppController {
         }
       });
     });
+
   }
 }
 export default AppController;
