@@ -22,6 +22,7 @@ class AppController {
     var searchInput = document.querySelector('.header-search');
     searchInput.addEventListener('input', e => {
       const value = e.target.value;
+      const lowercaseValue = value.toLowerCase(); 
       // Set all item hidden 
       var allItems = document.querySelectorAll(`.item`)
       allItems.forEach(hiddenItem => {
@@ -29,7 +30,8 @@ class AppController {
       });
       // Check 
       this.currentItems.forEach(item => {
-        if (item.itemName.includes(value)) {
+        var itemNamelowercase= item.itemName.toLowerCase()
+        if (itemNamelowercase.includes(lowercaseValue)) {
           var visibleItems = document.querySelector(`[item-id="${item.itemId}"]`)
           visibleItems.classList.remove('hidden');
         }
