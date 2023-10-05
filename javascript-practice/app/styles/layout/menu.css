@@ -1,0 +1,20 @@
+.menu {
+  padding: 40px 40px 40px 140px;
+}
+
+.menu-des {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-title {
+  font-family: Poppins-SemiBold;
+  font-size: 26px;
+}
+
+#menu-total {
+  font-family: Poppins-Light;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gray-color);
+}
