@@ -5,7 +5,8 @@ class AppController {
     this.model = model;
     this.view = view;
     this.categories;
-    this.items;
+    this.allItems;
+    this.currentItems;
     this.selectedCategoryId = 1
     this.selectedCategoryName = "All menu"
   }
@@ -13,7 +14,6 @@ class AppController {
 
     await this.initCategoryList();
     await this.initItemList();
-
   }
 
   // CONTROLLER CATEGORY
@@ -34,8 +34,9 @@ class AppController {
   }
 
   loadListItemList = () => {
-    this.items = this.model.itemList.getItemList();
-    this.renderItemListbyCaterogy(this.items);
+    this.allItems = this.model.itemList.getItemList();
+    this.currentItems = this.allItems
+    this.renderItemListbyCaterogy(this.currentItems);
 
   }
 
@@ -51,8 +52,6 @@ class AppController {
 
   renderItemListbyCaterogy(itemList) {
     const categoryItems = document.querySelectorAll('.category-item');
-    const categoryDefaut = document.querySelector('.category-item');
-    categoryDefaut.classList.add('active');
     this.view.items.renderItemList(itemList, this.selectedCategoryName);
     categoryItems.forEach(item => {
       item.addEventListener('click', (event) => {
@@ -63,12 +62,17 @@ class AppController {
         item.classList.add('active');
 
         this.getCategoryInforOnClick(event)
-        this.items  = itemList.filter(item => item.categoryId == this.selectedCategoryId);
-        console.log(this.items)
-        this.view.items.renderItemList(this.items, this.selectedCategoryName);
+
+        if (this.selectedCategoryId == 1) {
+          this.view.items.renderItemList(this.allItems, this.selectedCategoryName);
+          this.currentItems = this.allItems
+        }
+        else {
+          this.currentItems = itemList.filter(item => item.categoryId == this.selectedCategoryId);
+          this.view.items.renderItemList(this.currentItems, this.selectedCategoryName);
+        }
       });
     });
-    
   }
 }
 export default AppController;
