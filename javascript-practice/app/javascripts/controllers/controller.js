@@ -4,9 +4,10 @@ class AppController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
-    this.categories;
-    this.allItems;
-    this.currentItems;
+    this.categories = [];
+    this.allItems = [];
+    this.currentItems = [];
+    this.searchItems = [];
     this.selectedCategoryId = 1
     this.selectedCategoryName = "All menu"
   }
@@ -14,7 +15,40 @@ class AppController {
 
     await this.initCategoryList();
     await this.initItemList();
+    this.searchHandle();
+
   }
+
+  searchHandle() {
+    const searchInput = document.querySelector('.header-search');
+    const loading = document.querySelector('.loader');
+    const menu = document.querySelector('.menu');
+
+    searchInput.addEventListener('keypress', e => {
+      if (e.key === "Enter") {
+        const value = e.target.value;
+        const lowercaseValue = value.toLowerCase();
+        this.searchItems.splice(0, this.searchItems.length)
+        menu.style.opacity=0.2;
+        loading.style.display = 'block';
+        setTimeout(() => {
+          this.currentItems.forEach(item => {
+            const itemNamelowercase = item.itemName.toLowerCase()
+            if (itemNamelowercase.includes(lowercaseValue)) {
+              this.searchItems.push(item);
+            }
+          });
+    
+          loading.style.display = 'none';
+          menu.style.opacity=1;
+  
+          this.renderItem(this.searchItems);
+        }, 500);
+      }
+       
+    })
+  }
+
 
   // CONTROLLER CATEGORY
   initCategoryList = async () => {
@@ -36,7 +70,8 @@ class AppController {
   loadListItemList = () => {
     this.allItems = this.model.itemList.getItemList();
     this.currentItems = this.allItems
-    this.renderItemListbyCaterogy(this.currentItems);
+    this.renderItem(this.currentItems)
+    this.handleCateogyClick();
 
   }
 
@@ -50,9 +85,9 @@ class AppController {
     }
   }
 
-  renderItemListbyCaterogy(itemList) {
+
+  handleCateogyClick() {
     const categoryItems = document.querySelectorAll('.category-item');
-    this.view.items.renderItemList(itemList, this.selectedCategoryName);
     categoryItems.forEach(item => {
       item.addEventListener('click', (event) => {
 
@@ -64,15 +99,20 @@ class AppController {
         this.getCategoryInforOnClick(event)
 
         if (this.selectedCategoryId == 1) {
-          this.view.items.renderItemList(this.allItems, this.selectedCategoryName);
           this.currentItems = this.allItems
+          this.renderItem(this.currentItems)
         }
         else {
-          this.currentItems = itemList.filter(item => item.categoryId == this.selectedCategoryId);
-          this.view.items.renderItemList(this.currentItems, this.selectedCategoryName);
+          this.currentItems = this.allItems.filter(item => item.categoryId == this.selectedCategoryId);
+          this.renderItem(this.currentItems)
         }
+
       });
     });
+  }
+
+  renderItem(itemList) {
+    this.view.items.renderItemList(itemList, this.selectedCategoryName);
   }
 }
 export default AppController;
