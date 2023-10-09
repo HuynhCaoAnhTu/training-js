@@ -5,8 +5,7 @@ class AppController {
 		this.model = model;
 		this.view = view;
 		this.categories = [];
-		this.allItems = [];
-		this.currentItems = [];
+		this.items = [];
 		this.selectedCategoryId = 1
 		this.selectedCategoryName = "All menu"
 	}
@@ -63,9 +62,8 @@ class AppController {
 	}
 
 	loadListItemList = () => {
-		this.allItems = this.model.itemList.getItemList();
-		this.currentItems = this.allItems
-		this.renderItem(this.currentItems)
+		this.items = this.model.itemList.getItemList();
+		this.renderItem(this.items)
 		this.handleCateogyClick();
 
 	}
@@ -91,12 +89,11 @@ class AppController {
 				item.classList.add('active');
 				this.getCategoryInforOnClick(event)
 				if (this.selectedCategoryId == 1) {
-					this.currentItems = this.allItems
-					this.renderItem(this.currentItems)
+					this.renderItem(this.items)
 				}
 				else {
-					this.currentItems = this.allItems.filter(item => item.categoryId == this.selectedCategoryId);
-					this.renderItem(this.currentItems)
+					const itemsFilter = this.items.filter(item => item.categoryId == this.selectedCategoryId);
+					this.renderItem(itemsFilter)
 				}
 			});
 		});
