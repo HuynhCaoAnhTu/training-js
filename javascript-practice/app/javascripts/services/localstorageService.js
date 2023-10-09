@@ -1,16 +1,11 @@
 class LocalStorageService {
 
-  static getCategoryList() {
-    return localStorage.getItem('categoriesData');
-  }
+	static get(key) {
+		return localStorage.getItem(key);
+	}
 
-  static saveListToStorage(key, data) {
-    return localStorage.setItem(key, JSON.stringify(data));
-  }
-
-  static getItemList() {
-    return localStorage.getItem('itemsData');
-  }
-
+	static set(key, data) {
+		return localStorage.setItem(key, JSON.stringify(data));
+	}
 }
 export default LocalStorageService;
