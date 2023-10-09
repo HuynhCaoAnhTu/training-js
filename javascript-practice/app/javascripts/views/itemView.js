@@ -2,14 +2,20 @@
 class ItemView {
 
   constructor() {
+    this.Menu = document.querySelector('.menu');
     this.ItemListEl = document.getElementById('items');
     this.MenuTitle = document.querySelector('.menu-title');
     this.ItemTotal = document.getElementById('menu-total');
+    this.loading = document.createElement('div')
   }
-  renderItemList = (itemList,categoryName) => {
-    this.MenuTitle.innerHTML= categoryName;
-    this.ItemTotal.innerHTML= `${itemList.length} result`;
+
+  renderItemList = (itemList, categoryName) => {
+    this.loading.className = "loader"
+    this.Menu.appendChild(this.loading);
+    this.MenuTitle.innerHTML = categoryName;
+    this.ItemTotal.innerHTML = `${itemList.length} result`;
     this.ItemListEl.innerHTML = "";
+    
     itemList.forEach(Item => {
       this.renderItem(Item);
     })

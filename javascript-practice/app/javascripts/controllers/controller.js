@@ -4,9 +4,10 @@ class AppController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
-    this.categories;
-    this.allItems;
-    this.currentItems;
+    this.categories = [];
+    this.allItems = [];
+    this.currentItems = [];
+    this.searchItems = [];
     this.selectedCategoryId = 1
     this.selectedCategoryName = "All menu"
   }
@@ -19,28 +20,32 @@ class AppController {
   }
 
   searchHandle() {
-    var searchInput = document.querySelector('.header-search');
-    searchInput.addEventListener('input', e => {
-      const value = e.target.value;
-      const lowercaseValue = value.toLowerCase(); 
-      // Set all item hidden 
-      var allItems = document.querySelectorAll(`.item`)
-      allItems.forEach(hiddenItem => {
-        hiddenItem.classList.add('hidden');
-      });
-      // Check 
-      this.currentItems.forEach(item => {
-        var itemNamelowercase= item.itemName.toLowerCase()
-        if (itemNamelowercase.includes(lowercaseValue)) {
-          var visibleItems = document.querySelector(`[item-id="${item.itemId}"]`)
-          visibleItems.classList.remove('hidden');
-        }
-      })
-      if (value == null) {
-        allItems.classList.remove('hidden');
+    const searchInput = document.querySelector('.header-search');
+    const loading = document.querySelector('.loader');
+    const menu = document.querySelector('.menu');
+
+    searchInput.addEventListener('keypress', e => {
+      if (e.key === "Enter") {
+        const value = e.target.value;
+        const lowercaseValue = value.toLowerCase();
+        this.searchItems.splice(0, this.searchItems.length)
+        menu.style.opacity=0.2;
+        loading.style.display = 'block';
+        setTimeout(() => {
+          this.currentItems.forEach(item => {
+            const itemNamelowercase = item.itemName.toLowerCase()
+            if (itemNamelowercase.includes(lowercaseValue)) {
+              this.searchItems.push(item);
+            }
+          });
+    
+          loading.style.display = 'none';
+          menu.style.opacity=1;
+  
+          this.renderItem(this.searchItems);
+        }, 500);
       }
-      var hiddenItems = document.querySelectorAll(`.hidden`)
-      this.view.items.ItemTotal.innerHTML = `${allItems.length - hiddenItems.length} result`;
+       
     })
   }
 
@@ -65,7 +70,8 @@ class AppController {
   loadListItemList = () => {
     this.allItems = this.model.itemList.getItemList();
     this.currentItems = this.allItems
-    this.renderItemListbyCaterogy(this.currentItems);
+    this.renderItem(this.currentItems)
+    this.handleCateogyClick();
 
   }
 
@@ -79,9 +85,9 @@ class AppController {
     }
   }
 
-  renderItemListbyCaterogy(itemList) {
+
+  handleCateogyClick() {
     const categoryItems = document.querySelectorAll('.category-item');
-    this.view.items.renderItemList(itemList, this.selectedCategoryName);
     categoryItems.forEach(item => {
       item.addEventListener('click', (event) => {
 
@@ -93,16 +99,20 @@ class AppController {
         this.getCategoryInforOnClick(event)
 
         if (this.selectedCategoryId == 1) {
-          this.view.items.renderItemList(this.allItems, this.selectedCategoryName);
           this.currentItems = this.allItems
+          this.renderItem(this.currentItems)
         }
         else {
-          this.currentItems = itemList.filter(item => item.categoryId == this.selectedCategoryId);
-          this.view.items.renderItemList(this.currentItems, this.selectedCategoryName);
+          this.currentItems = this.allItems.filter(item => item.categoryId == this.selectedCategoryId);
+          this.renderItem(this.currentItems)
         }
+
       });
     });
+  }
 
+  renderItem(itemList) {
+    this.view.items.renderItemList(itemList, this.selectedCategoryName);
   }
 }
 export default AppController;
