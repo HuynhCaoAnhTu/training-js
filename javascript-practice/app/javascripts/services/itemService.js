@@ -1,6 +1,6 @@
 import LocalStorageService from "./localstorageService";
-import { API_BASE_URL } from "../constants/resoureAPI";
-import { ITEMS_ENDPOINT } from "../constants/resoureAPI";
+import { API_BASE_URL } from "../constants/api";
+import { ITEMS_ENDPOINT } from "../constants/api";
 class ItemService {
 
 	async getItems() {
