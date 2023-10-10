@@ -8,7 +8,7 @@ class CategoryList {
   }
 
   init = async () => {
-    const data = await this.service.getCategories();
+    const data = await this.service.getLocalStorageData();
     console.log(data)
     this.categoryList = data;
   }
