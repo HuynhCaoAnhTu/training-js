@@ -109,6 +109,30 @@ class AppController {
 		});
 	}
 
+	handleViewModal() {
+		const modal = document.getElementById("myModal");
+		const close = document.getElementsByClassName("close")[0];
+		const viewDetailButton = document.querySelectorAll('#cta-view');
+		close.onclick = function () {
+			modal.style.display = "none";
+		}
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		viewDetailButton.forEach((button) => {
+			button.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const parentLi = e.currentTarget.parentNode;
+				const itemId = parentLi.getAttribute('item-id');
+				console.log(itemId)
+				const itemInfo = this.model.itemList.getItemById(itemId);
+				this.view.modal.openViewModal(itemInfo);
+			});
+		});
+	}
+
 	handleCateogyClick() {
 		const categoryItems = document.querySelectorAll('.category-item');
 		categoryItems.forEach(item => {
