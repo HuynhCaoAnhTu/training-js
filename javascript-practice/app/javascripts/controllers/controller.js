@@ -133,6 +133,43 @@ class AppController {
 		});
 	}
 
+	handleNoteEvent(e) {
+		const sugarOptions = e.currentTarget.querySelectorAll('.note-sugar .note-option');
+		const iceOptions = e.currentTarget.querySelectorAll('.note-ice .note-option')
+		sugarOptions.forEach(option => {
+			option.addEventListener('click', (e) => {
+				e.stopPropagation();
+
+				if (option.classList.contains("option-selected")) {
+					option.classList.remove('option-selected');
+				}
+				else {
+					sugarOptions.forEach(otherItem => {
+						otherItem.classList.remove('option-selected');
+					});
+					option.classList.add('option-selected');
+
+					console.log(`Selected Ice Option: ${option.textContent}`);
+				}
+			});
+		});
+		iceOptions.forEach(option1 => {
+			option1.addEventListener('click', (e) => {
+				e.stopPropagation();
+				if (option1.classList.contains("option-selected")) {
+					option1.classList.remove('option-selected');
+				}
+				else {
+					iceOptions.forEach(otherItem => {
+						otherItem.classList.remove('option-selected');
+					});
+					option1.classList.add('option-selected');
+				}
+
+			});
+		});
+	}
+
 	handleCateogyClick() {
 		const categoryItems = document.querySelectorAll('.category-item');
 		categoryItems.forEach(item => {
