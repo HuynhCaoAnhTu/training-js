@@ -91,10 +91,10 @@
 }
 
 .option-selected{
-	border: 2px solid var(--primary-color);
+	border: 1px solid var(--primary-color);
 	color: #835b4c;
-	height: 43px;
-	width: 43px;
+	height: 44px;
+	width: 44px;
 }
 
 #cta-add{
