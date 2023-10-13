@@ -5,7 +5,7 @@
 - Apply knowledge of HTML5/CSS3/JavaScript (with ES6 syntax)
 - Understand and apply MVC pattern
 - Understand and apply DOM manipulation, form validation
-- Apply localstorage 
+- Apply localstorage
 
 ## Design on figma
 
@@ -23,12 +23,12 @@ The app has 4 features:
 - Show menu item by category
 - Add a new menu item
 - Add to bill
-- Take note 
+- Take note
 - Update quantity
 - Remove from bill
-- Search item by item name 
+- Search item by item name
 - Checkout the bill ( displaying the pop up to confirm action )
-- View Payment history ( Shows payment date ) 
+- View Payment history ( Shows payment date )
 
 
 ## Team size
@@ -73,4 +73,36 @@ The app has 4 features:
 └── .gitignore
 └── package.json
 └── README.md
+```
+
+## Getting started
+
+- Step 01: Clone repository with HTTPS:
+
+```bash
+git clone https://github.com/HuynhCaoAnhTu/training-js/tree/feture/practice
+```
+
+- Step 02: Change to branch feature/big-practice:
+
+```bash
+git checkout feature/javascript_practice
+```
+
+- Step 03: Move to folder which just cloned in your computer:
+
+```bash
+cd javascript-practice
+```
+
+- Step 04: Install packages
+
+```bash
+npm install
+```
+
+- Step 05: Run
+
+```bash
+npm start
 ```
