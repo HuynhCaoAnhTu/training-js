@@ -7,7 +7,7 @@ class ItemList {
   }
 
   init = async () => {
-    const data = await this.service.getItems();
+    const data = await this.service.getLocalStorageData();
     this.itemList = data;
   }
 

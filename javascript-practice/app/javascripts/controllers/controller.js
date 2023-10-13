@@ -1,5 +1,5 @@
 // controller.js
-
+import { KEY_CODE_ENTER } from "../constants/key";
 class AppController {
 	constructor(model, view) {
 		this.model = model;
@@ -20,7 +20,7 @@ class AppController {
 		const loading = document.querySelector('.loader');
 		const menu = document.querySelector('.menu');
 		searchInput.addEventListener('keypress', e => {
-			if (e.keyCode == "13") {
+			if (e.keyCode == KEY_CODE_ENTER) {
 				let count = 0;
 				const allItems = document.querySelectorAll(`.item `)
 				const value = e.target.value;
