@@ -59,6 +59,7 @@ class AppController {
 	initItemList = async () => {
 		await this.model.itemList.init();
 		this.loadListItemList();
+		this.hanlderItemEvent();
 	}
 
 	loadListItemList = () => {
@@ -76,6 +77,36 @@ class AppController {
 		} else {
 			console.log("Unknown Category");
 		}
+	}
+
+	hanlderItemEvent() {
+		this.handleItemClick();
+		this.handleViewModal();
+	}
+
+	handleItemClick() {
+		const itemElements = document.querySelectorAll('.item');
+		itemElements.forEach((item) => {
+			var isNoteVisible = false;
+			item.addEventListener('click', (e) => {
+				const itemNote = e.currentTarget.querySelector('.item-note');
+				const cta_view = e.currentTarget.querySelector('#cta-view');
+				const cta_add = e.currentTarget.querySelector('#cta-add');
+				this.handleNoteEvent(e);
+				console.log(cta_add)
+				if (!isNoteVisible) {
+					itemNote.style.display = 'flex';
+					isNoteVisible = true;
+					cta_view.style.display = 'none';
+					cta_add.style.display = 'block';
+				} else {
+					itemNote.style.display = 'none';
+					cta_add.style.display = 'none';
+					cta_view.style.display = 'block';
+					isNoteVisible = false;
+				}
+			});
+		});
 	}
 
 	handleCateogyClick() {
