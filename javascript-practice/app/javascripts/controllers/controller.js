@@ -12,6 +12,7 @@ class AppController {
 	init = async () => {
 		await this.initCategoryList();
 		await this.initItemList();
+		await this.initBill();
 		this.searchHandle();
 	}
 
@@ -82,6 +83,7 @@ class AppController {
 	hanlderItemEvent() {
 		this.handleItemClick();
 		this.handleViewModal();
+		this.handleAddToBill();
 	}
 
 	handleItemClick() {
@@ -170,6 +172,35 @@ class AppController {
 		});
 	}
 
+	handleAddToBill() {
+		const AddToBillButton = document.querySelectorAll('#cta-add');
+		AddToBillButton.forEach((button) => {
+			button.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const parentLi = e.currentTarget.parentNode;
+				const itemId = parentLi.getAttribute('item-id');
+				const sugarEl = parentLi.querySelector('.note-sugar .option-selected');
+				const iceEl = parentLi.querySelector('.note-ice .option-selected');
+				let sugarNote = "0";
+				let iceNote = "0";
+				if (sugarEl != null) {
+					sugarNote = sugarEl.textContent;
+
+				}
+				if (iceEl != null) {
+					iceNote = iceEl.textContent;
+				}
+
+				console.log(itemId)
+				const itemInfo = this.model.itemList.getItemById(itemId);
+				console.log(itemInfo)
+				console.log(sugarNote)
+				console.log(iceNote)
+				this.addToBill(itemInfo, sugarNote, iceNote)
+			});
+		});
+	}
+
 	handleCateogyClick() {
 		const categoryItems = document.querySelectorAll('.category-item');
 		categoryItems.forEach(item => {
@@ -193,6 +224,24 @@ class AppController {
 
 	renderItem(itemList) {
 		this.view.items.renderItemList(itemList, this.selectedCategoryName);
+	}
+
+	// CONTROLLER BILL
+	initBill = async () => {
+		await this.model.bill.init();
+	}
+
+	addToBill(item, sugarNote, iceNote) {
+		const latestBill = this.model.bill.addToBill(item, sugarNote, iceNote);
+		this.model.bill.service.setLocalStorage(latestBill);
+	}
+
+	loadBill() {
+
+	}
+
+	renderBill() {
+
 	}
 }
 export default AppController;
