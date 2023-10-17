@@ -213,12 +213,10 @@ class AppController {
 				this.getCategoryInforOnClick(event)
 				if (this.selectedCategoryId == 1) {
 					this.renderItem(this.items)
-					this.hanlderItemEvent();
 				}
 				else {
 					const itemsFilter = this.items.filter(item => item.categoryId == this.selectedCategoryId);
 					this.renderItem(itemsFilter)
-					this.hanlderItemEvent();
 				}
 			});
 		});
@@ -236,7 +234,6 @@ class AppController {
 	addToBill(item, sugarNote, iceNote) {
 		const latestBill = this.model.bill.addToBill(item, sugarNote, iceNote);
 		this.model.bill.service.setLocalStorage(latestBill);
-
 	}
 
 	loadBill() {
