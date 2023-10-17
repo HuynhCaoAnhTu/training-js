@@ -59,6 +59,7 @@ class AppController {
 	initItemList = async () => {
 		await this.model.itemList.init();
 		this.loadListItemList();
+		this.hanlderItemEvent();
 	}
 
 	loadListItemList = () => {
@@ -76,6 +77,97 @@ class AppController {
 		} else {
 			console.log("Unknown Category");
 		}
+	}
+
+	hanlderItemEvent() {
+		this.handleItemClick();
+		this.handleViewModal();
+	}
+
+	handleItemClick() {
+		const itemElements = document.querySelectorAll('.item');
+		itemElements.forEach((item) => {
+			var isNoteVisible = false;
+			item.addEventListener('click', (e) => {
+				const itemNote = e.currentTarget.querySelector('.item-note');
+				const cta_view = e.currentTarget.querySelector('#cta-view');
+				const cta_add = e.currentTarget.querySelector('#cta-add');
+				this.handleNoteEvent(e);
+				console.log(cta_add)
+				if (!isNoteVisible) {
+					itemNote.style.display = 'flex';
+					isNoteVisible = true;
+					cta_view.style.display = 'none';
+					cta_add.style.display = 'block';
+				} else {
+					itemNote.style.display = 'none';
+					cta_add.style.display = 'none';
+					cta_view.style.display = 'block';
+					isNoteVisible = false;
+				}
+			});
+		});
+	}
+
+	handleViewModal() {
+		const modal = document.getElementById("myModal");
+		const close = document.getElementsByClassName("close")[0];
+		const viewDetailButton = document.querySelectorAll('#cta-view');
+		close.onclick = function () {
+			modal.style.display = "none";
+		}
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		viewDetailButton.forEach((button) => {
+			button.addEventListener('click', (e) => {
+				e.stopPropagation();
+				const parentLi = e.currentTarget.parentNode;
+				const itemId = parentLi.getAttribute('item-id');
+				console.log(itemId)
+				const itemInfo = this.model.itemList.getItemById(itemId);
+				this.view.modal.openViewModal(itemInfo);
+			});
+		});
+	}
+
+	handleNoteEvent(e) {
+		const sugarOptions = e.currentTarget.querySelectorAll('.note-sugar .note-option');
+		const iceOptions = e.currentTarget.querySelectorAll('.note-ice .note-option')
+		sugarOptions.forEach(option => {
+			option.addEventListener('click', (e) => {
+				e.stopPropagation();
+
+				if (option.classList.contains("option-selected")) {
+					option.classList.remove('option-selected');
+				}
+				else {
+					sugarOptions.forEach(otherItem => {
+						otherItem.classList.remove('option-selected');
+					});
+					option.classList.add('option-selected');
+
+					console.log(`Selected Ice Option: ${option.textContent}`);
+				}
+			});
+		});
+		iceOptions.forEach(option1 => {
+			option1.addEventListener('click', (e) => {
+				e.stopPropagation();
+				if (option1.classList.contains("option-selected")) {
+					option1.classList.remove('option-selected');
+				}
+				else {
+					iceOptions.forEach(otherItem => {
+						otherItem.classList.remove('option-selected');
+					});
+					option1.classList.add('option-selected');
+				}
+
+			});
+		});
 	}
 
 	handleCateogyClick() {
