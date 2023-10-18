@@ -50,8 +50,8 @@ class ItemView {
 					</ul>
 				</div>
 			</div>
-      <button class="btn-sencondary " id="cta-view" type="button">View detail</button>
-			<button class="btn-primary " id="cta-add" type="button">Add to billing</button>
+      <button class="btn btn-sencondary " id="cta-view" type="button">View detail</button>
+			<button class="btn btn-primary " id="cta-add" type="button">Add to billing</button>
     </li>`;
 	}
 }
