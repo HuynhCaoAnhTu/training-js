@@ -2,90 +2,105 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practice-Javascript</title>
-  <link rel="icon" type="image/svg" href="./assets/images/logo.svg" sizes="96x96" />
-  <link rel="stylesheet" href="./styles/main.css">
-  <script type="module" src="./javascripts/index.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Practice-Javascript</title>
+	<link rel="icon" type="image/svg" href="./assets/images/logo.svg" sizes="96x96" />
+	<link rel="stylesheet" href="./styles/main.css">
+	<script type="module" src="./javascripts/index.js"></script>
 </head>
 
-  <body>
-    <div class="wrapper">
+<body>
+	<div class="wrapper">
 
-      <!-- HEADER -->
-      <header class="main-header">
-        <div class="header-title">
-          <h1 class="header-title-welcome">Welcome to Coffeehouse</h1>
-          <h2 class="header-title-des">Choose the category</h2>
-        </div>
-        <div class="search-box">
-          <img class="search-icon" src="./assets/icons/search-icon.svg" alt="Search-Icon">
-          <input class="header-search" placeholder="Search item" type="text">
-        </div>
-        <div class="header-user">
-          <div class="user-content">
-            <img class="user-image"
-              src="https://assets.vogue.in/photos/5ce435fecc50be4b0d1402b4/2:3/w_2560%2Cc_limit/Shivani-the-Indian-artist-from-Now-United.jpg"
-              alt="User-Image">
-            <div class="user-infor">
-              <p class="user-role">Admin</h2>
-              <p class="user-name">Sheilla Poetri</h3>
-            </div>
-          </div>
-          <img class="notification-icon" src="./assets/icons/notification-icon.svg" alt="Notification-Icon">
-        </div>
-      </header>
-      <!-- HEADER -->
-
-      <!-- SLIDE -->
-      <section class="slide">
-      <a class="slide-logo" href="javascriptvoid(0)"><img class="slide-logo-image" src="./assets/images/logo.svg"  alt="Logo"></a>
-        <ul class="slide-lists">
-          <li class="slide-navigation"><a href="javascript:void(0)"><img class="navigation-icon" src="./assets/icons/home-actice-icon.svg" alt="Home"></a></li>
-          <li class="slide-navigation"><a href="javascript:void(0)"><img class="navigation-icon" src="./assets/icons/bill-icon.svg" alt="Bill"></a></li>
-          <li class="slide-navigation"><a href="javascript:void(0)"><img class="navigation-icon" src="./assets/icons/favorite-icon.svg" alt="Favorite"></a></li>
-          <li class="slide-navigation"><a href="javascript:void(0)"><img class="navigation-icon" src="./assets/icons/wallet-icon.svg" alt="Wallet"></a></li>
-          <li class="slide-navigation"><a href="javascript:void(0)"><img class="navigation-icon" src="./assets/icons/setting-icon.svg" alt="Setting"></a></li>
-        </ul>
-      </section>
-      <!-- SLIDE -->
-
-      <!-- CATEGORY -->
-      <section class="categories">
-        <ul  class="category-list" id="categories">
-        </ul>
-      </section>
-      <!-- CATEGORY -->
-
-      <!-- Item -->
-      <section class="menu">
-        <div class="menu-des">
-          <h2 class="menu-title">All menu </h2>
-          <p id="menu-total"></p>
-        </div>
-        <ul  class="item-list" id="items">
-        </ul>
-      </section>
-      <!-- Item -->
-
-			<!-- Modal View Itemcont -->
-			<div id="myModal" class="modal">
-				<div class="modal-content">
-					<span class="close">&times;</span>
-					<div class="modal-item-content">
-						<img class="modal-item-image" src="https://pbs.twimg.com/profile_images/760193594233876480/9atNXFjG_400x400.jpg" alt="">
-						<div class="modal-item-info">
-							<label class="modal-title">Name:</label>
-							<p class="modal-item-name"></p>
-							<label class="modal-title">Description:</label>
-							<p class="modal-item-des"></p>
-							<label class="modal-title">Price:</label>
-							<p class="modal-item-price">$</p>
-						</div>
+		<!-- HEADER -->
+		<header class="main-header">
+			<div class="header-title">
+				<h1 class="header-title-welcome">Welcome to Coffeehouse</h1>
+				<h2 class="header-title-des">Choose the category</h2>
+			</div>
+			<div class="search-box">
+				<img class="search-icon" src="./assets/icons/search-icon.svg" alt="Search-Icon">
+				<input class="header-search" placeholder="Search item" type="text">
+			</div>
+			<div class="header-user">
+				<div class="user-content">
+					<img class="user-image"
+						src="https://assets.vogue.in/photos/5ce435fecc50be4b0d1402b4/2:3/w_2560%2Cc_limit/Shivani-the-Indian-artist-from-Now-United.jpg"
+						alt="User-Image">
+					<div class="user-infor">
+						<p class="user-role">Admin</h2>
+						<p class="user-name">Sheilla Poetri</h3>
 					</div>
 				</div>
+				<img class="notification-icon" src="./assets/icons/notification-icon.svg" alt="Notification-Icon">
 			</div>
-			<!-- Modal View Itemcont -->
-  </body>
+		</header>
+		<!-- HEADER -->
+
+		<!-- SLIDE -->
+		<section class="slide">
+			<a class="slide-logo" href="javascriptvoid(0)"><img class="slide-logo-image" src="./assets/images/logo.svg"
+					alt="Logo"></a>
+			<ul class="slide-lists">
+				<li class="slide-navigation"><a href="javascript:void(0)">
+						<img class="navigation-icon" src="./assets/icons/home-actice-icon.svg" alt="Home"></a></li>
+				<li class="slide-navigation"><a href="javascript:void(0)">
+						<img class="navigation-icon" src="./assets/icons/bill-icon.svg" alt="Bill"></a></li>
+				<li class="slide-navigation"><a href="javascript:void(0)">
+						<img class="navigation-icon" src="./assets/icons/favorite-icon.svg" alt="Favorite"></a></li>
+				<li class="slide-navigation"><a href="javascript:void(0)">
+						<img class="navigation-icon" src="./assets/icons/wallet-icon.svg" alt="Wallet"></a></li>
+				<li class="slide-navigation"><a href="javascript:void(0)">
+						<img class="navigation-icon" src="./assets/icons/setting-icon.svg" alt="Setting"></a></li>
+			</ul>
+		</section>
+		<!-- SLIDE -->
+
+		<div class="content-container">
+			<div class="main-content">
+				<!-- CATEGORY -->
+				<section class="categories">
+					<ul class="category-list" id="categories">
+					</ul>
+				</section>
+				<!-- CATEGORY -->
+
+				<!-- Item -->
+				<section class="menu">
+					<div class="menu-des">
+						<h2 class="menu-title">All menu </h2>
+						<p id="menu-total"></p>
+					</div>
+					<ul class="item-list" id="items">
+					</ul>
+				</section>
+				<!-- Item -->
+			</div>
+
+
+		</div>
+	</div>
+
+	<!-- Modal View Itemcont -->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="modal-item-content">
+				<img class="modal-item-image" src="https://pbs.twimg.com/profile_images/760193594233876480/9atNXFjG_400x400.jpg"
+					alt="">
+				<div class="modal-item-info">
+					<label class="modal-title">Name:</label>
+					<p class="modal-item-name"></p>
+					<label class="modal-title">Description:</label>
+					<p class="modal-item-des"></p>
+					<label class="modal-title">Price:</label>
+					<p class="modal-item-price">$</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal View Itemcont -->
+</body>
+
 </html>
