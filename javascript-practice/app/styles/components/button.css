@@ -1,22 +1,47 @@
-.btn-primary {
-  padding: 15px 60px;
+.btn{
   text-align: center;
-  background-color: var(--primary-color);
-  border: none;
+	border: none;
   font-family: Poppins-SemiBold;
   font-size: 20px;
-  color: #fff;
-  border-radius: 40px;
+	border-radius: 40px;
   cursor: pointer;
 }
 
+.btn-primary {
+	padding: 15px 60px;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
 .btn-sencondary {
-  padding: 15px 60px;
-  text-align: center;
+	padding: 15px 60px;
   background-color: var(--secondary-color);
-  border: none;
   font-family: Poppins-SemiBold;
-  font-size: 20px;
-  border-radius: 40px;
-  cursor: pointer;
+}
+
+.btn-cta-ins{
+	padding: 2px 7px ;
+	width: fit-content;
+	background-color: green;
+	border-radius: 7px;
+	font-size: 15px;
+	color: #fff;
+}
+
+.btn-cta-des{
+	padding: 2px 7px ;
+	width: fit-content;
+	background-color: blue;
+	border-radius: 7px;
+	font-size: 15px;
+	color: #fff;
+}
+
+.btn-cta-remove{
+	padding: 2px 7px ;
+	width: fit-content;
+	background-color: red;
+	border-radius: 7px;
+  font-size: 15px;
+	color: #fff;
 }
