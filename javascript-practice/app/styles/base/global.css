@@ -1,5 +1,15 @@
-.wrapper{
-    width: 1440px;
-    margin: 0 auto;
-    background-color: #f8f8f8;
+.wrapper {
+	width: 1440px;
+	margin: 0 auto;
+	background-color: #eeeff2;
+	height: 100vh;
+}
+
+.content-container {
+	display: flex;
+	padding: 0 0 0 140px;
+}
+
+.main-content {
+	flex: 2;
 }
