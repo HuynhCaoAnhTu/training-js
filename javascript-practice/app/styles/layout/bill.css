@@ -1,0 +1,92 @@
+.bill {
+	/* padding: 30px ; */
+	height: fit-content;
+	background-color: #f7f7f7;
+	flex: 1;
+}
+
+.bill-title {
+	padding: 30px 20px 30px;
+}
+
+.item-bill-img {
+	height: 70px;
+	border-radius: 10px;
+}
+
+.item-list-bill{
+	height: 270px;
+	overflow-y: scroll;
+}
+
+.item-bill {
+	display: flex;
+	flex-direction: row;
+	padding: 10px 20px ;
+}
+
+.item-bill-info {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: space-between;
+	padding: 10px;
+
+}
+
+.item-bill-note {
+	display: flex;
+	flex: 2;
+}
+
+.item-bill-detail {
+	display: flex;
+}
+
+.cta-bill {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	justify-content: space-around;
+}
+
+.item-bill-name {
+	font-family: Poppins-SemiBold;
+	font-size: 18px;
+}
+
+.item-bill-qnty {
+	font-family: Poppins-SemiBold;
+	font-size: 18px;
+}
+
+.item-bill-note {
+	padding: 0 10px 0;
+	font-family: Poppins-Light;
+	font-size: 16px;
+	color: rgb(43, 42, 41);
+	font-weight: 600;
+	align-items: center;
+
+}
+
+.note-label-sugar {
+	margin: 0 2px 0 7px;
+	padding: 3px;
+	background-color: bisque;
+	border-radius: 2px;
+}
+
+.note-label-ice {
+	margin: 0 5px 0 7px;
+	padding: 3px;
+	background-color: aqua;
+	border-radius: 3px;
+}
+
+.item-bill-price{
+	font-family: Poppins-Light;
+	font-size: 18px;
+	font-weight: 600;
+	color: #686666;
+}
