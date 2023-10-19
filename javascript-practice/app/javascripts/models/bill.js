@@ -11,6 +11,10 @@ class Bill {
 		this.itemsInBill = data;
 	}
 
+	getItemInBill() {
+		return this.itemsInBill;
+	}
+
 	addToBill(data, noteSugar, noteIce) {
 		const itemId = +data.itemId;
 		const existingItem = this.itemsInBill.find(item => item.id === itemId);
