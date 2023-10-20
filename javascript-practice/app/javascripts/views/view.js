@@ -1,11 +1,11 @@
 import CategoryView from "./categoryView";
-import ItemView from "./itemView";
+import ProdcutView from "./productView";
 import ModalView from "./modal";
 import BillView from "./billView";
 class View {
 	constructor() {
 		this.categories = new CategoryView;
-		this.items = new ItemView;
+		this.products = new ProdcutView;
 		this.modal = new ModalView;
 		this.bill = new BillView;
 	}

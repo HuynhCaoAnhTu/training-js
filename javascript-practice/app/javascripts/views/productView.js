@@ -1,38 +1,38 @@
 // view.js
-class ItemView {
+class ProductView {
 
 	constructor() {
 		this.Menu = document.querySelector('.menu');
-		this.ItemListEl = document.getElementById('items');
+		this.ProductListEl = document.getElementById('products');
 		this.MenuTitle = document.querySelector('.menu-title');
-		this.ItemTotal = document.getElementById('menu-total');
+		this.ProductTotal = document.getElementById('menu-total');
 		this.loading = document.createElement('div');
 	}
 
-	renderItemList = (itemList, categoryName) => {
+	renderProductList = (productList, categoryName) => {
 		this.loading.className = "loader"
 		this.Menu.appendChild(this.loading);
 		this.MenuTitle.innerHTML = categoryName;
-		this.ItemTotal.innerHTML = `${itemList.length} result`;
-		this.ItemListEl.innerHTML = "";
+		this.ProductTotal.innerHTML = `${productList.length} result`;
+		this.ProductListEl.innerHTML = "";
 
-		itemList.forEach(Item => {
-			this.renderItem(Item);
+		productList.forEach(product => {
+			this.renderProduct(product);
 		})
 	}
 
-	renderItem = (Item) => {
-		this.ItemListEl.innerHTML += `
-    <li class="item" item-id="${Item.itemId}">
-      <div class="item-container">
-        <img class="item-img" src="${Item.itemUrl}" alt="${Item.itemName}">
-        <div class="item-content">
-          <p class="item-name">${Item.itemName}</p>
-          <p class="item-des">${Item.itemDes}</p>
-          <p class="item-price">&dollar; ${Item.itemPrice}</p>
+	renderProduct = (product) => {
+		this.ProductListEl.innerHTML += `
+    <li class="product" product-id="${product.productId}">
+      <div class="product-container">
+        <img class="product-img" src="${product.productUrl}" alt="${product.productName}">
+        <div class="product-content">
+          <p class="product-name">${product.productName}</p>
+          <p class="product-des">${product.productDes}</p>
+          <p class="product-price">&dollar; ${product.productPrice}</p>
 					</div>
       </div>
-			<div class="item-note">
+			<div class="product-note">
 				<div class="note-sugar">
 					<h4 class="note-title">Sugar</h4>
 					<ul class="note-list">
@@ -56,4 +56,4 @@ class ItemView {
 	}
 }
 
-export default ItemView;
+export default ProductView;

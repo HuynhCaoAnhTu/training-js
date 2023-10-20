@@ -5,13 +5,13 @@ class AppController {
 		this.model = model;
 		this.view = view;
 		this.categories = [];
-		this.items = [];
+		this.products = [];
 		this.selectedCategoryId = 1
 		this.selectedCategoryName = "All menu"
 	}
 	init = async () => {
 		await this.initCategoryList();
-		await this.initItemList();
+		await this.initProductList();
 		await this.initBill();
 		this.searchHandle();
 	}
@@ -23,24 +23,24 @@ class AppController {
 		searchInput.addEventListener('keypress', e => {
 			if (e.keyCode == KEY_CODE_ENTER) {
 				let count = 0;
-				const allItems = document.querySelectorAll(`.item `)
+				const allproducts = document.querySelectorAll(`.product `)
 				const value = e.target.value;
 				const lowercaseValue = value.toLowerCase();
 				menu.style.opacity = 0.2;
 				loading.style.display = 'block';
-				allItems.forEach(item => {
-					const itemNameElement = item.querySelector('.item-name');
-					var itemName = itemNameElement.textContent.toLowerCase();
-					if (!itemName.includes(lowercaseValue)) {
-						item.style.display = 'none';
+				allproducts.forEach(product => {
+					const productNameElement = product.querySelector('.product-name');
+					var productName = productNameElement.textContent.toLowerCase();
+					if (!productName.includes(lowercaseValue)) {
+						product.style.display = 'none';
 					} else {
-						item.style.display = 'flex';
+						product.style.display = 'flex';
 						count += 1
 					}
 				});
 				loading.style.display = 'none';
 				menu.style.opacity = 1;
-				this.view.items.ItemTotal.innerHTML = `${count} result`;
+				this.view.products.ProductTotal.innerHTML = `${count} result`;
 			}
 		})
 	}
@@ -56,16 +56,16 @@ class AppController {
 		this.view.categories.renderCategoryList(this.categories);
 	}
 
-	// CONTROLLER ITEM
-	initItemList = async () => {
-		await this.model.itemList.init();
-		this.loadListItemList();
-		this.hanlderItemEvent();
+	// CONTROLLER product
+	initProductList = async () => {
+		await this.model.productList.init();
+		this.loadListproductList();
+		this.hanlderproductEvent();
 	}
 
-	loadListItemList = () => {
-		this.items = this.model.itemList.getItemList();
-		this.renderItem(this.items)
+	loadListproductList = () => {
+		this.products = this.model.productList.getProdcutList();
+		this.renderProduct(this.products)
 		this.handleCateogyClick();
 
 	}
@@ -80,29 +80,29 @@ class AppController {
 		}
 	}
 
-	hanlderItemEvent() {
-		this.handleItemClick();
+	hanlderproductEvent() {
+		this.handleproductClick();
 		this.handleViewModal();
 		this.handleAddToBill();
 	}
 
-	handleItemClick() {
-		const itemElements = document.querySelectorAll('.item');
-		itemElements.forEach((item) => {
+	handleproductClick() {
+		const productElements = document.querySelectorAll('.product');
+		productElements.forEach((product) => {
 			var isNoteVisible = false;
-			item.addEventListener('click', (e) => {
-				const itemNote = e.currentTarget.querySelector('.item-note');
+			product.addEventListener('click', (e) => {
+				const productNote = e.currentTarget.querySelector('.product-note');
 				const cta_view = e.currentTarget.querySelector('#cta-view');
 				const cta_add = e.currentTarget.querySelector('#cta-add');
 				this.handleNoteEvent(e);
 				console.log(cta_add)
 				if (!isNoteVisible) {
-					itemNote.style.display = 'flex';
+					productNote.style.display = 'flex';
 					isNoteVisible = true;
 					cta_view.style.display = 'none';
 					cta_add.style.display = 'block';
 				} else {
-					itemNote.style.display = 'none';
+					productNote.style.display = 'none';
 					cta_add.style.display = 'none';
 					cta_view.style.display = 'block';
 					isNoteVisible = false;
@@ -127,10 +127,10 @@ class AppController {
 			button.addEventListener('click', (e) => {
 				e.stopPropagation();
 				const parentLi = e.currentTarget.parentNode;
-				const itemId = parentLi.getAttribute('item-id');
-				console.log(itemId)
-				const itemInfo = this.model.itemList.getItemById(itemId);
-				this.view.modal.openViewModal(itemInfo);
+				const productId = parentLi.getAttribute('product-id');
+				console.log(productId)
+				const productInfo = this.model.productList.getProdcutById(productId);
+				this.view.modal.openViewModal(productInfo);
 			});
 		});
 	}
@@ -146,8 +146,8 @@ class AppController {
 					option.classList.remove('option-selected');
 				}
 				else {
-					sugarOptions.forEach(otherItem => {
-						otherItem.classList.remove('option-selected');
+					sugarOptions.forEach(otherproduct => {
+						otherproduct.classList.remove('option-selected');
 					});
 					option.classList.add('option-selected');
 
@@ -162,8 +162,8 @@ class AppController {
 					option1.classList.remove('option-selected');
 				}
 				else {
-					iceOptions.forEach(otherItem => {
-						otherItem.classList.remove('option-selected');
+					iceOptions.forEach(otherproduct => {
+						otherproduct.classList.remove('option-selected');
 					});
 					option1.classList.add('option-selected');
 				}
@@ -178,7 +178,7 @@ class AppController {
 			button.addEventListener('click', (e) => {
 				e.stopPropagation();
 				const parentLi = e.currentTarget.parentNode;
-				const itemId = parentLi.getAttribute('item-id');
+				const productId = parentLi.getAttribute('product-id');
 				const sugarEl = parentLi.querySelector('.note-sugar .option-selected');
 				const iceEl = parentLi.querySelector('.note-ice .option-selected');
 				let sugarNote = "0";
@@ -191,41 +191,41 @@ class AppController {
 					iceNote = iceEl.textContent;
 				}
 
-				console.log(itemId)
-				const itemInfo = this.model.itemList.getItemById(itemId);
-				console.log(itemInfo)
+				console.log(productId)
+				const productInfo = this.model.productList.getProdcutById(productId);
+				console.log(productInfo)
 				console.log(sugarNote)
 				console.log(iceNote)
-				this.addToBill(itemInfo, sugarNote, iceNote)
+				this.addToBill(productInfo, sugarNote, iceNote)
 			});
 		});
 	}
 
 	handleCateogyClick() {
-		const categoryItems = document.querySelectorAll('.category-item');
-		categoryItems.forEach(item => {
-			item.addEventListener('click', (event) => {
+		const categoryproducts = document.querySelectorAll('.category-product');
+		categoryproducts.forEach(product => {
+			product.addEventListener('click', (event) => {
 
-				categoryItems.forEach(otherItem => {
-					otherItem.classList.remove('active');
+				categoryproducts.forEach(otherproduct => {
+					otherproduct.classList.remove('active');
 				});
-				item.classList.add('active');
+				product.classList.add('active');
 				this.getCategoryInforOnClick(event)
 				if (this.selectedCategoryId == 1) {
-					this.renderItem(this.items)
-					this.hanlderItemEvent();
+					this.renderProduct(this.products)
+					this.hanlderproductEvent();
 				}
 				else {
-					const itemsFilter = this.items.filter(item => item.categoryId == this.selectedCategoryId);
-					this.renderItem(itemsFilter)
-					this.hanlderItemEvent();
+					const productsFilter = this.products.filter(product => product.categoryId == this.selectedCategoryId);
+					this.renderProduct(productsFilter)
+					this.hanlderproductEvent();
 				}
 			});
 		});
 	}
 
-	renderItem(itemList) {
-		this.view.items.renderItemList(itemList, this.selectedCategoryName);
+	renderProduct(productList) {
+		this.view.products.renderProductList(productList, this.selectedCategoryName);
 	}
 
 	// CONTROLLER BILL
@@ -234,8 +234,8 @@ class AppController {
 		this.renderBill()
 	}
 
-	addToBill(item, sugarNote, iceNote) {
-		const latestBill = this.model.bill.addToBill(item, sugarNote, iceNote);
+	addToBill(product, sugarNote, iceNote) {
+		const latestBill = this.model.bill.addToBill(product, sugarNote, iceNote);
 		this.model.bill.service.setLocalStorage(latestBill);
 		this.renderBill()
 	}
@@ -245,7 +245,7 @@ class AppController {
 	}
 
 	renderBill() {
-		const bill= this.model.bill.getItemInBill();
+		const bill= this.model.bill.getProductInBill();
 		this.view.bill.renderBill(bill);
 	}
 }

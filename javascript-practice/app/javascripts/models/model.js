@@ -1,11 +1,11 @@
 import Bill from "./bill";
 import CategoryList from "./categories";
-import ItemList from "./items";
+import ProductList from "./products";
 
 class Model {
   constructor() {
     this.categoryList = new CategoryList();
-    this.itemList = new ItemList();
+    this.productList = new ProductList();
 		this.bill= new Bill()
   }
 }
