@@ -231,12 +231,13 @@ class AppController {
 	// CONTROLLER BILL
 	initBill = async () => {
 		await this.model.bill.init();
+		this.renderBill()
 	}
 
 	addToBill(item, sugarNote, iceNote) {
 		const latestBill = this.model.bill.addToBill(item, sugarNote, iceNote);
 		this.model.bill.service.setLocalStorage(latestBill);
-
+		this.renderBill()
 	}
 
 	loadBill() {
@@ -244,7 +245,8 @@ class AppController {
 	}
 
 	renderBill() {
-
+		const bill= this.model.bill.getItemInBill();
+		this.view.bill.renderBill(bill);
 	}
 }
 export default AppController;
