@@ -2,52 +2,87 @@ import BillService from "../services/billService";
 class Bill {
 	constructor() {
 		this.service = new BillService();
-		this.itemsInBill = [];
+		this.productsInBill = [];
+		this.totalValue;
 	}
 
 	init = async () => {
 		const data = await this.service.getLocalStorageData();
 		console.log(data)
-		this.itemsInBill = data;
+		this.productsInBill = data;
 	}
 
 	getProductInBill() {
-		return this.itemsInBill;
+		return this.productsInBill;
 	}
 
-	addToBill(data, noteSugar, noteIce) {
-		const itemId = +data.itemId;
-		const existingItem = this.itemsInBill.find(item => item.id === itemId);
-		console.log(existingItem)
-		if (existingItem) {
-			if (noteSugar == "0" && noteIce == "0") {
-				existingItem.quantity += 1;
-			} else {
-				this.itemsInBill.push({
-					id: itemId,
-					quantity: 1,
-					name: data.itemName,
-					imageUrl: data.itemUrl,
-					totalPrice: +data.itemPrice,
-					total: +data.itemPrice,
-					sugarNote: noteSugar,
-					iceNote: noteIce,
-				});
+	addToBill(id, name, imageUrl, description, price, ingredients) {
+		let productAdded = false;
+		console.log(ingredients)
+		for (let i = 0; i < this.productsInBill.length; i++) {
+			const existingProduct = this.productsInBill[i];
+			if (existingProduct.id === id && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {
+				console.log(existingProduct)
+				existingProduct.quantity += 1;
+				existingProduct.total = existingProduct.quantity * existingProduct.price;
+				productAdded = true;
+				break;
 			}
-		} else {
-			this.itemsInBill.push({
-				id: itemId,
+		}
+
+		if (!productAdded) {
+			this.productsInBill.push({
+				id: id,
 				quantity: 1,
-				name: data.itemName,
-				imageUrl: data.itemUrl,
-				totalPrice: +data.itemPrice,
-				total: +data.itemPrice,
-				sugarNote: noteSugar,
-				iceNote: noteIce,
+				name: name,
+				imageUrl: imageUrl,
+				description: description,
+				price: price,
+				total: price,
+				ingredients: ingredients,
 			});
 		}
 
-		return this.itemsInBill;
+
+		return this.productsInBill;
+	}
+
+	increaseQuantity(productId, ingredients) {
+		console.log(ingredients);
+		var existingProduct = []
+		for (let i = 0; i < this.productsInBill.length; i++) {
+			existingProduct = this.productsInBill[i];
+			if (existingProduct.id === productId && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {
+				console.log(existingProduct)
+				existingProduct.quantity += 1;
+				existingProduct.total = existingProduct.quantity * existingProduct.price;
+				break;
+			}
+			console.log(existingProduct);
+		}
+		return this.productsInBill;
+	}
+
+	decreaseQuantity(productId, ingredients) {
+		var existingProduct = []
+		for (let i = 0; i < this.productsInBill.length; i++) {
+			existingProduct = this.productsInBill[i];
+			if (existingProduct.id === productId && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {
+				console.log(existingProduct)
+				existingProduct.quantity -= 1;
+				existingProduct.total = existingProduct.quantity * existingProduct.price;
+				if (existingProduct.quantity === 0) {
+					this.productsInBill.splice(i, 1);
+				}
+				break;
+			}
+		}
+		return this.productsInBill;
+	}
+
+	calculateTotalValue() {
+		this.totalValue = this.productsInBill.reduce((total, product) => total + product.total, 0);
+		return this.totalValue;
 	}
 
 }
