@@ -3,7 +3,7 @@
       {
         "categoryId": 1,
         "categoryName": "All menu",
-        "categoryUrl": "https://i.ibb.co/qNkc7Vq/cup-with-straw-icon.png" 
+        "categoryUrl": "https://i.ibb.co/qNkc7Vq/cup-with-straw-icon.png"
       },
       {
         "categoryId": 2,
@@ -19,7 +19,7 @@
       {
         "categoryId": 4,
         "categoryName": "Baboon",
-        "categoryUrl": "https://i.ibb.co/1GghrzS/bubble-tea-icon.png" 
+        "categoryUrl": "https://i.ibb.co/1GghrzS/bubble-tea-icon.png"
 
       }
       ,
@@ -36,100 +36,100 @@
       }
     ],
 
-    "items": [
+    "products": [
       {
-        "itemId": 1,
-        "itemName": "AA",
-        "itemDes": "123",
+        "productId": 1,
+        "productName": "AA",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       },
       {
-        "itemId": 2,
-        "itemName": "All menu",
-        "itemDes": "123",
+        "productId": 2,
+        "productName": "All menu",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }, {
-        "itemId": 3,
-        "itemName": "AB",
-        "itemDes": "123",
+        "productId": 3,
+        "productName": "AB",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }, {
-        "itemId": 4,
-        "itemName": "ABB",
-        "itemDes": "123",
+        "productId": 4,
+        "productName": "ABB",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }, {
-        "itemId": 5,
-        "itemName": "AAA",
-        "itemDes": "123",
+        "productId": 5,
+        "productName": "AAA",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }, {
-        "itemId": 6,
-        "itemName": "menu",
-        "itemDes": "123",
+        "productId": 6,
+        "productName": "menu",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }, {
-        "itemId": 7,
-        "itemName": "RRR",
-        "itemDes": "123",
+        "productId": 7,
+        "productName": "RRR",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }, {
-        "itemId": 8,
-        "itemName": "CD",
-        "itemDes": "123",
+        "productId": 8,
+        "productName": "CD",
+        "productDes": "123",
         "categoryId" : 2 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }
       , {
-        "itemId": 9,
-        "itemName": "Cafe",
-        "itemDes": "123",
+        "productId": 9,
+        "productName": "Cafe",
+        "productDes": "123",
         "categoryId" : 1 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }
       , {
-        "itemId": 10,
-        "itemName": "Cafe",
-        "itemDes": "123",
+        "productId": 10,
+        "productName": "Cafe",
+        "productDes": "123",
         "categoryId" : 2 ,
-        "itemUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "itemPrice": 200,
-        "itemNoteSugar": "",
-        "itemNoteIce": ""
+        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
+        "productPrice": 200,
+        "productNoteSugar": "",
+        "productNoteIce": ""
       }
     ]
   }

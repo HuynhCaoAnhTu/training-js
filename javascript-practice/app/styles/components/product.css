@@ -1,9 +1,9 @@
-.item-container {
+.product-container {
 	display: flex;
 	gap: 20px;
 }
 
-.item {
+.product {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -14,7 +14,7 @@
 	cursor: pointer;
 }
 
-.item-list {
+.product-list {
 	margin-top: 40px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -22,25 +22,25 @@
 	row-gap: 20px;
 }
 
-.item-content {
+.product-content {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	word-break: break-word;
 }
 
-.item-img {
+.product-img {
 	height: 150px;
 	border-radius: 20px;
 }
 
-.item-name {
+.product-name {
 	font-family: Poppins-SemiBold;
 	font-size: 22px;
 	word-break: break-word;
 }
 
-.item-des {
+.product-des {
 	color: #c2bbb9;
 	font-family: Poppins-Light;
 	font-size: 16px;
@@ -48,7 +48,7 @@
 	word-break: break-word;
 }
 
-.item-price {
+.product-price {
 	font-family: Poppins-Bold;
 	font-size: 30px;
 }
@@ -62,7 +62,7 @@
 	gap: 5px;
 }
 
-.item-note {
+.product-note {
 	display: none;
 	justify-content: space-between;
 	gap: 10px;

@@ -3,15 +3,15 @@ class ModalView {
 		this.modalEl = document.querySelector(".modal");
 	}
 
-	openViewModal = (item) => {
-		console.log(item)
-		if (item) {
-			this.modalEl.setAttribute("data-id", item.itemId);
-			console.log(this.modalEl.querySelector('.modal-item-image'))
-			this.modalEl.querySelector('.modal-item-image').src = item.itemUrl;
-			this.modalEl.querySelector('.modal-item-name').textContent = item.itemName;
-			this.modalEl.querySelector('.modal-item-des').textContent = item.itemDes;
-			this.modalEl.querySelector('.modal-item-price').innerHTML = `&dollar;${item.itemPrice}`;
+	openViewModal = (product) => {
+		console.log(product)
+		if (product) {
+			this.modalEl.setAttribute("data-id", product.productId);
+			console.log(this.modalEl.querySelector('.modal-product-image'))
+			this.modalEl.querySelector('.modal-product-image').src = product.productUrl;
+			this.modalEl.querySelector('.modal-product-name').textContent = product.productName;
+			this.modalEl.querySelector('.modal-product-des').textContent = product.productDes;
+			this.modalEl.querySelector('.modal-product-price').innerHTML = `&dollar;${product.productPrice}`;
 			this.modalEl.style.display = 'block'
 		};
 	}

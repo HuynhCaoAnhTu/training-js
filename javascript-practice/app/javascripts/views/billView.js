@@ -4,9 +4,9 @@ class BillView {
 	constructor() {
 		this.contentContainer = document.querySelector('.content-container');
 		this.mainContent = document.querySelector('.main-content');
-		this.itemList = document.querySelector('.item-list');
+		this.itemList = document.querySelector('.product-list');
 		this.bill=document.querySelector('.bill');
-		this.ItemListBillEl = document.querySelector('.item-list-bill');
+		this.ItemListBillEl = document.querySelector('.product-list-bill');
 	}
 
 	renderBill = (IteminBill) => {

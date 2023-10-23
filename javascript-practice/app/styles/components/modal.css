@@ -34,19 +34,19 @@
 	cursor: pointer;
 }
 
-.modal-item-content {
+.modal-product-content {
 	display: flex;
 	flex-direction: row;
 }
 
-.modal-item-info {
+.modal-product-info {
 	display: flex;
 	flex-direction: column;
 	padding: 40px 20px 40px 40px;
 	justify-content: space-between;
 }
 
-.modal-item-image {
+.modal-product-image {
 	height: 400px;
 	width: 400px;
 	border-radius: 24px;
@@ -57,19 +57,19 @@
 	font-size: 20px;
 }
 
-.modal-item-name {
+.modal-product-name {
 	font-family: Poppins-SemiBold;
 	font-size: 25px;
 }
 
-.modal-item-des {
+.modal-product-des {
 	color: #c2bbb9;
 	font-family: Poppins-Light;
 	font-size: 23px;
 	font-weight: 600;
 }
 
-.modal-item-price {
+.modal-product-price {
 	font-family: Poppins-Bold;
 	font-size: 35px;
 }

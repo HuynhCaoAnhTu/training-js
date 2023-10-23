@@ -16,12 +16,12 @@
 		<!-- HEADER -->
 		<header class="main-header">
 			<div class="header-title">
-				<h1 class="header-title-welcome">Welcome to Coffeehouse</h1>
+				<h1 class="text-bg">Welcome to Coffeehouse</h1>
 				<h2 class="header-title-des">Choose the category</h2>
 			</div>
 			<div class="search-box">
 				<img class="search-icon" src="./assets/icons/search-icon.svg" alt="Search-Icon">
-				<input class="header-search" placeholder="Search item" type="text">
+				<input class="header-search" placeholder="Search product" type="text">
 			</div>
 			<div class="header-user">
 				<div class="user-content">
@@ -66,42 +66,46 @@
 				</section>
 				<!-- CATEGORY -->
 
-				<!-- Item -->
+				<!-- product -->
 				<section class="menu">
 					<div class="menu-des">
-						<h2 class="menu-title">All menu </h2>
+						<h2 class="text-bg menu-title">All menu </h2>
 						<p id="menu-total"></p>
 					</div>
-					<ul class="item-list" id="items">
+					<ul class="product-list" id="products">
 					</ul>
 				</section>
-				<!-- Item -->
+				<!-- product -->
 			</div>
 
 				<!-- Bill -->
 				<section class="bill">
-					<h1 class="menu-title bill-title">Bills</h1>
-					<ul class="item-list-bill">
-					</ul>
+					<h1 class="text-bg bill-title">Bills</h1>
+					<ul class="product-list-bill"></ul>
+					<div class="total-bill-content">
+						<p class="text-md total-bill-title">Total</p>
+						<p class="text-md total-bill-ammout"></p>
+					</div>
+					<button type="button" class="btn btn-primary cta-checkout">Checkout</button>
 				</section>
 				<!-- Bill -->
 		</div>
 	</div>
 
-	<!-- Modal View Itemcont -->
+	<!-- Modal View productcont -->
 	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<div class="modal-item-content">
-				<img class="modal-item-image" src="https://pbs.twimg.com/profile_images/760193594233876480/9atNXFjG_400x400.jpg"
+			<div class="modal-product-content">
+				<img class="modal-product-image" src="https://pbs.twimg.com/profile_images/760193594233876480/9atNXFjG_400x400.jpg"
 					alt="">
-				<div class="modal-item-info">
+				<div class="modal-product-info">
 					<label class="modal-title">Name:</label>
-					<p class="modal-item-name"></p>
+					<p class="modal-product-name"></p>
 					<label class="modal-title">Description:</label>
-					<p class="modal-item-des"></p>
+					<p class="modal-product-des"></p>
 					<label class="modal-title">Price:</label>
-					<p class="modal-item-price">$</p>
+					<p class="modal-product-price">$</p>
 				</div>
 			</div>
 		</div>

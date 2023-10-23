@@ -15,3 +15,13 @@
 	src: url(../../assets/fonts/Poppins/Poppins-Bold.woff) format("woff2");
 	font-display: swap;
 }
+
+.text-bg{
+  font-family: Poppins-SemiBold;
+  font-size: 26px;
+}
+
+.text-md{
+	font-family: Poppins-SemiBold;
+	font-size: 22px;
+}

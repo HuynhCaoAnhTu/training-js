@@ -11,7 +11,7 @@ class Bill {
 		this.itemsInBill = data;
 	}
 
-	getItemInBill() {
+	getProductInBill() {
 		return this.itemsInBill;
 	}
 

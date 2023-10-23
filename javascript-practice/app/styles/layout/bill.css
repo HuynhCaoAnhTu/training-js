@@ -1,31 +1,33 @@
 .bill {
-	/* padding: 30px ; */
 	height: fit-content;
 	background-color: #f7f7f7;
 	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .bill-title {
 	padding: 30px 20px 30px;
 }
 
-.item-bill-img {
+.product-bill-img {
 	height: 70px;
 	border-radius: 10px;
 }
 
-.item-list-bill{
-	height: 270px;
+.product-list-bill{
+	height: 360px;
 	overflow-y: scroll;
+	margin-bottom: 30px;
 }
 
-.item-bill {
+.product-bill {
 	display: flex;
 	flex-direction: row;
 	padding: 10px 20px ;
 }
 
-.item-bill-info {
+.product-bill-info {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -34,12 +36,12 @@
 
 }
 
-.item-bill-note {
+.product-bill-note {
 	display: flex;
 	flex: 2;
 }
 
-.item-bill-detail {
+.product-bill-detail {
 	display: flex;
 }
 
@@ -50,20 +52,20 @@
 	justify-content: space-around;
 }
 
-.item-bill-name {
+.product-bill-name {
 	font-family: Poppins-SemiBold;
 	font-size: 18px;
 }
 
-.item-bill-qnty {
+.product-bill-qnty {
 	font-family: Poppins-SemiBold;
 	font-size: 18px;
 }
 
-.item-bill-note {
+.product-bill-note {
 	padding: 0 10px 0;
 	font-family: Poppins-Light;
-	font-size: 16px;
+	font-size: 14px;
 	color: rgb(43, 42, 41);
 	font-weight: 600;
 	align-items: center;
@@ -84,9 +86,21 @@
 	border-radius: 3px;
 }
 
-.item-bill-price{
+.product-bill-price{
 	font-family: Poppins-Light;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 600;
 	color: #686666;
+}
+
+.total-bill-content{
+	margin: 0px 30px;
+	padding: 30px 0 ;
+	border-top: 2px dashed var(--gray-color);;
+	display: flex;
+	justify-content: space-between;
+}
+
+.cta-checkout{
+	margin: 50px 30px ;
 }
