@@ -75,6 +75,7 @@ class AppController {
 		const category = this.categories.find(category => category.categoryId == this.selectedCategoryId);
 		if (category) {
 			this.selectedCategoryName = category.categoryName;
+			console.log(this.selectedCategoryName );
 		} else {
 			console.log("Unknown Category");
 		}
@@ -179,30 +180,48 @@ class AppController {
 				e.stopPropagation();
 				const parentLi = e.currentTarget.parentNode;
 				const productId = parentLi.getAttribute('product-id');
+				const productName = parentLi.querySelector('.product-name').textContent;
+				const productUrl = parentLi.querySelector('.product-img').src;
+				const productDes = parentLi.querySelector('.product-des').textContent;
+				const productPrice = parentLi.querySelector('.product-price').textContent;
+				const priceInt=parseInt(productPrice.replace(/\D/g, ''), 10);
+				const ingerdient =[];
 				const sugarEl = parentLi.querySelector('.note-sugar .option-selected');
 				const iceEl = parentLi.querySelector('.note-ice .option-selected');
-				let sugarNote = "0";
-				let iceNote = "0";
 				if (sugarEl != null) {
-					sugarNote = sugarEl.textContent;
-
+					var sugarNote = sugarEl.textContent;
+					ingerdient.push({
+						name: "sugar",
+						percentage: sugarNote
+					})
+				}
+				else{
+					ingerdient.push({
+						name: "sugar",
+						percentage: "0"
+					})
 				}
 				if (iceEl != null) {
-					iceNote = iceEl.textContent;
+					var iceNote = iceEl.textContent;
+					ingerdient.push({
+						name: "ice",
+						percentage: iceNote
+					})
 				}
-
-				console.log(productId)
-				const productInfo = this.model.productList.getProdcutById(productId);
-				console.log(productInfo)
-				console.log(sugarNote)
-				console.log(iceNote)
-				this.addToBill(productInfo, sugarNote, iceNote)
+				else{
+					ingerdient.push({
+						name: "ice",
+						percentage: "0"
+					})
+				}
+				console.log(ingerdient)
+				this.addToBill(productId,productName,productUrl,productDes,priceInt, ingerdient)
 			});
 		});
 	}
 
 	handleCateogyClick() {
-		const categoryproducts = document.querySelectorAll('.category-product');
+		const categoryproducts = document.querySelectorAll('.category-item');
 		categoryproducts.forEach(product => {
 			product.addEventListener('click', (event) => {
 
@@ -231,22 +250,67 @@ class AppController {
 	// CONTROLLER BILL
 	initBill = async () => {
 		await this.model.bill.init();
-		this.renderBill()
+		this.renderBill();
 	}
 
-	addToBill(product, sugarNote, iceNote) {
-		const latestBill = this.model.bill.addToBill(product, sugarNote, iceNote);
+	addToBill(productId,productName,productUrl,productDes,productPrice, ingerdient) {
+		const latestBill = this.model.bill.addToBill(productId,productName,productUrl,productDes,productPrice, ingerdient);
 		this.model.bill.service.setLocalStorage(latestBill);
 		this.renderBill()
 	}
 
-	loadBill() {
-
-	}
-
 	renderBill() {
 		const bill= this.model.bill.getProductInBill();
-		this.view.bill.renderBill(bill);
+		const totalBill= this.model.bill.calculateTotalValue()
+		this.view.bill.renderBill(bill,totalBill);
+		this.handleChangeQuantity();
+	}
+
+	handleChangeQuantity(){
+		const insButtons= document.querySelectorAll(".btn-cta-ins");
+		const desButtons= document.querySelectorAll(".btn-cta-des");
+		insButtons.forEach(insButton => {
+			insButton.addEventListener('click', (event) => {
+				const parentLi = event.currentTarget.parentNode.parentNode;
+				const productId= parentLi.getAttribute("id");
+				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent;
+				const iceNote= parentLi.querySelector(".product-bill-ice").textContent;
+				const ingredient=[]
+				ingredient.push({
+					name: "sugar",
+					percentage: sugarNote,
+				})
+				ingredient.push({
+					name: "ice",
+					percentage: iceNote,
+				})
+				const latestBill = this.model.bill.increaseQuantity(productId,ingredient)
+				console.log(latestBill)
+				this.model.bill.service.setLocalStorage(latestBill);
+				this.renderBill()
+			});
+		});
+		desButtons.forEach(desButton => {
+			desButton.addEventListener('click', (event) => {
+				const parentLi = event.currentTarget.parentNode.parentNode;
+				const productId= parentLi.getAttribute("id");
+				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent;
+				const iceNote= parentLi.querySelector(".product-bill-ice").textContent;
+				const ingredient=[]
+				ingredient.push({
+					name: "sugar",
+					percentage: sugarNote,
+				})
+				ingredient.push({
+					name: "ice",
+					percentage: iceNote,
+				})
+				const latestBill = this.model.bill.decreaseQuantity(productId,ingredient)
+				console.log(latestBill)
+				this.model.bill.service.setLocalStorage(latestBill);
+				this.renderBill()
+			});
+		});
 	}
 }
 export default AppController;
