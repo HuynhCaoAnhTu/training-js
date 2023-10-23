@@ -4,22 +4,22 @@ import { PRODUCTS_STORAGE_KEY } from "../constants/key";
 class ProductList {
   constructor() {
     this.service = new ProductService();
-    this.itemList = [];
+    this.productList = [];
   }
 
   init = async () => {
     const data = await this.service.getLocalStorageData();
-    this.itemList = data;
+    this.productList = data;
   }
 
   getProdcutList = () => {
-    return this.itemList;
+    return this.productList;
   }
 
 	getProdcutById = (id) => {
     const data = JSON.parse(this.service.getLocalStorage(PRODUCTS_STORAGE_KEY));
-		const item = data.find(item => item.itemId == id);
-    return item;
+		const product = data.find(product => product.productId == id);
+    return product;
   }
 }
 export default ProductList;
