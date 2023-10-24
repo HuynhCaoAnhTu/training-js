@@ -1,11 +1,11 @@
-class Ingredient {
+export class Ingredient {
 	constructor(name, percentage) {
 		this.name = name;
 		this.percentage = percentage
 	}
 }
 
-class Prodcut {
+export default class Product {
 	constructor(id, name, des, categoryid, url, price, ingredient) {
 		this.productId = id
 		this.productName = name
@@ -17,4 +17,3 @@ class Prodcut {
 
 	}
 }
-export default Prodcut; Ingredient;

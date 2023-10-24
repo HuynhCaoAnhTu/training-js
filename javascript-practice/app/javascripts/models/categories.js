@@ -10,7 +10,11 @@ class CategoryList {
   init = async () => {
     const data = await this.service.getLocalStorageData();
     console.log(data)
-    this.categoryList = data;
+    this.categoryList = this.parseData(data);
+  }
+
+	parseData = (data) => {
+    return data.map((item) => new Category(item.categoryId, item.categoryName, item.categoryUrl));
   }
 
   getCategoryList = () => {

@@ -1,5 +1,6 @@
 // controller.js
 import { KEY_CODE_ENTER } from "../constants/key";
+import { Ingredient } from "../models/product";
 class AppController {
 	constructor(model, view) {
 		this.model = model;
@@ -75,7 +76,6 @@ class AppController {
 		const category = this.categories.find(category => category.categoryId == this.selectedCategoryId);
 		if (category) {
 			this.selectedCategoryName = category.categoryName;
-			console.log(this.selectedCategoryName );
 		} else {
 			console.log("Unknown Category");
 		}
@@ -96,7 +96,6 @@ class AppController {
 				const cta_view = e.currentTarget.querySelector('#cta-view');
 				const cta_add = e.currentTarget.querySelector('#cta-add');
 				this.handleNoteEvent(e);
-				console.log(cta_add)
 				if (!isNoteVisible) {
 					productNote.style.display = 'flex';
 					isNoteVisible = true;
@@ -113,8 +112,8 @@ class AppController {
 	}
 
 	handleViewModal() {
-		const modal = document.getElementById("myModal");
-		const close = document.getElementsByClassName("close")[0];
+		const modal = document.getElementById("viewModal");
+		const close = modal.querySelector(".close");
 		const viewDetailButton = document.querySelectorAll('#cta-view');
 		close.onclick = function () {
 			modal.style.display = "none";
@@ -129,7 +128,6 @@ class AppController {
 				e.stopPropagation();
 				const parentLi = e.currentTarget.parentNode;
 				const productId = parentLi.getAttribute('product-id');
-				console.log(productId)
 				const productInfo = this.model.productList.getProdcutById(productId);
 				this.view.modal.openViewModal(productInfo);
 			});
@@ -151,8 +149,6 @@ class AppController {
 						otherproduct.classList.remove('option-selected');
 					});
 					option.classList.add('option-selected');
-
-					console.log(`Selected Ice Option: ${option.textContent}`);
 				}
 			});
 		});
@@ -183,39 +179,30 @@ class AppController {
 				const productName = parentLi.querySelector('.product-name').textContent;
 				const productUrl = parentLi.querySelector('.product-img').src;
 				const productDes = parentLi.querySelector('.product-des').textContent;
-				const productPrice = parentLi.querySelector('.product-price').textContent;
-				const priceInt=parseInt(productPrice.replace(/\D/g, ''), 10);
-				const ingerdient =[];
+				const productPrice = parentLi.querySelector('.product-price').textContent.trim().replace('$', '');
+				const ingerdients =[];
 				const sugarEl = parentLi.querySelector('.note-sugar .option-selected');
 				const iceEl = parentLi.querySelector('.note-ice .option-selected');
 				if (sugarEl != null) {
-					var sugarNote = sugarEl.textContent;
-					ingerdient.push({
-						name: "sugar",
-						percentage: sugarNote
-					})
+					const sugarNote = sugarEl.textContent.trim().replace('%', '');
+					console.log(sugarNote)
+					const sugar= new Ingredient("sugar",+sugarNote);
+					ingerdients.push(sugar)
 				}
 				else{
-					ingerdient.push({
-						name: "sugar",
-						percentage: "0"
-					})
+					const sugar= new Ingredient("sugar",0);
+					ingerdients.push(sugar)
 				}
 				if (iceEl != null) {
-					var iceNote = iceEl.textContent;
-					ingerdient.push({
-						name: "ice",
-						percentage: iceNote
-					})
+					const iceNote = iceEl.textContent.trim().replace('%', '');
+					const ice= new Ingredient("ice",+iceNote);
+					ingerdients.push(ice)
 				}
 				else{
-					ingerdient.push({
-						name: "ice",
-						percentage: "0"
-					})
+					const ice= new Ingredient("ice",0);
+					ingerdients.push(ice)
 				}
-				console.log(ingerdient)
-				this.addToBill(productId,productName,productUrl,productDes,priceInt, ingerdient)
+				this.addToBill(productId,productName,productUrl,productDes,+productPrice, ingerdients)
 			});
 		});
 	}
@@ -273,19 +260,13 @@ class AppController {
 			insButton.addEventListener('click', (event) => {
 				const parentLi = event.currentTarget.parentNode.parentNode;
 				const productId= parentLi.getAttribute("id");
-				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent;
-				const iceNote= parentLi.querySelector(".product-bill-ice").textContent;
-				const ingredient=[]
-				ingredient.push({
-					name: "sugar",
-					percentage: sugarNote,
-				})
-				ingredient.push({
-					name: "ice",
-					percentage: iceNote,
-				})
-				const latestBill = this.model.bill.increaseQuantity(productId,ingredient)
-				console.log(latestBill)
+				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
+				const iceNote= parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
+				const ingredients=[]
+				const sugar = new Ingredient("sugar",+sugarNote);
+				const ice = new Ingredient("ice",+iceNote);
+				ingredients.push(sugar,ice)
+				const latestBill = this.model.bill.increaseQuantity(productId,ingredients)
 				this.model.bill.service.setLocalStorage(latestBill);
 				this.renderBill()
 			});
@@ -294,19 +275,13 @@ class AppController {
 			desButton.addEventListener('click', (event) => {
 				const parentLi = event.currentTarget.parentNode.parentNode;
 				const productId= parentLi.getAttribute("id");
-				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent;
-				const iceNote= parentLi.querySelector(".product-bill-ice").textContent;
-				const ingredient=[]
-				ingredient.push({
-					name: "sugar",
-					percentage: sugarNote,
-				})
-				ingredient.push({
-					name: "ice",
-					percentage: iceNote,
-				})
-				const latestBill = this.model.bill.decreaseQuantity(productId,ingredient)
-				console.log(latestBill)
+				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
+				const iceNote= parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
+				const ingredients=[]
+				const sugar = new Ingredient("sugar",+sugarNote);
+				const ice = new Ingredient("ice",+iceNote);
+				ingredients.push(sugar,ice)
+				const latestBill = this.model.bill.decreaseQuantity(productId,ingredients)
 				this.model.bill.service.setLocalStorage(latestBill);
 				this.renderBill()
 			});

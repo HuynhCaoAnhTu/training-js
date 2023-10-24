@@ -7,8 +7,8 @@ class Model {
   constructor() {
     this.categoryList = new CategoryList();
     this.productList = new ProductList();
-		this.bill= new Bill()
-		this.ingerdient= new Ingredient()
+		this.bill= new Bill();
+		this.ingerdient= new Ingredient;
   }
 }
 export default Model;
