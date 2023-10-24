@@ -29,7 +29,6 @@ class Bill {
 				break;
 			}
 		}
-
 		if (!productAdded) {
 			this.productsInBill.push({
 				id: id,
@@ -42,13 +41,10 @@ class Bill {
 				ingredients: ingredients,
 			});
 		}
-
-
 		return this.productsInBill;
 	}
 
 	increaseQuantity(productId, ingredients) {
-		console.log(ingredients);
 		var existingProduct = []
 		for (let i = 0; i < this.productsInBill.length; i++) {
 			existingProduct = this.productsInBill[i];
@@ -58,7 +54,6 @@ class Bill {
 				existingProduct.total = existingProduct.quantity * existingProduct.price;
 				break;
 			}
-			console.log(existingProduct);
 		}
 		return this.productsInBill;
 	}
