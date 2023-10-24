@@ -29,12 +29,16 @@ class BillView {
 				<p class="product-bill-name">${product.name}</p>
 				<div class="product-bill-detail">
 					<p class="product-bill-qnty"> <span>x</span>${product.quantity}</p>
-					<div class="product-bill-note">
-						<label class="note-label-sugar" for="product-bill-sugar">Sugar: </label>
-						<p class="product-bill-sugar">${product.ingredients.find(ingredient => ingredient.name === 'sugar').percentage}</p>
-						<label class="note-label-ice" for="product-bill-ice">Ice:</label>
-						<p class="product-bill-ice">${product.ingredients.find(ingredient => ingredient.name === 'ice').percentage}</p>
-					</div>
+                <div class="product-bill-note">
+                  <label class="note-label-sugar" for="product-bill-sugar">Sugar: </label>
+                  <p class="product-bill-sugar">${product.ingredients.find(
+                    (ingredient) => ingredient.name === "sugar"
+                  ).percentage}<span>&percnt;</span></p>
+                  <label class="note-label-ice" for="product-bill-ice">Ice:</label>
+                  <p class="product-bill-ice">${product.ingredients.find(
+                    (ingredient) => ingredient.name === "ice"
+                  ).percentage}<span>&percnt;</span></p>
+                </div>
 					<p class="product-bill-price"><span>$</span>${product.total}</p>
 				</div>
 			</div>
