@@ -1,135 +1,127 @@
 {
-    "categories": [
-      {
-        "categoryId": 1,
-        "categoryName": "All menu",
-        "categoryUrl": "https://i.ibb.co/qNkc7Vq/cup-with-straw-icon.png"
-      },
-      {
-        "categoryId": 2,
-        "categoryName": "Coffee",
-        "categoryUrl": "https://i.ibb.co/p3FkjS6/coffee-cup-icon.png"
-      },
-      {
-        "categoryId": 3,
-        "categoryName": "Miky milk",
-        "categoryUrl": "https://i.ibb.co/znHLXYK/milk-cup-icon.png"
-      }
-      ,
-      {
-        "categoryId": 4,
-        "categoryName": "Baboon",
-        "categoryUrl": "https://i.ibb.co/1GghrzS/bubble-tea-icon.png"
+	"categories": [
+		{
+			"categoryId": 1,
+			"categoryName": "All menu",
+			"categoryUrl": "https://i.ibb.co/qNkc7Vq/cup-with-straw-icon.png"
+		},
+		{
+			"categoryId": 2,
+			"categoryName": "Coffee",
+			"categoryUrl": "https://i.ibb.co/p3FkjS6/coffee-cup-icon.png"
+		},
+		{
+			"categoryId": 3,
+			"categoryName": "Miky milk",
+			"categoryUrl": "https://i.ibb.co/znHLXYK/milk-cup-icon.png"
+		},
+		{
+			"categoryId": 4,
+			"categoryName": "Baboon",
+			"categoryUrl": "https://i.ibb.co/1GghrzS/bubble-tea-icon.png"
+		},
+		{
+			"categoryId": 5,
+			"categoryName": "Ice cream",
+			"categoryUrl": "https://i.ibb.co/fX6xZQ7/ice-cream-icon.png"
+		},
+		{
+			"categoryId": 6,
+			"categoryName": "Dessert",
+			"categoryUrl": "https://i.ibb.co/SnNPrgv/dessert-icon.png"
+		}
+	],
 
-      }
-      ,
-      {
-        "categoryId": 5,
-        "categoryName": "Ice cream",
-        "categoryUrl": "https://i.ibb.co/fX6xZQ7/ice-cream-icon.png"
-      }
-      ,
-      {
-        "categoryId": 6,
-        "categoryName": "Dessert",
-        "categoryUrl": "https://i.ibb.co/SnNPrgv/dessert-icon.png"
-      }
-    ],
-
-    "products": [
-      {
-        "productId": 1,
-        "productName": "AA",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      },
-      {
-        "productId": 2,
-        "productName": "All menu",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }, {
-        "productId": 3,
-        "productName": "AB",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }, {
-        "productId": 4,
-        "productName": "ABB",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }, {
-        "productId": 5,
-        "productName": "AAA",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }, {
-        "productId": 6,
-        "productName": "menu",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }, {
-        "productId": 7,
-        "productName": "RRR",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }, {
-        "productId": 8,
-        "productName": "CD",
-        "productDes": "123",
-        "categoryId" : 2 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }
-      , {
-        "productId": 9,
-        "productName": "Cafe",
-        "productDes": "123",
-        "categoryId" : 1 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }
-      , {
-        "productId": 10,
-        "productName": "Cafe",
-        "productDes": "123",
-        "categoryId" : 2 ,
-        "productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg" ,
-        "productPrice": 200,
-        "productNoteSugar": "",
-        "productNoteIce": ""
-      }
-    ]
-  }
+	"products": [
+		{
+			"productId": 1,
+			"productName": "AA",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 2,
+			"productName": "All menu",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 3,
+			"productName": "AB",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 4,
+			"productName": "ABB",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 5,
+			"productName": "AAA",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 6,
+			"productName": "menu",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 7,
+			"productName": "RRR",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 8,
+			"productName": "CD",
+			"productDes": "123",
+			"categoryId": 2,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 9,
+			"productName": "Cafe",
+			"productDes": "123",
+			"categoryId": 1,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		},
+		{
+			"productId": 10,
+			"productName": "Cafe",
+			"productDes": "123",
+			"categoryId": 2,
+			"productUrl": "https://product.hstatic.net/1000075078/product/1639377797_ca-phe-den-da_6966f376f41a4722b10be577bfa21bd9.jpg",
+			"productPrice": 200,
+			"ingerdients": 0
+		}
+	]
+}
