@@ -45,7 +45,26 @@ class AppController {
 			}
 		})
 	}
-
+	handleCheckout() {
+		const modal = document.getElementById("checkoutModal");
+		const close = modal.querySelector(".close");
+		const checkoutButton = document.querySelector('.cta-checkout');
+		close.onclick = function () {
+			modal.style.display = "none";
+		}
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		checkoutButton.addEventListener('click', (e) => {
+				const bill = this.model.bill.getProductInBill();
+				console.log(bill)
+				const parentEl = e.currentTarget.parentNode;
+				const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
+				this.view.modal.openCheckoutModal(bill,totalBill);
+			});
+	}
 	// CONTROLLER CATEGORY
 	initCategoryList = async () => {
 		await this.model.categoryList.init();
@@ -251,6 +270,7 @@ class AppController {
 		const totalBill= this.model.bill.calculateTotalValue()
 		this.view.bill.renderBill(bill,totalBill);
 		this.handleChangeQuantity();
+		this.handleCheckout();
 	}
 
 	handleChangeQuantity(){
