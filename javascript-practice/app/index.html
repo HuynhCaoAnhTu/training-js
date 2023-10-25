@@ -78,27 +78,27 @@
 				<!-- product -->
 			</div>
 
-				<!-- Bill -->
-				<section class="bill">
-					<h1 class="text-bg bill-title">Bills</h1>
-					<ul class="product-list-bill"></ul>
-					<div class="total-bill-content">
-						<p class="text-md total-bill-title">Total</p>
-						<p class="text-md total-bill-ammout"></p>
-					</div>
-					<button type="button" class="btn btn-primary cta-checkout">Checkout</button>
-				</section>
-				<!-- Bill -->
+			<!-- Bill -->
+			<section class="bill">
+				<h1 class="text-bg bill-title">Bills</h1>
+				<ul class="product-list-bill"></ul>
+				<div class="total-bill-content">
+					<p class="text-md total-bill-title">Total</p>
+					<p class="text-md total-bill-ammout"></p>
+				</div>
+				<button type="button" class="btn btn-primary cta-checkout">Checkout</button>
+			</section>
+			<!-- Bill -->
 		</div>
 	</div>
 
 	<!-- Modal View productcont -->
-	<div id="viewModal" class="modal ">
+	<div id="viewModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<div class="modal-product-content">
-				<img class="modal-product-image" src="https://pbs.twimg.com/profile_images/760193594233876480/9atNXFjG_400x400.jpg"
-					alt="">
+				<img class="modal-product-image"
+					src="https://pbs.twimg.com/profile_images/760193594233876480/9atNXFjG_400x400.jpg" alt="">
 				<div class="modal-product-info">
 					<label class="modal-title">Name:</label>
 					<p class="modal-product-name"></p>
@@ -111,6 +111,56 @@
 		</div>
 	</div>
 	<!-- Modal View Itemcont -->
+
+	<!-- Modal Checkout -->
+	<div id="checkoutModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p class="text-bg">Checkout</p>
+			<table id="bill-table">
+				<thead>
+					<tr>
+						<th class="text-md">Name</th>
+						<th class="text-md">Quantity</th>
+						<th class="text-md">Total</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td style="border: none;"></td>
+						<td class="text-bg" style="border: none;">Total bill</td>
+						<td class="text-bg table-product-total-bill">France</td>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="payment">
+				<p class="text-bg payment-title">Payment method</p>
+				<div class="payment-method">
+					<input type="radio" id="cash" name="paymentMethod" value="cash" checked>
+					<label for="cash" class="custom-radio">
+						<div class="label-method">
+							<img src="./assets/icons/cash-money-payment-svgrepo-com.svg" alt="Cash" class="payment-image">
+							<p class="text-bg method-name">Cash</p>
+						</div>
+					</label>
+				</div>
+				<div class="payment-method">
+					<input type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer">
+					<label for="bankTransfer" class="custom-radio">
+						<div class="label-method">
+							<img src="./assets/icons/bank-transfer-icon.svg" alt="Tiền Mặt" class="payment-image">
+							<p class="text-bg method-name">Bank Transfer</p>
+						</div>
+					</label>
+				</div>
+			</div>
+			<button type="button" class="btn btn-primary cta-checkout-bill">Checkout</button>
+		</div>
+	</div>
+	<!-- Modal Checkout -->
+
 </body>
 
 </html>

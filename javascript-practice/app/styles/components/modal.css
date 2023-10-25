@@ -1,6 +1,7 @@
 .modal {
-	display: none;		position: fixed;
-	z-index: 1;
+	display: none;
+	position: fixed;
+	z-index: 3;
 	padding-top: 100px;
 	left: 0;
 	top: 0;
@@ -73,3 +74,131 @@
 	font-family: Poppins-Bold;
 	font-size: 35px;
 }
+
+.payment-method {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.payment-method input[type="radio"] {
+	display: none;
+}
+
+.custom-radio {
+	min-width: 300px;
+	position: relative;
+	cursor: pointer;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin-left: 30px;
+}
+
+.custom-radio:before {
+	content: '';
+	position: absolute;
+	left: -35px;
+	top: 20px;
+	width: 18px;
+	height: 18px;
+	border: 2px solid #333;
+	border-radius: 50%;
+}
+
+.payment-method input[type="radio"]:checked + .custom-radio:before {
+	background-color: black;
+	border: 2px solid var(--primary-color);
+}
+
+.payment-method input[type="radio"]:checked + .custom-radio{
+	border: 2px solid var(--primary-color);
+}
+
+.payment-image {
+	max-width: 50px;
+}
+
+.method-name{
+	margin-left: 20px;
+}
+
+.label-method{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+}
+
+#bill-table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 20px;
+}
+
+#bill-table td,
+#bill-table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#bill-table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border: none;
+}
+
+#bill-table th:first-child {
+	border-top-left-radius: 10px;
+	border-right: 1px solid #ddd;
+}
+
+#bill-table th:last-child {
+	border-top-right-radius: 10px;
+	border-left: 1px solid #ddd;
+}
+
+#bill-table thead {
+	text-align: left;
+	background-color: var(--primary-color);
+	color: white;
+
+}
+
+#bill-table tbody {
+	font-family: Poppins-Light;
+	font-weight: 600;
+	font-size: 17px;
+}
+
+#bill-table tfoot {
+	color: black;
+}
+
+
+.table-product-name {
+	width: 60%;
+}
+
+.table-product-quantity {
+	width: 15%;
+}
+
+.table-product-total {
+	width: 35%;
+}
+
+.payment{
+	margin-top: 40px;
+}
+
+.payment-title{
+	margin-bottom: 30px;
+}
+
+.cta-checkout-bill{
+	margin: 30px auto ;
+	display: block;
+	width: 50%;
+}
+
