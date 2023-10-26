@@ -120,15 +120,24 @@
 			<table id="bill-table">
 				<thead>
 					<tr>
-						<th class="text-md">Name</th>
-						<th class="text-md">Quantity</th>
-						<th class="text-md">Total</th>
+						<th class="text-md head-table-name" rowspan="2" >Name</th>
+						<th class="text-md head-table-ingerdients" colspan="2">Ingerdients</th>
+						<th class="text-md head-table-qnty" rowspan="2">Quantity</th>
+						<th class="text-md head-table-total" rowspan="2">Total</th>
+					</tr>
+					<tr>
+
+						<th class="text-md sub-head-table">Sugar</th>
+						<th class="text-md">Ice</th>
+
 					</tr>
 				</thead>
 				<tbody>
 				</tbody>
 				<tfoot>
 					<tr>
+						<td style="border: none;"></td>
+						<td style="border: none;"></td>
 						<td style="border: none;"></td>
 						<td class="text-bg" style="border: none;">Total bill</td>
 						<td class="text-bg table-product-total-bill">France</td>
@@ -138,16 +147,16 @@
 			<div class="payment">
 				<p class="text-bg payment-title">Payment method</p>
 				<div class="payment-method">
-					<input type="radio" id="cash" name="paymentMethod" value="cash" checked>
+					<input type="radio" id="cash" name="paymentMethod" value="Cash" checked>
 					<label for="cash" class="custom-radio">
 						<div class="label-method">
-							<img src="./assets/icons/cash-money-payment-svgrepo-com.svg" alt="Cash" class="payment-image">
+							<img src="./assets/icons/cash-icon.svg" alt="Cash" class="payment-image">
 							<p class="text-bg method-name">Cash</p>
 						</div>
 					</label>
 				</div>
 				<div class="payment-method">
-					<input type="radio" id="bankTransfer" name="paymentMethod" value="bankTransfer">
+					<input type="radio" id="bankTransfer" name="paymentMethod" value="BankTransfer">
 					<label for="bankTransfer" class="custom-radio">
 						<div class="label-method">
 							<img src="./assets/icons/bank-transfer-icon.svg" alt="Tiền Mặt" class="payment-image">
