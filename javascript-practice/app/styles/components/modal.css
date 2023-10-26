@@ -140,22 +140,27 @@
 #bill-table th {
 	border: 1px solid #ddd;
 	padding: 8px;
+	vertical-align: middle;
 }
 
 #bill-table th {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	border: none;
+	border: 1px solid #ddd;
 }
 
-#bill-table th:first-child {
+.head-table-name {
 	border-top-left-radius: 10px;
 	border-right: 1px solid #ddd;
+	border-left:none !important;
+	border-top:none !important;
 }
 
-#bill-table th:last-child {
+.head-table-total{
 	border-top-right-radius: 10px;
-	border-left: 1px solid #ddd;
+	border-left:none !important;
+	border-top:none !important;
 }
 
 #bill-table thead {
@@ -177,7 +182,15 @@
 
 
 .table-product-name {
-	width: 60%;
+	width: 30%;
+}
+
+.table-product-sugar {
+	width: 10%;
+}
+
+.table-product-ice {
+	width: 10%;
 }
 
 .table-product-quantity {
