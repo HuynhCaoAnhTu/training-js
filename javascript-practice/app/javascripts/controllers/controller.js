@@ -58,12 +58,12 @@ class AppController {
 			}
 		}
 		checkoutButton.addEventListener('click', (e) => {
-				const bill = this.model.bill.getProductInBill();
-				console.log(bill)
-				const parentEl = e.currentTarget.parentNode;
-				const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
-				this.view.modal.openCheckoutModal(bill,totalBill);
-			});
+			const bill = this.model.bill.getProductInBill();
+			console.log(bill)
+			const parentEl = e.currentTarget.parentNode;
+			const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
+			this.view.modal.openCheckoutModal(bill, totalBill);
+		});
 	}
 	// CONTROLLER CATEGORY
 	initCategoryList = async () => {
@@ -199,29 +199,29 @@ class AppController {
 				const productUrl = parentLi.querySelector('.product-img').src;
 				const productDes = parentLi.querySelector('.product-des').textContent;
 				const productPrice = parentLi.querySelector('.product-price').textContent.trim().replace('$', '');
-				const ingerdients =[];
+				const ingerdients = [];
 				const sugarEl = parentLi.querySelector('.note-sugar .option-selected');
 				const iceEl = parentLi.querySelector('.note-ice .option-selected');
 				if (sugarEl != null) {
 					const sugarNote = sugarEl.textContent.trim().replace('%', '');
 					console.log(sugarNote)
-					const sugar= new Ingredient("sugar",+sugarNote);
+					const sugar = new Ingredient("sugar", +sugarNote);
 					ingerdients.push(sugar)
 				}
-				else{
-					const sugar= new Ingredient("sugar",0);
+				else {
+					const sugar = new Ingredient("sugar", 100);
 					ingerdients.push(sugar)
 				}
 				if (iceEl != null) {
 					const iceNote = iceEl.textContent.trim().replace('%', '');
-					const ice= new Ingredient("ice",+iceNote);
+					const ice = new Ingredient("ice", +iceNote);
 					ingerdients.push(ice)
 				}
-				else{
-					const ice= new Ingredient("ice",0);
+				else {
+					const ice = new Ingredient("ice", 100);
 					ingerdients.push(ice)
 				}
-				this.addToBill(productId,productName,productUrl,productDes,+productPrice, ingerdients)
+				this.addToBill(productId, productName, productUrl, productDes, +productPrice, ingerdients)
 			});
 		});
 	}
@@ -259,34 +259,35 @@ class AppController {
 		this.renderBill();
 	}
 
-	addToBill(productId,productName,productUrl,productDes,productPrice, ingerdient) {
-		const latestBill = this.model.bill.addToBill(productId,productName,productUrl,productDes,productPrice, ingerdient);
+	addToBill(productId, productName, productUrl, productDes, productPrice, ingerdient) {
+		const latestBill = this.model.bill.addToBill(productId, productName, productUrl, productDes, productPrice, ingerdient);
 		this.model.bill.service.setLocalStorage(latestBill);
 		this.renderBill()
 	}
 
 	renderBill() {
-		const bill= this.model.bill.getProductInBill();
-		const totalBill= this.model.bill.calculateTotalValue()
-		this.view.bill.renderBill(bill,totalBill);
+		const bill = this.model.bill.getProductInBill();
+		const totalBill = this.model.bill.calculateTotalValue()
+		this.view.bill.renderBill(bill, totalBill);
 		this.handleChangeQuantity();
 		this.handleCheckout();
+		this.handleConfirmCheckout();
 	}
 
-	handleChangeQuantity(){
-		const insButtons= document.querySelectorAll(".btn-cta-ins");
-		const desButtons= document.querySelectorAll(".btn-cta-des");
+	handleChangeQuantity() {
+		const insButtons = document.querySelectorAll(".btn-cta-ins");
+		const desButtons = document.querySelectorAll(".btn-cta-des");
 		insButtons.forEach(insButton => {
 			insButton.addEventListener('click', (event) => {
 				const parentLi = event.currentTarget.parentNode.parentNode;
-				const productId= parentLi.getAttribute("id");
-				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
-				const iceNote= parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
-				const ingredients=[]
-				const sugar = new Ingredient("sugar",+sugarNote);
-				const ice = new Ingredient("ice",+iceNote);
-				ingredients.push(sugar,ice)
-				const latestBill = this.model.bill.increaseQuantity(productId,ingredients)
+				const productId = parentLi.getAttribute("id");
+				const sugarNote = parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
+				const iceNote = parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
+				const ingredients = []
+				const sugar = new Ingredient("sugar", +sugarNote);
+				const ice = new Ingredient("ice", +iceNote);
+				ingredients.push(sugar, ice)
+				const latestBill = this.model.bill.increaseQuantity(productId, ingredients)
 				this.model.bill.service.setLocalStorage(latestBill);
 				this.renderBill()
 			});
@@ -294,18 +295,52 @@ class AppController {
 		desButtons.forEach(desButton => {
 			desButton.addEventListener('click', (event) => {
 				const parentLi = event.currentTarget.parentNode.parentNode;
-				const productId= parentLi.getAttribute("id");
-				const sugarNote= parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
-				const iceNote= parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
-				const ingredients=[]
-				const sugar = new Ingredient("sugar",+sugarNote);
-				const ice = new Ingredient("ice",+iceNote);
-				ingredients.push(sugar,ice)
-				const latestBill = this.model.bill.decreaseQuantity(productId,ingredients)
+				const productId = parentLi.getAttribute("id");
+				const sugarNote = parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
+				const iceNote = parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
+				const ingredients = []
+				const sugar = new Ingredient("sugar", +sugarNote);
+				const ice = new Ingredient("ice", +iceNote);
+				ingredients.push(sugar, ice)
+				const latestBill = this.model.bill.decreaseQuantity(productId, ingredients)
 				this.model.bill.service.setLocalStorage(latestBill);
 				this.renderBill()
 			});
 		});
 	}
+
+	handleConfirmCheckout() {
+		const checkoutButton = document.querySelector(".cta-checkout-bill");
+		const bill = this.model.bill.getProductInBill();
+		const history = [];
+		let methodName;
+		const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
+		paymentMethodInputs.forEach(function (input) {
+			if (input.checked) {
+				methodName = input.value;
+			}
+			input.addEventListener('change', function () {
+				if (input.checked) {
+					methodName = input.value;
+					console.log("Selected Method Name: " + methodName);
+				}
+			});
+		});
+		checkoutButton.addEventListener('click', (event) => {
+			var now = new Date();
+			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
+			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
+			history.push({
+				date: dateCheckout,
+				bill: bill,
+				totalBill: +totalBill,
+				method: methodName
+			});
+			console.log(history);
+			this.model.bill.clearBill();
+			this.model.bill.service.clearBillLocalStorage();
+		});
+	}
+
 }
 export default AppController;

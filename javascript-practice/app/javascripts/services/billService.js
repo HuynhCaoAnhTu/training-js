@@ -13,5 +13,9 @@ class BillService extends BaseService {
 		}
 		return data;
 	}
+
+	clearBillLocalStorage(){
+		localStorage.removeItem(BILL_STORAGE_KEY);
+	}
 }
 export default BillService

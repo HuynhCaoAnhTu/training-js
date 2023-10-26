@@ -16,12 +16,12 @@ class ModalView {
 		};
 	}
 
-	openCheckoutModal = (bill,total) => {
+	openCheckoutModal = (bill, total) => {
 		console.log(bill)
 		if (bill) {
 			const modalEl = document.getElementById("checkoutModal");
-			const totalBill=document.querySelector(".table-product-total-bill");
-			this.tableContent.innerHTML ="";
+			const totalBill = document.querySelector(".table-product-total-bill");
+			this.tableContent.innerHTML = "";
 			bill.forEach(product => {
 				this.renderProductPerCheckout(product);
 			})
@@ -36,8 +36,10 @@ class ModalView {
 		console.log(product);
 
 		this.tableContent.innerHTML +=
-		`<tr>
+			`<tr>
 			<td class="table-product-name">${product.name}</td>
+			<td class="table-product-sugar">${product.ingredients.find((ingredient) => ingredient.name === "sugar").percentage} %</td>
+			<td class="table-product-ice">${product.ingredients.find((ingredient) => ingredient.name === "ice").percentage} %</td>
 			<td class="table-product-quantity">${product.quantity}</td>
 			<td class="table-product-total">&dollar;${product.total}</td>
 		</tr>`;
