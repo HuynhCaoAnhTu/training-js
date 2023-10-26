@@ -16,6 +16,10 @@ class Bill {
 		return this.productsInBill;
 	}
 
+	clearBill(){
+		return this.productsInBill.splice(0, this.productsInBill.length);
+	}
+
 	addToBill(id, name, imageUrl, description, price, ingredients) {
 		let productAdded = false;
 		console.log(ingredients)
