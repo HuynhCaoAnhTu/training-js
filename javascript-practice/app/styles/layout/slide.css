@@ -28,3 +28,39 @@
 .navigation-icon {
   height: 50px;
 }
+
+.icon {
+	display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+}
+
+.bill-icon{
+	background-image: url(/app/assets/icons/bill-icon.svg);
+}
+
+.home-icon{
+	background-image: url(/app/assets/icons/home-icon.svg);
+}
+
+.favorite-icon{
+	background-image: url(/app/assets/icons/favorite-icon.svg);
+}
+
+.wallet-icon{
+	background-image: url(/app/assets/icons/wallet-icon.svg);
+}
+
+.setting-icon{
+	background-image: url(/app/assets/icons/setting-icon.svg);
+}
+
+
+.home-icon.slide-active {
+	background-image: url(/app/assets/icons/home-actice-icon.svg);
+}
+
+.bill-icon.slide-active {
+	background-image: url(/app/assets/icons/bill-actice-icon.svg);
+}
