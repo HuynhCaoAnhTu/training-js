@@ -10,7 +10,39 @@ class AppController {
 		this.selectedCategoryId = 1
 		this.selectedCategoryName = "All menu"
 	}
+
+	slidebarHandle(){
+		const mainContent = document.querySelector('.main-content');
+		const bill = document.querySelector('.bill');
+		const listItems = document.querySelectorAll('.slide-navigation .icon');
+		const history = document.querySelector('.history-payment');
+		listItems.forEach(item => {
+				item.addEventListener('click', () => {
+						listItems.forEach(item => {
+								item.classList.remove('slide-active');
+						});
+						item.classList.add('slide-active');
+						const dataValue = item.getAttribute('data');
+						switch(dataValue) {
+							case "1":
+								mainContent.style.display="block"
+								bill.style.display="flex"
+								history.style.display="none"
+								break;
+							case "2":
+								mainContent.style.display="none"
+								bill.style.display="none"
+								history.style.display="block"
+								break;
+						}
+				});
+		});
+	}
+
+
+
 	init = async () => {
+		this.slidebarHandle();
 		await this.initCategoryList();
 		await this.initProductList();
 		await this.initBill();
@@ -328,6 +360,7 @@ class AppController {
 		});
 		checkoutButton.addEventListener('click', (event) => {
 			var now = new Date();
+			const modal=event.target.parentNode.parentNode;
 			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
 			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
 			history.push({
@@ -336,9 +369,11 @@ class AppController {
 				totalBill: +totalBill,
 				method: methodName
 			});
-			console.log(history);
+			console.log(modal);
 			this.model.bill.clearBill();
 			this.model.bill.service.clearBillLocalStorage();
+			modal.style.display= "none"
+			this.renderBill();
 		});
 	}
 
