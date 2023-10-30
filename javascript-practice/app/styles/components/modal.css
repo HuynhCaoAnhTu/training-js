@@ -106,12 +106,12 @@
 	border-radius: 50%;
 }
 
-.payment-method input[type="radio"]:checked + .custom-radio:before {
+.payment-method input[type="radio"]:checked+.custom-radio:before {
 	background-color: black;
 	border: 2px solid var(--primary-color);
 }
 
-.payment-method input[type="radio"]:checked + .custom-radio{
+.payment-method input[type="radio"]:checked+.custom-radio {
 	border: 2px solid var(--primary-color);
 }
 
@@ -119,11 +119,11 @@
 	max-width: 50px;
 }
 
-.method-name{
+.method-name {
 	margin-left: 20px;
 }
 
-.label-method{
+.label-method {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -150,17 +150,17 @@
 	border: 1px solid #ddd;
 }
 
-.head-table-name {
+#bill-table .head-table-name {
 	border-top-left-radius: 10px;
 	border-right: 1px solid #ddd;
-	border-left:none !important;
-	border-top:none !important;
+	border-left: none !important;
+	border-top: none !important;
 }
 
-.head-table-total{
+#bill-table .head-table-total {
 	border-top-right-radius: 10px;
-	border-left:none !important;
-	border-top:none !important;
+	border-left: none !important;
+	border-top: none !important;
 }
 
 #bill-table thead {
@@ -181,37 +181,36 @@
 }
 
 
-.table-product-name {
+#bill-table .table-product-name {
 	width: 30%;
 }
 
-.table-product-sugar {
+#bill-table .table-product-sugar {
 	width: 10%;
 }
 
-.table-product-ice {
+#bill-table .table-product-ice {
 	width: 10%;
 }
 
-.table-product-quantity {
+#bill-table .table-product-quantity {
 	width: 15%;
 }
 
-.table-product-total {
+#bill-table .table-product-total {
 	width: 35%;
 }
 
-.payment{
+.payment {
 	margin-top: 40px;
 }
 
-.payment-title{
+.payment-title {
 	margin-bottom: 30px;
 }
 
-.cta-checkout-bill{
-	margin: 30px auto ;
+.cta-checkout-bill {
+	margin: 30px auto;
 	display: block;
 	width: 50%;
 }
-
