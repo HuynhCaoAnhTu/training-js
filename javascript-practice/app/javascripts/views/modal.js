@@ -23,14 +23,14 @@ class ModalView {
 			const totalBill = document.querySelector(".table-product-total-bill");
 			this.tableContent.innerHTML = "";
 			bill.forEach(product => {
-				this.renderProductPerCheckout(product);
+				this.renderProductPreCheckout(product);
 			})
 			totalBill.innerHTML = `&dollar;${total}`;
 			modalEl.style.display = 'block'
 		};
 	}
 
-	renderProductPerCheckout(product) {
+	renderProductPreCheckout(product) {
 		const tableContent = document.querySelector("#bill-table tbody");
 		console.log(tableContent);
 		console.log(product);
