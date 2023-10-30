@@ -1,14 +1,16 @@
 // controller.js
 import { KEY_CODE_ENTER } from "../constants/key";
 import { Ingredient } from "../models/product";
+import HistoryPaymentService from "../services/historypaymentService";
 class AppController {
 	constructor(model, view) {
 		this.model = model;
 		this.view = view;
 		this.categories = [];
 		this.products = [];
-		this.selectedCategoryId = 1
-		this.selectedCategoryName = "All menu"
+		this.selectedCategoryId = 1;
+		this.selectedCategoryName = "All menu";
+		this.historyService= new HistoryPaymentService();
 	}
 
 	slidebarHandle(){
@@ -27,12 +29,13 @@ class AppController {
 							case "1":
 								mainContent.style.display="block"
 								bill.style.display="flex"
-								history.style.display="none"
+								// history.style.display="none"
 								break;
 							case "2":
 								mainContent.style.display="none"
 								bill.style.display="none"
-								history.style.display="block"
+								history.style.display="block";
+								this.view.history.renderHistoryPayment(this.historyService.getLocalStorage());
 								break;
 						}
 				});
@@ -91,7 +94,6 @@ class AppController {
 		}
 		checkoutButton.addEventListener('click', (e) => {
 			const bill = this.model.bill.getProductInBill();
-			console.log(bill)
 			const parentEl = e.currentTarget.parentNode;
 			const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
 			this.view.modal.openCheckoutModal(bill, totalBill);
@@ -236,7 +238,6 @@ class AppController {
 				const iceEl = parentLi.querySelector('.note-ice .option-selected');
 				if (sugarEl != null) {
 					const sugarNote = sugarEl.textContent.trim().replace('%', '');
-					console.log(sugarNote)
 					const sugar = new Ingredient("sugar", +sugarNote);
 					ingerdients.push(sugar)
 				}
@@ -289,6 +290,7 @@ class AppController {
 	initBill = async () => {
 		await this.model.bill.init();
 		this.renderBill();
+		await this.handleConfirmCheckout();
 	}
 
 	addToBill(productId, productName, productUrl, productDes, productPrice, ingerdient) {
@@ -303,7 +305,7 @@ class AppController {
 		this.view.bill.renderBill(bill, totalBill);
 		this.handleChangeQuantity();
 		this.handleCheckout();
-		this.handleConfirmCheckout();
+
 	}
 
 	handleChangeQuantity() {
@@ -343,8 +345,6 @@ class AppController {
 
 	handleConfirmCheckout() {
 		const checkoutButton = document.querySelector(".cta-checkout-bill");
-		const bill = this.model.bill.getProductInBill();
-		const history = [];
 		let methodName;
 		const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
 		paymentMethodInputs.forEach(function (input) {
@@ -354,12 +354,13 @@ class AppController {
 			input.addEventListener('change', function () {
 				if (input.checked) {
 					methodName = input.value;
-					console.log("Selected Method Name: " + methodName);
 				}
 			});
 		});
 		checkoutButton.addEventListener('click', (event) => {
 			var now = new Date();
+			const bill = this.model.bill.getProductInBill();
+			const history = this.historyService.getLocalStorage();
 			const modal=event.target.parentNode.parentNode;
 			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
 			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
@@ -369,7 +370,8 @@ class AppController {
 				totalBill: +totalBill,
 				method: methodName
 			});
-			console.log(modal);
+			this.historyService.setLocalStorage(history);
+			this.view.history.renderHistoryPayment(history, totalBill);
 			this.model.bill.clearBill();
 			this.model.bill.service.clearBillLocalStorage();
 			modal.style.display= "none"
