@@ -43,21 +43,21 @@
 			<a class="slide-logo" href="javascriptvoid(0)"><img class="slide-logo-image" src="./assets/images/logo.svg"
 					alt="Logo"></a>
 			<ul class="slide-lists">
-					<li class="slide-navigation"><a href="javascript:void(0)">
+				<li class="slide-navigation"><a href="javascript:void(0)">
 						<span data="1" class="icon home-icon slide-active"></span></a>
-					</li>
-					<li class="slide-navigation bill-actived"><a href="javascript:void(0)">
+				</li>
+				<li class="slide-navigation bill-actived"><a href="javascript:void(0)">
 						<span data="2" class="icon bill-icon"></span></a>
-					</li>
-					<li class="slide-navigation"><a href="javascript:void(0)">
+				</li>
+				<li class="slide-navigation"><a href="javascript:void(0)">
 						<span data="3" class="icon favorite-icon"></span></a>
-					</li>
-					<li class="slide-navigation"><a href="javascript:void(0)">
+				</li>
+				<li class="slide-navigation"><a href="javascript:void(0)">
 						<span data="4" class="icon wallet-icon"></span></a>
-					</li>
-					<li class="slide-navigation"><a href="javascript:void(0)">
+				</li>
+				<li class="slide-navigation"><a href="javascript:void(0)">
 						<span data="5" class="icon setting-icon"></span></a>
-					</li>
+				</li>
 			</ul>
 		</section>
 		<!-- SLIDE -->
@@ -96,19 +96,25 @@
 			<!-- Bill -->
 		</div>
 		<section class="history-payment">
-		<table class="history-table">
+			<table class="history-table">
 				<thead>
 					<tr>
-						<th class="text-md head-table-name">Date</th>
-						<th class="text-md head-table-ingerdients">Name</th>
-						<th class="text-md head-table-qnty">Quantity</th>
-						<th class="text-md head-table-total">Total Bill</th>
+						<th class="text-md head-table-date" rowspan="2">Date</th>
+						<th class="text-md head-table-method" rowspan="2">Method</th>
+						<th class="text-md head-table-total" rowspan="2">Total Bill</th>
+						<th class="text-md head-table-name" rowspan="2">Product Name</th>
+						<th class="text-md head-table-ingerdients" colspan="2">Ingerdients</th>
+						<th class="text-md head-table-qnty" rowspan="2">Quantity</th>
+					</tr>
+					<tr>
+						<th class="text-md">Sugar</th>
+						<th class="text-md">Ice</th>
 					</tr>
 				</thead>
 				<tbody>
 				</tbody>
 			</table>
-	</section>
+		</section>
 	</div>
 
 	<!-- Modal View productcont -->
@@ -139,10 +145,14 @@
 			<table id="bill-table">
 				<thead>
 					<tr>
-						<th class="text-md head-table-name" rowspan="2" >Name</th>
+						<th class="text-md head-table-name" rowspan="2">Name</th>
 						<th class="text-md head-table-ingerdients" colspan="2">Ingerdients</th>
 						<th class="text-md head-table-qnty" rowspan="2">Quantity</th>
 						<th class="text-md head-table-total" rowspan="2">Total</th>
+					</tr>
+					<tr>
+						<th class="text-md">Sugar</th>
+						<th class="text-md">Ice</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -182,9 +192,6 @@
 		</div>
 	</div>
 	<!-- Modal Checkout -->
-
-	<
-
 </body>
 
 </html>
