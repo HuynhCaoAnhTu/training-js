@@ -13,6 +13,28 @@ class AppController {
 		this.historyService= new HistoryPaymentService();
 	}
 
+	handleAddProduct(){
+		const modal = document.getElementById("addModal");
+		const close = modal.querySelector(".close");
+		const addButton=document.querySelector(".cta-add-modal");
+		close.onclick = function () {
+			modal.style.display = "none";
+		}
+		var modals = document.getElementsByClassName("modal");
+		window.onclick = function (event) {
+				for (var i = 0; i < modals.length; i++) {
+						var modal = modals[i];
+						if (event.target == modal) {
+								modal.style.display = "none";
+						}
+				}
+		}
+		addButton.addEventListener('click',()=>{
+			this.view.modal.openAddModal();
+		});
+
+
+	}
 	slidebarHandle(){
 		const mainContent = document.querySelector('.main-content');
 		const bill = document.querySelector('.bill');
@@ -50,6 +72,7 @@ class AppController {
 		await this.initProductList();
 		await this.initBill();
 		this.searchHandle();
+		this.handleAddProduct();
 	}
 
 	searchHandle() {
