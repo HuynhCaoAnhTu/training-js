@@ -45,5 +45,9 @@ class ModalView {
 		</tr>`;
 	}
 
+	openAddModal(){
+		const modalEl = document.getElementById("addModal");
+		modalEl.style.display = 'block'
+	}
 }
 export default ModalView;
