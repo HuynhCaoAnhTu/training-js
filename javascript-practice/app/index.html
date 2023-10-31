@@ -70,7 +70,7 @@
 					</ul>
 				</section>
 				<!-- CATEGORY -->
-
+				<button class="btn btn-primary cta-add-modal"> Add product</button>
 				<!-- product -->
 				<section class="menu">
 					<div class="menu-des">
@@ -159,10 +159,7 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<td style="border: none;"></td>
-						<td style="border: none;"></td>
-						<td style="border: none;"></td>
-						<td class="text-bg" style="border: none;">Total bill</td>
+						<td class="text-bg" style="text-align: end;" colspan="4">Total bill</td>
 						<td class="text-bg table-product-total-bill">France</td>
 					</tr>
 				</tfoot>
@@ -192,6 +189,45 @@
 		</div>
 	</div>
 	<!-- Modal Checkout -->
+
+	<div id="addModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="modal-product-content">
+				<form class="add-form" action="">
+					<div class="add-product-content">
+						<div class="add-product-infor">
+							<label class="modal-title">Name</label>
+							<input type="text" class="add-input-text" placeholder="Enter product name">
+							<label class="modal-title">Image</label>
+							<input type="text" class="add-input-text" placeholder="Enter  product image link ">
+							<label class="modal-title">Description:</label>
+							<textarea class="add-desc-ta" id=""  cols="20" rows="10"></textarea>
+							<label class="modal-title">Price:</label>
+							<input type="text" class="add-input-text" placeholder="Enter product price">
+							<label class="modal-title" for="category">Category:</label>
+							<select class="category-select" name="category" id="category">
+								<option class="category-option" value="volvo">Volvo</option>
+								<option class="category-option" value="saab">Saab</option>
+								<option class="category-option" value="mercedes">Mercedes</option>
+								<option class="category-option" value="audi">Audi</option>
+							</select>
+							<label class="modal-title">Ingredients:</label>
+							<div class="ingerdients-option">
+								<input type="checkbox" id="sugar" name="paymentMethod" value="1">
+								<label for="sugar" class="ingerdient-checkbox">Sugar</label>
+								<input type="checkbox" id="ice" name="paymentMethod" value="1">
+								<label for="ice" class="ingerdient-checkbox">Ice</label>
+							</div>
+						</div>
+						<img src="./assets/icons/cash-icon.svg" class="add-product-img" height="50px" alt="">
+					</div>
+					<button type="submit" class="btn btn-primary cta-add-product"> Add product</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 </html>
