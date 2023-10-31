@@ -164,7 +164,7 @@
 }
 
 #bill-table thead {
-	text-align: left;
+	text-align: center;
 	background-color: var(--primary-color);
 	color: white;
 
@@ -213,4 +213,93 @@
 	margin: 30px auto;
 	display: block;
 	width: 50%;
+}
+
+/* Style for add modal */
+
+.add-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.add-product-content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.add-product-infor {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	width: 40%;
+}
+
+.add-product-img {
+	flex: 1;
+	padding: 40px;
+	height: 200px;
+	width: 200px;
+}
+
+.add-input-text,
+.add-desc-ta,
+.category-select,
+.ingerdient-checkbox{
+	font-family: Poppins-SemiBold;
+	font-size: 17px;
+}
+
+.add-input-text {
+	height: 35px;
+	border-radius: 10px;
+	padding: 3px 3px 3px 10px;
+	border: none;
+	background-color: var(--gray-color);
+}
+
+.add-input-text:focus {
+	border: none;
+	outline: none;
+}
+
+.add-desc-ta{
+	background-color: var(--gray-color);
+	border-radius: 10px;
+	padding: 10px;
+	border: none;
+}
+
+.add-desc-ta:focus {
+	border: none;
+	outline: none;
+}
+
+.cta-add-product {
+	width: 80%;
+	align-self: center;
+}
+
+.category-select {
+	height: 40px;
+	padding: 3px;
+	border-radius: 10px;
+	background-color: var(--gray-color);
+}
+
+.category-select::after,
+.category-select::before {
+	border: 1px solid transparent;
+}
+
+.category-select:focus {
+	border: none;
+	outline: none;
+}
+
+.category-option {
+	height: 35px;
 }
