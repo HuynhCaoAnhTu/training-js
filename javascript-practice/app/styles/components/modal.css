@@ -224,6 +224,12 @@
 	gap: 30px;
 }
 
+.form-control {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
 .add-product-content {
 	display: flex;
 	flex-direction: row;
@@ -231,7 +237,7 @@
 }
 
 .add-product-infor {
-	flex: 1;
+	flex-basis: 60%;
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
@@ -239,8 +245,7 @@
 }
 
 .add-product-img {
-	flex: 1;
-	padding: 40px;
+	margin: 0 auto;
 	height: 200px;
 	width: 200px;
 }
@@ -248,34 +253,73 @@
 .add-input-text,
 .add-desc-ta,
 .category-select,
-.ingerdient-checkbox{
+.ingerdient-checkbox {
 	font-family: Poppins-SemiBold;
-	font-size: 17px;
 }
 
-.add-input-text {
-	height: 35px;
-	border-radius: 10px;
-	padding: 3px 3px 3px 10px;
-	border: none;
-	background-color: var(--gray-color);
-}
-
-.add-input-text:focus {
-	border: none;
-	outline: none;
-}
-
-.add-desc-ta{
-	background-color: var(--gray-color);
-	border-radius: 10px;
+.form-control .add-desc-ta {
+	max-height: 100px;
+	border: 2px solid var(--gray-color);
+	border-radius: 4px;
 	padding: 10px;
-	border: none;
+	font-size: 14px;
 }
 
-.add-desc-ta:focus {
-	border: none;
-	outline: none;
+.form-control .add-desc-ta:focus {
+	outline: 0;
+	border-color: #777;
+
+}
+
+.form-control .add-input-text {
+	border: 2px solid var(--gray-color);
+	border-radius: 4px;
+	padding: 10px;
+	font-size: 14px;
+}
+
+.form-control .add-input-text:focus {
+	outline: 0;
+	border-color: #777;
+
+}
+
+.form-control .category-select {
+	border: 2px solid var(--gray-color);
+	border-radius: 4px;
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+}
+
+.form-control .category-select:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-control.success .add-input-text {
+	border-color: var(--gray-color);
+}
+
+.form-control.error .add-input-text {
+	border-color: var(--error-color);
+}
+
+.form-control.success .add-desc-ta {
+	border-color: var(--gray-color);
+}
+
+.form-control.error .add-desc-ta {
+	border-color: var(--error-color);
+}
+
+.form-control small {
+	color: var(--error-color);
+	display: none;
+}
+
+.form-control.error small {
+	display: block;
 }
 
 .cta-add-product {
@@ -283,23 +327,16 @@
 	align-self: center;
 }
 
-.category-select {
-	height: 40px;
-	padding: 3px;
-	border-radius: 10px;
-	background-color: var(--gray-color);
-}
-
-.category-select::after,
-.category-select::before {
-	border: 1px solid transparent;
-}
-
-.category-select:focus {
-	border: none;
-	outline: none;
-}
 
 .category-option {
-	height: 35px;
+	font: 14px;
 }
+
+.form-control.success input {
+	border-color: var(--succes-color);
+}
+
+.form-control.error {
+	border-color: var(--error-color);
+}
+
