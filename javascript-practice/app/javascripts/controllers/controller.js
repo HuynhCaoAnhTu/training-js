@@ -10,57 +10,74 @@ class AppController {
 		this.products = [];
 		this.selectedCategoryId = 1;
 		this.selectedCategoryName = "All menu";
-		this.historyService= new HistoryPaymentService();
+		this.historyService = new HistoryPaymentService();
 	}
 
-	handleAddProduct(){
+	validationAddForm = () => {
+		const addButton = document.querySelector(".cta-add-product");
+		const form = document.querySelector('.add-form');
+		const name = document.getElementById('add-input-name');
+		const url = document.getElementById('url-img');
+		const desc = document.getElementById('add-ta-desc');
+		const price = document.getElementById('add-input-price');
+		url.addEventListener("blur", () => {
+			this.view.modal.checkImageUrl(url);
+		});
+		addButton.addEventListener('click', (e) => {
+			const checkImageUrl = this.view.modal.checkImageUrl(url);
+			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
+			const checkNumber = this.view.modal.checkNumber(price);
+			console.log(checkImageUrl);
+			if (checkRequired ==false || checkImageUrl == false ||  checkNumber == false) {
+					e.preventDefault();
+				}
+		});
+	}
+
+	handleOpenAddModal = () => {
 		const modal = document.getElementById("addModal");
 		const close = modal.querySelector(".close");
-		const addButton=document.querySelector(".cta-add-modal");
+		const addButton = document.querySelector(".cta-add-modal");
 		close.onclick = function () {
 			modal.style.display = "none";
 		}
-		var modals = document.getElementsByClassName("modal");
-		window.onclick = function (event) {
-				for (var i = 0; i < modals.length; i++) {
-						var modal = modals[i];
-						if (event.target == modal) {
-								modal.style.display = "none";
-						}
-				}
-		}
-		addButton.addEventListener('click',()=>{
-			this.view.modal.openAddModal();
+		modal.addEventListener('click', (event) => {
+			if (event.target === modal) {
+				modal.style.display = "none";
+			}
 		});
-
-
+		addButton.addEventListener('click', () => {
+			this.view.modal.openAddModal();
+			this.validationAddForm()
+		});
 	}
-	slidebarHandle(){
+
+	slidebarHandle() {
 		const mainContent = document.querySelector('.main-content');
 		const bill = document.querySelector('.bill');
 		const listItems = document.querySelectorAll('.slide-navigation .icon');
 		const history = document.querySelector('.history-payment');
 		listItems.forEach(item => {
-				item.addEventListener('click', () => {
-						listItems.forEach(item => {
-								item.classList.remove('slide-active');
-						});
-						item.classList.add('slide-active');
-						const dataValue = item.getAttribute('data');
-						switch(dataValue) {
-							case "1":
-								mainContent.style.display="block"
-								bill.style.display="flex"
-								// history.style.display="none"
-								break;
-							case "2":
-								mainContent.style.display="none"
-								bill.style.display="none"
-								history.style.display="block";
-								this.view.history.renderHistoryPayment(this.historyService.getLocalStorage());
-								break;
-						}
+			item.addEventListener('click', () => {
+				listItems.forEach(item => {
+					item.classList.remove('slide-active');
 				});
+				item.classList.add('slide-active');
+				const dataValue = item.getAttribute('data');
+				switch (dataValue) {
+					case "1":
+						mainContent.style.display = "block"
+						bill.style.display = "flex"
+						// history.style.display="none"
+						break;
+					case "2":
+						mainContent.style.display = "none"
+						bill.style.display = "none"
+						history.style.display = "block";
+						this.view.history.renderHistoryPayment(this.historyService.getLocalStorage());
+						break;
+				}
+			});
 		});
 	}
 
@@ -72,7 +89,7 @@ class AppController {
 		await this.initProductList();
 		await this.initBill();
 		this.searchHandle();
-		this.handleAddProduct();
+		this.handleOpenAddModal();
 	}
 
 	searchHandle() {
@@ -110,11 +127,11 @@ class AppController {
 		close.onclick = function () {
 			modal.style.display = "none";
 		}
-		window.onclick = function (event) {
-			if (event.target == modal) {
+		modal.addEventListener('click', (event) => {
+			if (event.target === modal) {
 				modal.style.display = "none";
 			}
-		}
+		});
 		checkoutButton.addEventListener('click', (e) => {
 			const bill = this.model.bill.getProductInBill();
 			const parentEl = e.currentTarget.parentNode;
@@ -194,11 +211,11 @@ class AppController {
 		close.onclick = function () {
 			modal.style.display = "none";
 		}
-		window.onclick = function (event) {
-			if (event.target == modal) {
+		modal.addEventListener('click', (event) => {
+			if (event.target === modal) {
 				modal.style.display = "none";
 			}
-		}
+		});
 		viewDetailButton.forEach((button) => {
 			button.addEventListener('click', (e) => {
 				e.stopPropagation();
@@ -384,7 +401,7 @@ class AppController {
 			var now = new Date();
 			const bill = this.model.bill.getProductInBill();
 			const history = this.historyService.getLocalStorage();
-			const modal=event.target.parentNode.parentNode;
+			const modal = event.target.parentNode.parentNode;
 			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
 			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
 			history.push({
@@ -397,7 +414,7 @@ class AppController {
 			this.view.history.renderHistoryPayment(history, totalBill);
 			this.model.bill.clearBill();
 			this.model.bill.service.clearBillLocalStorage();
-			modal.style.display= "none"
+			modal.style.display = "none"
 			this.renderBill();
 		});
 	}
