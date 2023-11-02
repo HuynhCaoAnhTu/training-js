@@ -1,6 +1,6 @@
 // controller.js
 import { KEY_CODE_ENTER } from "../constants/key";
-import { Ingredient } from "../models/product";
+import Product, { Ingredient } from "../models/product";
 import HistoryPaymentService from "../services/historypaymentService";
 class AppController {
 	constructor(model, view) {
@@ -20,17 +20,31 @@ class AppController {
 		const url = document.getElementById('url-img');
 		const desc = document.getElementById('add-ta-desc');
 		const price = document.getElementById('add-input-price');
-		url.addEventListener("blur", () => {
-			this.view.modal.checkImageUrl(url);
-		});
+		const category = document.querySelector(".category-select");
+		const sugar = document.getElementById('checkbox-sugar');
+		const ice = document.getElementById('checkbox-ice');
+		let isSugar, isIce;
 		addButton.addEventListener('click', (e) => {
-			const checkImageUrl = this.view.modal.checkImageUrl(url);
 			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
 			const checkNumber = this.view.modal.checkNumber(price);
-			console.log(checkImageUrl);
-			if (checkRequired ==false || checkImageUrl == false ||  checkNumber == false) {
-					e.preventDefault();
-				}
+			if (checkRequired == false || checkNumber == false) {
+				e.preventDefault();
+			}
+			else {
+				const product = new Product(
+					this.model.productList.generateId(),
+					name.value,
+					desc.value,
+					category.value,
+					url.value,
+					price.value,
+					0,
+					isSugar = (sugar.checked) ? 1 : 0,
+					isIce = (ice.checked) ? 1 : 0,
+				);
+				this.model.productList.addProduct(product);
+				this.renderProduct();
+			}
 		});
 	}
 
@@ -38,6 +52,7 @@ class AppController {
 		const modal = document.getElementById("addModal");
 		const close = modal.querySelector(".close");
 		const addButton = document.querySelector(".cta-add-modal");
+		const categories = this.model.categoryList.getCategoryList();
 		close.onclick = function () {
 			modal.style.display = "none";
 		}
@@ -47,7 +62,7 @@ class AppController {
 			}
 		});
 		addButton.addEventListener('click', () => {
-			this.view.modal.openAddModal();
+			this.view.modal.openAddModal(categories);
 			this.validationAddForm()
 		});
 	}
@@ -68,7 +83,7 @@ class AppController {
 					case "1":
 						mainContent.style.display = "block"
 						bill.style.display = "flex"
-						// history.style.display="none"
+						history.style.display = "none"
 						break;
 					case "2":
 						mainContent.style.display = "none"
