@@ -1,7 +1,9 @@
+import Category from "../models/category";
+
 class ModalView {
 	constructor() {
 		this.tableContent = document.querySelector("#bill-table tbody");
-		this.originalSrc = document.querySelector(".add-product-img").src;
+		this.categoryContent = document.querySelector(".category-select");
 	}
 
 	openViewModal = (product) => {
@@ -46,9 +48,17 @@ class ModalView {
 		</tr>`;
 	}
 
-	openAddModal() {
+	openAddModal(categories) {
 		const modalEl = document.getElementById("addModal");
+		this.categoryContent.innerHTML= "";
+		categories.forEach(category=>{
+			this.renderCategoryOption(category);
+		});
 		modalEl.style.display = 'block'
+	}
+
+	renderCategoryOption(category){
+		this.categoryContent.innerHTML +=`<option class=category-option" value="${category.categoryId}">${category.categoryName}</option>`
 	}
 
 	showError = (input, message) => {
@@ -62,25 +72,6 @@ class ModalView {
 		const formControl = input.parentElement;
 		formControl.className = 'form-control success';
 	}
-
-	checkImageUrl = (input) => {
-		var isValid = false;
-		const imgElement = document.querySelector(".add-product-img");
-		const url = input.value;
-		const img = new Image();
-		img.src = url;
-		img.onload = () => {
-			imgElement.src = url;
-			this.showSuccess(input);
-			isValid = true;
-		};
-		img.onerror = () => {
-			imgElement.src = this.originalSrc;
-			this.showError(input, "Can not load the image");
-			isValid = false;
-		};
-		return isValid;
-	};
 
 	checkRequired = (inputArr) => {
 		let isValid = true;
