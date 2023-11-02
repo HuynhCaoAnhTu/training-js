@@ -6,7 +6,7 @@ export class Ingredient {
 }
 
 export default class Product {
-	constructor(id, name, des, categoryid, url, price, ingredient) {
+	constructor(id, name, des, categoryid, url, price, ingredient,isSugar,isIce) {
 		this.productId = id
 		this.productName = name
 		this.productDes = des
@@ -14,6 +14,7 @@ export default class Product {
 		this.productUrl = url
 		this.productPrice = price
 		this.ingredient = ingredient
-
+		this.isSugar =isSugar;
+		this.isIce = isIce;
 	}
 }
