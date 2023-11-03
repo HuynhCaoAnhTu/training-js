@@ -74,6 +74,20 @@
 	font-family: Poppins-Bold;
 	font-size: 35px;
 }
+.cta-modify-product{
+	float: right;
+	cursor: pointer;
+	margin-right: 30px;
+	display: flex;
+	gap: 20px;
+}
+
+.cta-update-product,
+.cta-delete-product {
+	max-height: 25px;
+	max-width: 25px;
+}
+
 
 .payment-method {
 	display: flex;
@@ -217,7 +231,8 @@
 
 /* Style for add modal */
 
-.add-form {
+.add-form,
+.update-form {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -340,4 +355,3 @@
 .form-control.error {
 	border-color: var(--error-color);
 }
-
