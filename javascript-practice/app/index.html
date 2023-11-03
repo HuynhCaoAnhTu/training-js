@@ -121,6 +121,10 @@
 	<div id="viewModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
+			<div class="cta-modify-product">
+				<img class="cta-update-product" src="./assets/icons/update-icon.svg" alt="">
+				<img class="cta-delete-product" src="./assets/icons/delete-icon.svg" alt="">
+			</div>
 			<div class="modal-product-content">
 				<img class="modal-product-image"
 					src="https://pbs.twimg.com/profile_images/760193594233876480/9atNXFjG_400x400.jpg" alt="">
@@ -232,6 +236,53 @@
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary cta-add-product"> Add product</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="updateModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="modal-product-content">
+				<form class="update-form" action="">
+					<div class="add-product-infor">
+						<div class="form-control">
+							<label class="modal-title">Name</label>
+							<input type="text" class="add-input-text" id="add-input-name" placeholder="Enter product name">
+							<small></small>
+						</div>
+						<div class="form-control">
+							<label class="modal-title">Image</label>
+							<input type="text" class="add-input-text" id="url-img" placeholder="Enter  product image link ">
+							<small></small>
+						</div>
+						<div class="form-control">
+							<label class="modal-title">Description:</label>
+							<textarea class="add-desc-ta" id="add-ta-desc" cols="10" rows="10"></textarea>
+							<small></small>
+						</div>
+						<div class="form-control">
+							<label class="modal-title">Price:</label>
+							<input type="text" class="add-input-text" id="add-input-price" placeholder="Enter product price">
+							<small></small>
+						</div>
+						<div class="form-control">
+							<label class="modal-title" for="category">Category:</label>
+							<select class="category-select" name="category" id="category">
+							</select>
+						</div>
+						<div class="form-control">
+							<label class="modal-title">Ingredients:</label>
+							<div class="ingerdients-option">
+								<input type="checkbox" id="checkbox-sugar" name="paymentMethod" value="1">
+								<label for="sugar" class="ingerdient-checkbox">Sugar</label>
+								<input type="checkbox" id="checkbox-ice" name="paymentMethod" value="1">
+								<label for="ice" class="ingerdient-checkbox">Ice</label>
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary cta-update"> Add product</button>
 				</form>
 			</div>
 		</div>
