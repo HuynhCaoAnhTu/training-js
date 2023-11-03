@@ -10,6 +10,7 @@ class ModalView {
 		console.log(product)
 		if (product) {
 			const modalEl = document.getElementById("viewModal");
+			this.handleCloseModal(modalEl);
 			modalEl.setAttribute("data-id", product.productId);
 			modalEl.querySelector('.modal-product-image').src = product.productUrl;
 			modalEl.querySelector('.modal-product-name').textContent = product.productName;
@@ -19,10 +20,27 @@ class ModalView {
 		};
 	}
 
+	handleCloseModal(modalEl){
+		const close = modalEl.querySelector(".close");
+		close.onclick = function () {
+			modalEl.style.display = "none";
+		}
+		modalEl.addEventListener('click', (event) => {
+			if (event.target === modalEl) {
+				modalEl.style.display = "none";
+			}
+		});
+	}
+
+	closeModal(modalEl){
+		modalEl.style.display = "none";
+	}
+
 	openCheckoutModal = (bill, total) => {
 		console.log(bill)
 		if (bill) {
 			const modalEl = document.getElementById("checkoutModal");
+			this.handleCloseModal(modalEl);
 			const totalBill = document.querySelector(".table-product-total-bill");
 			this.tableContent.innerHTML = "";
 			bill.forEach(product => {
@@ -50,15 +68,17 @@ class ModalView {
 
 	openAddModal(categories) {
 		const modalEl = document.getElementById("addModal");
-		this.categoryContent.innerHTML= "";
-		categories.forEach(category=>{
-			this.renderCategoryOption(category);
+		this.handleCloseModal(modalEl);
+		this.categoryContent.innerHTML = "";
+		categories.forEach(category => {
+			this.renderCategoryOption(category, modalEl);
 		});
 		modalEl.style.display = 'block'
 	}
 
-	renderCategoryOption(category){
-		this.categoryContent.innerHTML +=`<option class=category-option" value="${category.categoryId}">${category.categoryName}</option>`
+	renderCategoryOption(category, modalEl) {
+		const categoryContent = modalEl.querySelector(".category-select");
+		categoryContent.innerHTML += `<option class=category-option" value="${category.categoryId}">${category.categoryName}</option>`
 	}
 
 	showError = (input, message) => {
@@ -98,5 +118,39 @@ class ModalView {
 		}
 		return isValid;
 	}
+
+	openUpdateModal(product, categories) {
+		console.log(product)
+		const modalEl = document.getElementById("updateModal");
+		this.handleCloseModal(modalEl);
+		categories.forEach(category => {
+			this.renderCategoryOption(category, modalEl);
+		});
+		modalEl.style.display = 'block'
+		const form = document.querySelector('.update-form');
+		const name = form.querySelector('#add-input-name');
+		const url = form.querySelector('#url-img');
+		const desc = form.querySelector('#add-ta-desc');
+		const price = form.querySelector('#add-input-price');
+		const category = form.querySelector(".category-select");
+		const sugar = form.querySelector('#checkbox-sugar');
+		const ice = form.querySelector('#checkbox-ice');
+		name.value = product.productName;
+		desc.value = product.productDes;
+		url.value = product.productUrl;
+		price.value = product.productPrice;
+		category.value = product.categoryId;
+		if (product.isSugar === 1) {
+			sugar.checked = true;
+		} else {
+			sugar.checked = false;
+		}
+		if (product.isIce === 1) {
+			sugar.checked = true;
+		} else {
+			sugar.checked = false;
+		}
+	}
+
 }
 export default ModalView;
