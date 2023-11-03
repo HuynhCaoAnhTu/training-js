@@ -10,12 +10,12 @@ class ProductList {
 
 	init = async () => {
 		const data = await this.service.getLocalStorageData();
-		this.productList = this.parseData(data).reverse();
+		this.productList = this.parseData(data);
 	}
 
 	parseData = (data) => {
 		return data.map((item) => {
-			return new Product(item.productId, item.productName, item.productDes, item.categoryId, item.productUrl, item.productPrice,item.ingerdients,item.isSugar,item.isIce);
+			return new Product(item.productId, item.productName, item.productDes, item.categoryId, item.productUrl, item.productPrice, item.ingerdients, item.isSugar, item.isIce);
 		});
 	}
 
@@ -24,8 +24,7 @@ class ProductList {
 	}
 
 	getProdcutById = (id) => {
-		const data = JSON.parse(this.service.getLocalStorage(PRODUCTS_STORAGE_KEY));
-		const product = data.find(product => product.productId == id);
+		const product = this.productList.find(product => product.productId == id);
 		return product;
 	}
 
@@ -39,10 +38,35 @@ class ProductList {
 		return id;
 	}
 
-	addProduct(product){
-		this.productList.push(product)
+	addProduct(product) {
+		this.productList.unshift(product)
 		this.service.setLocalStorage(this.productList);
+		return this.productList;
 	}
 
+	updateProduct(id, name, desc, category, url, price, isSugar, isIce) {
+		console.log(id)
+		for (let i = 0; i < this.productList.length; i++) {
+			if (this.productList[i].productId == id) {
+				this.productList[i].productName = name;
+				console.log(this.productList[i].productName);
+				this.productList[i].productDes = desc;
+				this.productList[i].categoryId = +category;
+				this.productList[i].productUrl = url;
+				this.productList[i].productPrice = price;
+				this.productList[i].isSugar = isSugar;
+				this.productList[i].isIce = isIce;
+				break;
+			}
+		}
+		this.service.setLocalStorage(this.productList);
+		return this.productList;
+	}
+
+	deleteProduct(id) {
+		this.productList = this.productList.filter((product) => product.productId != id);
+		this.service.setLocalStorage(this.productList);
+		return this.productList;
+	}
 }
 export default ProductList;
