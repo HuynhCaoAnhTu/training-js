@@ -13,9 +13,8 @@ class AppController {
 		this.historyService = new HistoryPaymentService();
 	}
 
-	validationAddForm = () => {
+	handleAddProduct = () => {
 		const addButton = document.querySelector(".cta-add-product");
-		const form = document.querySelector('.add-form');
 		const name = document.getElementById('add-input-name');
 		const url = document.getElementById('url-img');
 		const desc = document.getElementById('add-ta-desc');
@@ -42,28 +41,79 @@ class AppController {
 					isSugar = (sugar.checked) ? 1 : 0,
 					isIce = (ice.checked) ? 1 : 0,
 				);
-				this.model.productList.addProduct(product);
-				this.renderProduct();
+				const products = this.model.productList.addProduct(product);
+				this.renderProduct(products);
+				this.hanlderproductEvent();
+			}
+		});
+	}
+	handleUpdateProduct(productId) {
+		const form = document.querySelector('.update-form');
+		const update = form.querySelector(".cta-update");
+		const name = form.querySelector('#add-input-name');
+		const url = form.querySelector('#url-img');
+		const desc = form.querySelector('#add-ta-desc');
+		const price = form.querySelector('#add-input-price');
+		const category = form.querySelector(".category-select");
+		const sugar = form.querySelector('#checkbox-sugar');
+		const ice = form.querySelector('#checkbox-ice');
+		let isSugar, isIce;
+		update.addEventListener("click", (e) => {
+			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
+			const checkNumber = this.view.modal.checkNumber(price);
+			if (checkRequired == false || checkNumber == false) {
+				e.preventDefault();
+			}
+			else {
+				isSugar = (sugar.checked) ? 1 : 0;
+				isIce = (ice.checked) ? 1 : 0;
+				const products = this.model.productList.updateProduct(productId, name.value, desc.value, category.value, url.value, price.value, isSugar, isIce);
+				this.renderProduct(products);
+				this.hanlderproductEvent();
 			}
 		});
 	}
 
+	handleDeleteProduct() {
+		const deleteButtons = document.querySelectorAll(".cta-delete-product");
+		const modalEl = document.getElementById("viewModal");
+
+		deleteButtons.forEach(deleteButton => {
+			deleteButton.addEventListener('click', (e) => {
+				const userChoice = confirm("Do you want to delete this product");
+				if (userChoice) {
+					const productId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
+					console.log(productId);
+					const products = this.model.productList.deleteProduct(productId);
+					this.renderProduct(products);
+					this.view.modal.closeModal(modalEl);
+					this.hanlderproductEvent();
+				}
+			});
+		});
+
+	}
+
+	handleOpenUpdateModal() {
+		const updateButtons = document.querySelectorAll(".cta-update-product")
+		const categories = this.model.categoryList.getCategoryList();
+		updateButtons.forEach(updateButton => {
+			updateButton.addEventListener('click', (e) => {
+				const productId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
+				const product = this.model.productList.getProdcutById(productId);
+				console.log(product);
+				this.view.modal.openUpdateModal(product, categories);
+				this.handleUpdateProduct(productId);
+			});
+		});
+	}
+
 	handleOpenAddModal = () => {
-		const modal = document.getElementById("addModal");
-		const close = modal.querySelector(".close");
 		const addButton = document.querySelector(".cta-add-modal");
 		const categories = this.model.categoryList.getCategoryList();
-		close.onclick = function () {
-			modal.style.display = "none";
-		}
-		modal.addEventListener('click', (event) => {
-			if (event.target === modal) {
-				modal.style.display = "none";
-			}
-		});
 		addButton.addEventListener('click', () => {
 			this.view.modal.openAddModal(categories);
-			this.validationAddForm()
+			this.handleAddProduct()
 		});
 	}
 
@@ -105,6 +155,8 @@ class AppController {
 		await this.initBill();
 		this.searchHandle();
 		this.handleOpenAddModal();
+		this.handleOpenUpdateModal();
+		this.handleDeleteProduct();
 	}
 
 	searchHandle() {
@@ -136,17 +188,7 @@ class AppController {
 		})
 	}
 	handleCheckout() {
-		const modal = document.getElementById("checkoutModal");
-		const close = modal.querySelector(".close");
 		const checkoutButton = document.querySelector('.cta-checkout');
-		close.onclick = function () {
-			modal.style.display = "none";
-		}
-		modal.addEventListener('click', (event) => {
-			if (event.target === modal) {
-				modal.style.display = "none";
-			}
-		});
 		checkoutButton.addEventListener('click', (e) => {
 			const bill = this.model.bill.getProductInBill();
 			const parentEl = e.currentTarget.parentNode;
@@ -220,17 +262,7 @@ class AppController {
 	}
 
 	handleViewModal() {
-		const modal = document.getElementById("viewModal");
-		const close = modal.querySelector(".close");
 		const viewDetailButton = document.querySelectorAll('#cta-view');
-		close.onclick = function () {
-			modal.style.display = "none";
-		}
-		modal.addEventListener('click', (event) => {
-			if (event.target === modal) {
-				modal.style.display = "none";
-			}
-		});
 		viewDetailButton.forEach((button) => {
 			button.addEventListener('click', (e) => {
 				e.stopPropagation();
