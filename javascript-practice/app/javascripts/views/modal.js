@@ -120,7 +120,6 @@ class ModalView {
 	}
 
 	openUpdateModal(product, categories) {
-		console.log(product)
 		const modalEl = document.getElementById("updateModal");
 		this.handleCloseModal(modalEl);
 		categories.forEach(category => {
@@ -146,9 +145,9 @@ class ModalView {
 			sugar.checked = false;
 		}
 		if (product.isIce === 1) {
-			sugar.checked = true;
+			ice.checked = true;
 		} else {
-			sugar.checked = false;
+			ice.checked = false;
 		}
 	}
 
