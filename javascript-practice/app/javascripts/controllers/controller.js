@@ -7,7 +7,6 @@ class AppController {
 		this.model = model;
 		this.view = view;
 		this.categories = [];
-		this.products = [];
 		this.selectedCategoryId = "0";
 		this.selectedCategoryName = "All menu";
 		this.historyService = new HistoryPaymentService();
@@ -102,8 +101,8 @@ class AppController {
 	}
 
 	loadListproductList = () => {
-		this.products = this.model.productList.getProdcutList();
-		this.renderProduct(this.products)
+		const products = this.model.productList.getProdcutList();
+		this.renderProduct(products)
 	}
 
 	getCategoryInforOnClick(event) {
@@ -244,14 +243,14 @@ class AppController {
 				});
 				product.classList.add('active');
 
-				this.getCategoryInforOnClick(event)
+				this.getCategoryInforOnClick(event);
 
 				if (this.selectedCategoryId == 0) {
-					this.renderProduct(this.products)
+					this.renderProduct(this.model.productList.getProdcutList())
 
 				}
 				else {
-					const productsFilter = this.products.filter(product => product.categoryId == this.selectedCategoryId);
+					const productsFilter = this.model.productList.getProdcutList().filter(product => product.categoryId == this.selectedCategoryId);
 					this.renderProduct(productsFilter)
 				}
 			});
