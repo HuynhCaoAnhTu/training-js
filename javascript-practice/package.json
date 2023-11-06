@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
     "dev": "parcel app/index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build app/index.html"
   },
   "keywords": [],
   "author": "",
