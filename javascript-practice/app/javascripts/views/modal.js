@@ -20,13 +20,22 @@ class ModalView {
 
 	handleCloseModal(modalEl){
 		const close = modalEl.querySelector(".close");
-		close.onclick = function () {
+		const forms = document.querySelectorAll('#form');
+		close.onclick = ()=> {
 			modalEl.style.display = "none";
+			this.resetForms(forms);
 		}
 		modalEl.addEventListener('click', (event) => {
 			if (event.target === modalEl) {
 				modalEl.style.display = "none";
+				this.resetForms(forms);
 			}
+		});
+	}
+
+	 resetForms(forms) {
+		forms.forEach(form => {
+			form.reset();
 		});
 	}
 
