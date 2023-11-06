@@ -28,11 +28,13 @@ class HistoryPaymentView{
 	}
 
 	renderProductInBill(bill){
+		const sugar = bill.ingredients.find((ingredient) => ingredient.name === "sugar").percentage;
+		const ice = bill.ingredients.find((ingredient) => ingredient.name === "ice").percentage;
 		this.tableContent.innerHTML +=
 		`<tr>
 		<td class="table-product-name">${bill.name}</td>
-		<td class="table-product-sugar">${bill.ingredients.find((ingredient) => ingredient.name === "sugar").percentage} %</td>
-		<td class="table-product-ice">${bill.ingredients.find((ingredient) => ingredient.name === "ice").percentage} %</td>
+		${sugar!== 100 ? `	<td class="table-product-sugar">${sugar} %</td>` : '<td class="table-product-sugar"></td>'}
+		${ice!== 100 ? `<td class="table-product-ice">${ice} %</td>` : '<td class="table-product-ice"></td>'}
 		<td class="table-product-quantity">${bill.quantity}</td>
 	</tr>`;
 	}
