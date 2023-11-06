@@ -88,6 +88,9 @@
 	max-width: 25px;
 }
 
+.cta-add-modal{
+	margin-top: 20px;
+}
 
 .payment-method {
 	display: flex;
