@@ -45,11 +45,9 @@ class ProductList {
 	}
 
 	updateProduct(id, name, desc, category, url, price, isSugar, isIce) {
-		console.log(id)
 		for (let i = 0; i < this.productList.length; i++) {
 			if (this.productList[i].productId == id) {
 				this.productList[i].productName = name;
-				console.log(this.productList[i].productName);
 				this.productList[i].productDes = desc;
 				this.productList[i].categoryId = +category;
 				this.productList[i].productUrl = url;

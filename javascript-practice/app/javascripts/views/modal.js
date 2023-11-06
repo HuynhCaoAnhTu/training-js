@@ -3,11 +3,9 @@ import Category from "../models/category";
 class ModalView {
 	constructor() {
 		this.tableContent = document.querySelector("#bill-table tbody");
-		this.categoryContent = document.querySelector(".category-select");
 	}
 
 	openViewModal = (product) => {
-		console.log(product)
 		if (product) {
 			const modalEl = document.getElementById("viewModal");
 			this.handleCloseModal(modalEl);
@@ -37,7 +35,6 @@ class ModalView {
 	}
 
 	openCheckoutModal = (bill, total) => {
-		console.log(bill)
 		if (bill) {
 			const modalEl = document.getElementById("checkoutModal");
 			this.handleCloseModal(modalEl);
@@ -52,32 +49,38 @@ class ModalView {
 	}
 
 	renderProductPreCheckout(product) {
-		const tableContent = document.querySelector("#bill-table tbody");
-		console.log(tableContent);
-		console.log(product);
-
+		const sugar = product.ingredients.find((ingredient) => ingredient.name === "sugar").percentage;
+		const ice = product.ingredients.find((ingredient) => ingredient.name === "ice").percentage;
 		this.tableContent.innerHTML +=
 			`<tr>
 			<td class="table-product-name">${product.name}</td>
-			<td class="table-product-sugar">${product.ingredients.find((ingredient) => ingredient.name === "sugar").percentage} %</td>
-			<td class="table-product-ice">${product.ingredients.find((ingredient) => ingredient.name === "ice").percentage} %</td>
+			${sugar!== 100 ? `	<td class="table-product-sugar">${sugar} %</td>` : '<td class="table-product-sugar"></td>'}
+			${ice!== 100 ? `<td class="table-product-ice">${ice} %</td>` : '<td class="table-product-ice"></td>'}
 			<td class="table-product-quantity">${product.quantity}</td>
 			<td class="table-product-total">&dollar;${product.total}</td>
 		</tr>`;
 	}
 
-	openAddModal(categories) {
+	openAddModal(categories,selectedCategoryId) {
 		const modalEl = document.getElementById("addModal");
+		const categoryContent = modalEl.querySelector(".category-select");
 		this.handleCloseModal(modalEl);
-		this.categoryContent.innerHTML = "";
+		categoryContent.innerHTML = "";
 		categories.forEach(category => {
 			this.renderCategoryOption(category, modalEl);
 		});
+		if(selectedCategoryId!=0){
+			categoryContent.value = selectedCategoryId
+			categoryContent.disabled = true;
+		}
+		else{
+			categoryContent.disabled = false;
+		}
 		modalEl.style.display = 'block'
 	}
 
 	renderCategoryOption(category, modalEl) {
-		const categoryContent = modalEl.querySelector(".category-select");
+		const categoryContent = modalEl.querySelector(".category-select")
 		categoryContent.innerHTML += `<option class=category-option" value="${category.categoryId}">${category.categoryName}</option>`
 	}
 
@@ -127,10 +130,10 @@ class ModalView {
 		});
 		modalEl.style.display = 'block'
 		const form = document.querySelector('.update-form');
-		const name = form.querySelector('#add-input-name');
-		const url = form.querySelector('#url-img');
-		const desc = form.querySelector('#add-ta-desc');
-		const price = form.querySelector('#add-input-price');
+		const name = form.querySelector('#input-name');
+		const url = form.querySelector('#input-url');
+		const desc = form.querySelector('#textarea-desc');
+		const price = form.querySelector('#input-price');
 		const category = form.querySelector(".category-select");
 		const sugar = form.querySelector('#checkbox-sugar');
 		const ice = form.querySelector('#checkbox-ice');

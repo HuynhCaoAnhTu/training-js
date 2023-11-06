@@ -9,7 +9,6 @@ class CategoryList {
 
   init = async () => {
     const data = await this.service.getLocalStorageData();
-    console.log(data)
     this.categoryList = this.parseData(data);
   }
 

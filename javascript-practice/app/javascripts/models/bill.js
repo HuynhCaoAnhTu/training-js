@@ -8,7 +8,6 @@ class Bill {
 
 	init = async () => {
 		const data = await this.service.getLocalStorageData();
-		console.log(data)
 		this.productsInBill = data;
 	}
 
@@ -22,11 +21,9 @@ class Bill {
 
 	addToBill(id, name, imageUrl, description, price, ingredients) {
 		let productAdded = false;
-		console.log(ingredients)
 		for (let i = 0; i < this.productsInBill.length; i++) {
 			const existingProduct = this.productsInBill[i];
 			if (existingProduct.id === id && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {
-				console.log(existingProduct)
 				existingProduct.quantity += 1;
 				existingProduct.total = existingProduct.quantity * existingProduct.price;
 				productAdded = true;
@@ -53,7 +50,6 @@ class Bill {
 		for (let i = 0; i < this.productsInBill.length; i++) {
 			existingProduct = this.productsInBill[i];
 			if (existingProduct.id === productId && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {
-				console.log(existingProduct)
 				existingProduct.quantity += 1;
 				existingProduct.total = existingProduct.quantity * existingProduct.price;
 				break;
@@ -67,7 +63,6 @@ class Bill {
 		for (let i = 0; i < this.productsInBill.length; i++) {
 			existingProduct = this.productsInBill[i];
 			if (existingProduct.id === productId && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {
-				console.log(existingProduct)
 				existingProduct.quantity -= 1;
 				existingProduct.total = existingProduct.quantity * existingProduct.price;
 				if (existingProduct.quantity === 0) {
