@@ -10,7 +10,7 @@ class BillView {
 		this.totalBill = document.querySelector('.total-bill-ammout');
 	}
 
-	renderBill = (productinBill,totalBill) => {
+	renderBill = (productinBill, totalBill) => {
 		this.contentContainer.style.display = 'flex';
 		this.mainContent.style.flex = '2';
 		this.productList.style.gridTemplateColumns = 'repeat(2, 1fr)';
@@ -22,6 +22,8 @@ class BillView {
 	}
 
 	renderproductInBill = (product) => {
+		const sugar = product.ingredients.find((ingredient) => ingredient.name === "sugar").percentage;
+		const ice = product.ingredients.find((ingredient) => ingredient.name === "ice").percentage;
 		this.productListBillEl.innerHTML += `
     <li class="product-bill" id="${product.id}">
 			<img class="product-bill-img" src="${product.imageUrl}" alt="${product.name}">
@@ -30,14 +32,11 @@ class BillView {
 				<div class="product-bill-detail">
 					<p class="product-bill-qnty"> <span>x</span>${product.quantity}</p>
                 <div class="product-bill-note">
-                  <label class="note-label-sugar" for="product-bill-sugar">Sugar: </label>
-                  <p class="product-bill-sugar">${product.ingredients.find(
-                    (ingredient) => ingredient.name === "sugar"
-                  ).percentage}<span>&percnt;</span></p>
-                  <label class="note-label-ice" for="product-bill-ice">Ice:</label>
-                  <p class="product-bill-ice">${product.ingredients.find(
-                    (ingredient) => ingredient.name === "ice"
-                  ).percentage}<span>&percnt;</span></p>
+								${sugar !== 100 ? ` <label class="note-label-sugar" for="product-bill-sugar">Sugar: </label>
+								<p class="product-bill-sugar">${sugar}<span>&percnt;</span></p>` : ''}
+								${ice !== 100 ? `<label class="note-label-ice" for="product-bill-ice">Ice:</label>
+								<p class="product-bill-ice">${ice}<span>&percnt;</span></p>` : ''}
+
                 </div>
 					<p class="product-bill-price"><span>$</span>${product.total}</p>
 				</div>
