@@ -8,113 +8,20 @@ class AppController {
 		this.view = view;
 		this.categories = [];
 		this.products = [];
-		this.selectedCategoryId = 1;
+		this.selectedCategoryId = "0";
 		this.selectedCategoryName = "All menu";
 		this.historyService = new HistoryPaymentService();
 	}
 
-	handleAddProduct = () => {
-		const addButton = document.querySelector(".cta-add-product");
-		const name = document.getElementById('add-input-name');
-		const url = document.getElementById('url-img');
-		const desc = document.getElementById('add-ta-desc');
-		const price = document.getElementById('add-input-price');
-		const category = document.querySelector(".category-select");
-		const sugar = document.getElementById('checkbox-sugar');
-		const ice = document.getElementById('checkbox-ice');
-		let isSugar, isIce;
-		addButton.addEventListener('click', (e) => {
-			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
-			const checkNumber = this.view.modal.checkNumber(price);
-			if (checkRequired == false || checkNumber == false) {
-				e.preventDefault();
-			}
-			else {
-				const product = new Product(
-					this.model.productList.generateId(),
-					name.value,
-					desc.value,
-					category.value,
-					url.value,
-					price.value,
-					0,
-					isSugar = (sugar.checked) ? 1 : 0,
-					isIce = (ice.checked) ? 1 : 0,
-				);
-				const products = this.model.productList.addProduct(product);
-				this.renderProduct(products);
-				this.hanlderproductEvent();
-			}
-		});
-	}
-	handleUpdateProduct(productId) {
-		const form = document.querySelector('.update-form');
-		const update = form.querySelector(".cta-update");
-		const name = form.querySelector('#add-input-name');
-		const url = form.querySelector('#url-img');
-		const desc = form.querySelector('#add-ta-desc');
-		const price = form.querySelector('#add-input-price');
-		const category = form.querySelector(".category-select");
-		const sugar = form.querySelector('#checkbox-sugar');
-		const ice = form.querySelector('#checkbox-ice');
-		let isSugar, isIce;
-		update.addEventListener("click", (e) => {
-			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
-			const checkNumber = this.view.modal.checkNumber(price);
-			if (checkRequired == false || checkNumber == false) {
-				e.preventDefault();
-			}
-			else {
-				isSugar = (sugar.checked) ? 1 : 0;
-				isIce = (ice.checked) ? 1 : 0;
-				const products = this.model.productList.updateProduct(productId, name.value, desc.value, category.value, url.value, price.value, isSugar, isIce);
-				this.renderProduct(products);
-				this.hanlderproductEvent();
-			}
-		});
-	}
-
-	handleDeleteProduct() {
-		const deleteButtons = document.querySelectorAll(".cta-delete-product");
-		const modalEl = document.getElementById("viewModal");
-
-		deleteButtons.forEach(deleteButton => {
-			deleteButton.addEventListener('click', (e) => {
-				const userChoice = confirm("Do you want to delete this product");
-				if (userChoice) {
-					const productId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
-					console.log(productId);
-					const products = this.model.productList.deleteProduct(productId);
-					this.renderProduct(products);
-					this.view.modal.closeModal(modalEl);
-					this.hanlderproductEvent();
-				}
-			});
-		});
-
-	}
-
-	handleOpenUpdateModal() {
-		const updateButtons = document.querySelectorAll(".cta-update-product")
-		const categories = this.model.categoryList.getCategoryList();
-		updateButtons.forEach(updateButton => {
-			updateButton.addEventListener('click', (e) => {
-				const productId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
-				const product = this.model.productList.getProdcutById(productId);
-				console.log(product);
-				this.view.modal.openUpdateModal(product, categories);
-				this.handleUpdateProduct(productId);
-			});
-		});
-	}
-
-	handleOpenAddModal = () => {
-		const addButton = document.querySelector(".cta-add-modal");
-		const categories = this.model.categoryList.getCategoryList();
-		addButton.addEventListener('click', () => {
-			this.view.modal.openAddModal(categories);
-			this.handleAddProduct()
-		});
+	init = async () => {
+		this.slidebarHandle();
+		await this.initCategoryList();
+		await this.initProductList();
+		await this.initBill();
+		this.searchHandle();
+		this.handleOpenAddModal();
+		this.handleOpenUpdateModal();
+		this.handleDeleteProduct();
 	}
 
 	slidebarHandle() {
@@ -146,19 +53,6 @@ class AppController {
 		});
 	}
 
-
-
-	init = async () => {
-		this.slidebarHandle();
-		await this.initCategoryList();
-		await this.initProductList();
-		await this.initBill();
-		this.searchHandle();
-		this.handleOpenAddModal();
-		this.handleOpenUpdateModal();
-		this.handleDeleteProduct();
-	}
-
 	searchHandle() {
 		const searchInput = document.querySelector('.header-search');
 		const loading = document.querySelector('.loader');
@@ -187,15 +81,7 @@ class AppController {
 			}
 		})
 	}
-	handleCheckout() {
-		const checkoutButton = document.querySelector('.cta-checkout');
-		checkoutButton.addEventListener('click', (e) => {
-			const bill = this.model.bill.getProductInBill();
-			const parentEl = e.currentTarget.parentNode;
-			const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
-			this.view.modal.openCheckoutModal(bill, totalBill);
-		});
-	}
+
 	// CONTROLLER CATEGORY
 	initCategoryList = async () => {
 		await this.model.categoryList.init();
@@ -207,31 +93,33 @@ class AppController {
 		this.view.categories.renderCategoryList(this.categories);
 	}
 
+
 	// CONTROLLER product
 	initProductList = async () => {
 		await this.model.productList.init();
 		this.loadListproductList();
-		this.hanlderproductEvent();
+		this.handleCateogyClick();
 	}
 
 	loadListproductList = () => {
 		this.products = this.model.productList.getProdcutList();
 		this.renderProduct(this.products)
-		this.handleCateogyClick();
-
 	}
 
 	getCategoryInforOnClick(event) {
-		this.selectedCategoryId = event.currentTarget.getAttribute('category-id');
-		const category = this.categories.find(category => category.categoryId == this.selectedCategoryId);
-		if (category) {
+		const categoryId = event.currentTarget.getAttribute('category-id');
+		if (categoryId != 0) {
+			const category = this.categories.find(category => category.categoryId == categoryId);
+			this.selectedCategoryId = categoryId;
 			this.selectedCategoryName = category.categoryName;
-		} else {
-			console.log("Unknown Category");
+		}
+		else {
+			this.selectedCategoryId = 0;
+			this.selectedCategoryName = "All menu";
 		}
 	}
 
-	hanlderproductEvent() {
+	hanlderproductEvent = () => {
 		this.handleproductClick();
 		this.handleViewModal();
 		this.handleAddToBill();
@@ -355,15 +243,16 @@ class AppController {
 					otherproduct.classList.remove('active');
 				});
 				product.classList.add('active');
+
 				this.getCategoryInforOnClick(event)
-				if (this.selectedCategoryId == 1) {
+
+				if (this.selectedCategoryId == 0) {
 					this.renderProduct(this.products)
-					this.hanlderproductEvent();
+
 				}
 				else {
 					const productsFilter = this.products.filter(product => product.categoryId == this.selectedCategoryId);
 					this.renderProduct(productsFilter)
-					this.hanlderproductEvent();
 				}
 			});
 		});
@@ -371,6 +260,7 @@ class AppController {
 
 	renderProduct(productList) {
 		this.view.products.renderProductList(productList, this.selectedCategoryName);
+		this.hanlderproductEvent();
 	}
 
 	// CONTROLLER BILL
@@ -380,7 +270,7 @@ class AppController {
 		await this.handleConfirmCheckout();
 	}
 
-	addToBill(productId, productName, productUrl, productDes, productPrice, ingerdient) {
+	addToBill = (productId, productName, productUrl, productDes, productPrice, ingerdient) => {
 		const latestBill = this.model.bill.addToBill(productId, productName, productUrl, productDes, productPrice, ingerdient);
 		this.model.bill.service.setLocalStorage(latestBill);
 		this.renderBill()
@@ -392,46 +282,21 @@ class AppController {
 		this.view.bill.renderBill(bill, totalBill);
 		this.handleChangeQuantity();
 		this.handleCheckout();
-
 	}
 
-	handleChangeQuantity() {
-		const insButtons = document.querySelectorAll(".btn-cta-ins");
-		const desButtons = document.querySelectorAll(".btn-cta-des");
-		insButtons.forEach(insButton => {
-			insButton.addEventListener('click', (event) => {
-				const parentLi = event.currentTarget.parentNode.parentNode;
-				const productId = parentLi.getAttribute("id");
-				const sugarNote = parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
-				const iceNote = parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
-				const ingredients = []
-				const sugar = new Ingredient("sugar", +sugarNote);
-				const ice = new Ingredient("ice", +iceNote);
-				ingredients.push(sugar, ice)
-				const latestBill = this.model.bill.increaseQuantity(productId, ingredients)
-				this.model.bill.service.setLocalStorage(latestBill);
-				this.renderBill()
-			});
-		});
-		desButtons.forEach(desButton => {
-			desButton.addEventListener('click', (event) => {
-				const parentLi = event.currentTarget.parentNode.parentNode;
-				const productId = parentLi.getAttribute("id");
-				const sugarNote = parentLi.querySelector(".product-bill-sugar").textContent.trim().replace('%', '');
-				const iceNote = parentLi.querySelector(".product-bill-ice").textContent.trim().replace('%', '');
-				const ingredients = []
-				const sugar = new Ingredient("sugar", +sugarNote);
-				const ice = new Ingredient("ice", +iceNote);
-				ingredients.push(sugar, ice)
-				const latestBill = this.model.bill.decreaseQuantity(productId, ingredients)
-				this.model.bill.service.setLocalStorage(latestBill);
-				this.renderBill()
-			});
+	handleCheckout() {
+		const checkoutButton = document.querySelector('.cta-checkout');
+		checkoutButton.addEventListener('click', (e) => {
+			const bill = this.model.bill.getProductInBill();
+			const parentEl = e.currentTarget.parentNode;
+			const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
+			this.view.modal.openCheckoutModal(bill, totalBill);
 		});
 	}
 
 	handleConfirmCheckout() {
 		const checkoutButton = document.querySelector(".cta-checkout-bill");
+		const bill = this.model.bill.getProductInBill();
 		let methodName;
 		const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
 		paymentMethodInputs.forEach(function (input) {
@@ -446,25 +311,188 @@ class AppController {
 		});
 		checkoutButton.addEventListener('click', (event) => {
 			var now = new Date();
-			const bill = this.model.bill.getProductInBill();
+			console.log(bill)
 			const history = this.historyService.getLocalStorage();
 			const modal = event.target.parentNode.parentNode;
 			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
 			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
-			history.push({
-				date: dateCheckout,
-				bill: bill,
-				totalBill: +totalBill,
-				method: methodName
-			});
-			this.historyService.setLocalStorage(history);
-			this.view.history.renderHistoryPayment(history, totalBill);
-			this.model.bill.clearBill();
-			this.model.bill.service.clearBillLocalStorage();
-			modal.style.display = "none"
-			this.renderBill();
+			if(bill.length<=0){
+				checkoutButton.disabled = true;
+				alert("Bill empty");
+			}
+			else{
+				checkoutButton.disabled = false;
+				history.push({
+					date: dateCheckout,
+					bill: bill,
+					totalBill: +totalBill,
+					method: methodName
+				});
+				this.historyService.setLocalStorage(history);
+				this.view.history.renderHistoryPayment(history, totalBill);
+				this.model.bill.clearBill();
+				this.model.bill.service.clearBillLocalStorage();
+				modal.style.display = "none"
+				this.renderBill();
+			}
 		});
 	}
 
+	// CONTROLLER CRUD FUNCTION
+	handleChangeQuantity() {
+		const insButtons = document.querySelectorAll(".btn-cta-ins");
+		const desButtons = document.querySelectorAll(".btn-cta-des");
+		insButtons.forEach(insButton => {
+			insButton.addEventListener('click', (event) => {
+				const parentLi = event.currentTarget.parentNode.parentNode;
+				const productId = parentLi.getAttribute("id");
+				const sugarNoteEl = parentLi.querySelector(".product-bill-sugar");
+				const iceNoteEl = parentLi.querySelector(".product-bill-ice");
+				let sugarNote, iceNote;
+				if (sugarNoteEl) {
+					sugarNote = sugarNoteEl.textContent.trim().replace('%', '');
+				} else {
+					sugarNote = 100;
+				}
+				if (iceNoteEl) {
+					iceNote = iceNoteEl.textContent.trim().replace('%', '');
+				} else {
+					iceNote = 100;
+				}
+				const ingredients = []
+				const sugar = new Ingredient("sugar", +sugarNote);
+				const ice = new Ingredient("ice", +iceNote);
+				ingredients.push(sugar, ice)
+				const latestBill = this.model.bill.increaseQuantity(productId, ingredients)
+				this.model.bill.service.setLocalStorage(latestBill);
+				this.renderBill()
+			});
+		});
+		desButtons.forEach(desButton => {
+			desButton.addEventListener('click', (event) => {
+				const parentLi = event.currentTarget.parentNode.parentNode;
+				const productId = parentLi.getAttribute("id");
+				const sugarNoteEl = parentLi.querySelector(".product-bill-sugar");
+				const iceNoteEl = parentLi.querySelector(".product-bill-ice");
+				let sugarNote, iceNote;
+				if (sugarNoteEl) {
+					sugarNote = sugarNoteEl.textContent.trim().replace('%', '');
+				} else {
+					sugarNote = 100;
+				}
+				if (iceNoteEl) {
+					iceNote = iceNoteEl.textContent.trim().replace('%', '');
+				} else {
+					iceNote = 100;
+				}
+				const ingredients = []
+				const sugar = new Ingredient("sugar", +sugarNote);
+				const ice = new Ingredient("ice", +iceNote);
+				ingredients.push(sugar, ice)
+				const latestBill = this.model.bill.decreaseQuantity(productId, ingredients)
+				this.model.bill.service.setLocalStorage(latestBill);
+				this.renderBill()
+			});
+		});
+	}
+
+	handleAddProduct = () => {
+		const addButton = document.querySelector(".cta-add-product");
+		const name = document.getElementById('input-name');
+		const url = document.getElementById('input-url');
+		const desc = document.getElementById('textarea-desc');
+		const price = document.getElementById('input-price');
+		const category = document.querySelector(".category-select");
+		const sugar = document.getElementById('checkbox-sugar');
+		const ice = document.getElementById('checkbox-ice');
+		let isSugar, isIce;
+		addButton.addEventListener('click', (e) => {
+			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
+			const checkNumber = this.view.modal.checkNumber(price);
+			if (checkRequired == false || checkNumber == false) {
+				e.preventDefault();
+			}
+			else {
+				const product = new Product(
+					this.model.productList.generateId(),
+					name.value,
+					desc.value,
+					category.value,
+					url.value,
+					price.value,
+					0,
+					isSugar = (sugar.checked) ? 1 : 0,
+					isIce = (ice.checked) ? 1 : 0,
+				);
+				const products = this.model.productList.addProduct(product);
+				this.renderProduct(products);
+			}
+		});
+	}
+
+	handleUpdateProduct(productId) {
+		const form = document.querySelector('.update-form');
+		const update = form.querySelector(".cta-update");
+		const name = form.querySelector('#input-name');
+		const url = form.querySelector('#input-url');
+		const desc = form.querySelector('#textarea-desc');
+		const price = form.querySelector('#input-price');
+		const category = form.querySelector(".category-select");
+		const sugar = form.querySelector('#checkbox-sugar');
+		const ice = form.querySelector('#checkbox-ice');
+		let isSugar, isIce;
+		update.addEventListener("click", (e) => {
+			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
+			const checkNumber = this.view.modal.checkNumber(price);
+			if (checkRequired == false || checkNumber == false) {
+				e.preventDefault();
+			}
+			else {
+				isSugar = (sugar.checked) ? 1 : 0;
+				isIce = (ice.checked) ? 1 : 0;
+				const products = this.model.productList.updateProduct(productId, name.value, desc.value, category.value, url.value, price.value, isSugar, isIce);
+				this.renderProduct(products);
+			}
+		});
+	}
+
+	handleDeleteProduct() {
+		const deleteButtons = document.querySelectorAll(".cta-delete-product");
+		const modalEl = document.getElementById("viewModal");
+		deleteButtons.forEach(deleteButton => {
+			deleteButton.addEventListener('click', (e) => {
+				const userChoice = confirm("Do you want to delete this product");
+				if (userChoice) {
+					const productId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
+					const products = this.model.productList.deleteProduct(productId);
+					this.renderProduct(products);
+					this.view.modal.closeModal(modalEl);
+				}
+			});
+		});
+
+	}
+
+	handleOpenUpdateModal() {
+		const updateButtons = document.querySelectorAll(".cta-update-product")
+		const categories = this.model.categoryList.getCategoryList();
+		updateButtons.forEach(updateButton => {
+			updateButton.addEventListener('click', (e) => {
+				const productId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
+				const product = this.model.productList.getProdcutById(productId);
+				this.view.modal.openUpdateModal(product, categories);
+				this.handleUpdateProduct(productId);
+			});
+		});
+	}
+
+	handleOpenAddModal = () => {
+		const addButton = document.querySelector(".cta-add-modal");
+		const categories = this.model.categoryList.getCategoryList();
+		addButton.addEventListener('click', () => {
+			this.view.modal.openAddModal(categories, this.selectedCategoryId);
+			this.handleAddProduct()
+		});
+	}
 }
 export default AppController;
