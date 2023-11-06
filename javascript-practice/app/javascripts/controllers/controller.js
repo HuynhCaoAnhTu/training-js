@@ -1,5 +1,5 @@
 // controller.js
-import { KEY_CODE_ENTER } from "../constants/key";
+import { KEY_CODE_ENTER } from "../constants/storageKey";
 import Product, { Ingredient } from "../models/product";
 import HistoryPaymentService from "../services/historypaymentService";
 class AppController {

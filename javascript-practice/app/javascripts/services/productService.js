@@ -1,5 +1,5 @@
 import { PRODUCTS_ENDPOINT } from "../constants/api";
-import { PRODUCTS_STORAGE_KEY } from "../constants/key";
+import { PRODUCTS_STORAGE_KEY } from "../constants/storageKey";
 import BaseService from "./baseService";
 class ProductService extends BaseService {
 	constructor(){

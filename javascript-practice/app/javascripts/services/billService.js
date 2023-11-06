@@ -1,4 +1,4 @@
-import { BILL_STORAGE_KEY } from "../constants/key";
+import { BILL_STORAGE_KEY } from "../constants/storageKey";
 import BaseService from "./baseService";
 class BillService extends BaseService {
 	constructor() {

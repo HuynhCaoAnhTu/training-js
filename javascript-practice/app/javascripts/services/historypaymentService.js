@@ -1,4 +1,4 @@
-import { HISTORYPAYMENT_STORAGE_KEY } from "../constants/key";
+import { HISTORYPAYMENT_STORAGE_KEY } from "../constants/storageKey";
 import LocalStorageService from "./localstorageService";
 import BaseService from "./baseService";
 class HistoryPaymentService extends BaseService {

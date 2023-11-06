@@ -1,5 +1,5 @@
 import { CATEGORIES_ENDPOINT } from "../constants/api";
-import { CATEGORIES_STORAGE_KEY } from "../constants/key";
+import { CATEGORIES_STORAGE_KEY } from "../constants/storageKey";
 import BaseService from "./baseService";
 class CategoryService extends BaseService {
 	constructor(){

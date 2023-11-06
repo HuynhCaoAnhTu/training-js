@@ -1,7 +1,7 @@
 
 import ProductService from "../services/productService";
 import Product from "./product";
-import { PRODUCTS_STORAGE_KEY } from "../constants/key";
+import { PRODUCTS_STORAGE_KEY } from "../constants/storageKey";
 class ProductList {
 	constructor() {
 		this.service = new ProductService();
