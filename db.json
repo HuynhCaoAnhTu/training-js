@@ -1,0 +1,263 @@
+{
+	"categories": [
+		{
+			"categoryId": 1,
+			"categoryName": "Coffee",
+			"categoryUrl": "https://i.ibb.co/p3FkjS6/coffee-cup-icon.png"
+		},
+		{
+			"categoryId": 2,
+			"categoryName": "Miky milk",
+			"categoryUrl": "https://i.ibb.co/znHLXYK/milk-cup-icon.png"
+		},
+		{
+			"categoryId": 3,
+			"categoryName": "Baboon",
+			"categoryUrl": "https://i.ibb.co/1GghrzS/bubble-tea-icon.png"
+		},
+		{
+			"categoryId": 4,
+			"categoryName": "Ice cream",
+			"categoryUrl": "https://i.ibb.co/fX6xZQ7/ice-cream-icon.png"
+		},
+		{
+			"categoryId": 5,
+			"categoryName": "Dessert",
+			"categoryUrl": "https://i.ibb.co/SnNPrgv/dessert-icon.png"
+		}
+	],
+
+	"products": [
+		{
+			"productId": "k31uZaqiwi",
+			"productName": "Banana Milk",
+			"productDes": "Delicious drink",
+			"categoryId": 2,
+			"productUrl": "https://i.ibb.co/qxkLf3F/image-2023-11-05-222750669.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "5HVrCNTo45",
+			"productName": "Matcha Latte",
+			"productDes": "Delicious drink",
+			"categoryId": 2,
+			"productUrl": "https://i.ibb.co/vk1bPnS/image-2023-11-05-223218166.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "rvhZvJO6Jy",
+			"productName": "Fresh Milk",
+			"productDes": "Delicious drink",
+			"categoryId": 2,
+			"productUrl": "https://i.ibb.co/d2TJq23/image-2023-11-05-223403625.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "BOLKHwgHNM",
+			"productName": "Cappuccino",
+			"productDes": "Delicious drink",
+			"categoryId": 1,
+			"productUrl": "https://i.ibb.co/G96qJ8Z/image-2023-11-05-224144074.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "TwIzygR38D",
+			"productName": "Espresso",
+			"productDes": "Delicious drink",
+			"categoryId": 1,
+			"productUrl": "https://i.ibb.co/pXD2Y4K/image-2023-11-05-224552218.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 0
+		},
+		{
+			"productId": "MMI9NOXcii",
+			"productName": "Hot Latte",
+			"productDes": "Delicious drink",
+			"categoryId": 1,
+			"productUrl": "https://i.ibb.co/zQQQ8xz/image-2023-11-05-224835172.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 0
+		},
+		{
+			"productId": "zEc4ECHjKa",
+			"productName": "Americano",
+			"productDes": "Delicious drink",
+			"categoryId": 1,
+			"productUrl": "https://i.ibb.co/1qcn7wy/image-2023-11-05-230034680.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "YOA3YzU4Wc",
+			"productName": "Milk Coffee",
+			"productDes": "Delicious drink",
+			"categoryId": 1,
+			"productUrl": "https://i.ibb.co/p09xs8x/image.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "znb4UVeMYv",
+			"productName": "Black Coffee Phin",
+			"productDes": "Delicious drink",
+			"categoryId": 1,
+			"productUrl": "https://i.ibb.co/3sFhk3x/image-2023-11-05-230549101.png",
+			"productPrice": 5,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "SI8LQ3ox96",
+			"productName": "Latte Baboon",
+			"productDes": "Delicious drink",
+			"categoryId": 3,
+			"productUrl": "https://i.ibb.co/c8VK8k0/image-2023-11-05-230910523.png",
+			"productPrice": 10,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "szF6LlEO0D",
+			"productName": "Brow Sugar Bubble Tea",
+			"productDes": "Delicious drink",
+			"categoryId": 3,
+			"productUrl": "https://i.ibb.co/Kqx4wgJ/image.png",
+			"productPrice": 10,
+			"ingredients": 0,
+			"isSugar": 1,
+			"isIce": 1
+		},
+		{
+			"productId": "XI4IsOzEGl",
+			"productName": "Matcha Ice Cream",
+			"productDes": "Delicious Ice Cream",
+			"categoryId": 4,
+			"productUrl": "https://i.ibb.co/mTBYH4V/image.png",
+			"productPrice": 3,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "tyMFXDL5LP",
+			"productName": "Strawberry Ice Cream",
+			"productDes": "Delicious Ice Cream",
+			"categoryId": 4,
+			"productUrl": "https://i.ibb.co/hLz8vFk/image.png",
+			"productPrice": 3,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "Q6ezrtb7ac",
+			"productName": "Chocolate Ice Cream",
+			"productDes": "Delicious Ice Cream",
+			"categoryId": 4,
+			"productUrl": "https://i.ibb.co/fXXRPxc/image.png",
+			"productPrice": 3,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": 10,
+			"productName": "Mango Ice Cream",
+			"productDes": "Delicious Ice Cream",
+			"categoryId": 4,
+			"productUrl": "https://i.ibb.co/CMY2GdD/image.png",
+			"productPrice": 3,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "mBYJnkQ7Ut",
+			"productName": "Vanila Ice Cream",
+			"productDes": "Delicious Ice Cream",
+			"categoryId": 4,
+			"productUrl": "https://i.ibb.co/ct9FmHd/image.png",
+			"productPrice": 3,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "0ITbORvGjB",
+			"productName": "Chocolate Cake",
+			"productDes": "Delicious Cake",
+			"categoryId": 5,
+			"productUrl": "https://i.ibb.co/Y3qbpwd/image.png",
+			"productPrice": 15,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "m056alYSxF",
+			"productName": "Macaron",
+			"productDes": "Delicious Cake",
+			"categoryId": 5,
+			"productUrl": "https://i.ibb.co/7j8TzVs/image.png",
+			"productPrice": 15,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "aePogUv568",
+			"productName": "Strawberry Donut",
+			"productDes": "Delicious Cake",
+			"categoryId": 5,
+			"productUrl": "https://i.ibb.co/bFYt70K/image.png",
+			"productPrice": 15,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "ZuHPFHBJcX",
+			"productName": "Brownie Cake",
+			"productDes": "Delicious Cake",
+			"categoryId": 5,
+			"productUrl": "https://i.ibb.co/ysxsjsh/image.png",
+			"productPrice": 15,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		},
+		{
+			"productId": "zu2wTw10Gt",
+			"productName": "Croissant",
+			"productDes": "Delicious Cake",
+			"categoryId": 5,
+			"productUrl": "https://i.ibb.co/DCSB1Qx/image.png",
+			"productPrice": 15,
+			"ingredients": 0,
+			"isSugar": 0,
+			"isIce": 0
+		}
+	]
+}
