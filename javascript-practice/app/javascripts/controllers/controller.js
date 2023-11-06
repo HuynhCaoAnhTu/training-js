@@ -21,6 +21,7 @@ class AppController {
 		this.handleOpenAddModal();
 		this.handleOpenUpdateModal();
 		this.handleDeleteProduct();
+		this.handleAddProduct();
 	}
 
 	slidebarHandle() {
@@ -315,11 +316,11 @@ class AppController {
 			const modal = event.target.parentNode.parentNode;
 			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
 			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
-			if(bill.length<=0){
+			if (bill.length <= 0) {
 				checkoutButton.disabled = true;
 				alert("Bill empty");
 			}
-			else{
+			else {
 				checkoutButton.disabled = false;
 				history.push({
 					date: dateCheckout,
@@ -387,7 +388,7 @@ class AppController {
 				const ingredients = []
 				const sugar = new Ingredient("sugar", +sugarNote);
 				const ice = new Ingredient("ice", +iceNote);
-				ingredients.push(sugar, ice)
+				ingredients.push(sugar, ice);
 				const latestBill = this.model.bill.decreaseQuantity(productId, ingredients)
 				this.model.bill.service.setLocalStorage(latestBill);
 				this.renderBill()
@@ -397,13 +398,14 @@ class AppController {
 
 	handleAddProduct = () => {
 		const addButton = document.querySelector(".cta-add-product");
-		const name = document.getElementById('input-name');
-		const url = document.getElementById('input-url');
-		const desc = document.getElementById('textarea-desc');
-		const price = document.getElementById('input-price');
-		const category = document.querySelector(".category-select");
-		const sugar = document.getElementById('checkbox-sugar');
-		const ice = document.getElementById('checkbox-ice');
+		const form = document.querySelector('.add-form');
+		const name = form.querySelector('#input-name');
+		const url = form.querySelector('#input-url');
+		const desc = form.querySelector('#textarea-desc');
+		const price = form.querySelector('#input-price');
+		const category = form.querySelector(".category-select");
+		const sugar = form.querySelector('#checkbox-sugar');
+		const ice = form.querySelector('#checkbox-ice');
 		let isSugar, isIce;
 		addButton.addEventListener('click', (e) => {
 			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
@@ -490,7 +492,6 @@ class AppController {
 		const categories = this.model.categoryList.getCategoryList();
 		addButton.addEventListener('click', () => {
 			this.view.modal.openAddModal(categories, this.selectedCategoryId);
-			this.handleAddProduct()
 		});
 	}
 }
