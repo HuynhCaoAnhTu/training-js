@@ -40,22 +40,22 @@
 
 		<!-- SLIDE -->
 		<section class="slide">
-			<a class="slide-logo" href="javascriptvoid(0)"><img class="slide-logo-image" src="./assets/images/logo.svg"
+			<a class="slide-logo" href="https://practice-javajscript-anhtu.vercel.app"><img class="slide-logo-image" src="./assets/images/logo.svg"
 					alt="Logo"></a>
 			<ul class="slide-lists">
-				<li class="slide-navigation"><a href="javascript:void(0)">
+				<li class="slide-navigation" title="Home"><a href="javascript:void(0)">
 						<span data="1" class="icon home-icon slide-active"></span></a>
 				</li>
-				<li class="slide-navigation bill-actived"><a href="javascript:void(0)">
+				<li class="slide-navigation"  title="Bill"><a href="javascript:void(0)">
 						<span data="2" class="icon bill-icon"></span></a>
 				</li>
-				<li class="slide-navigation"><a href="javascript:void(0)">
+				<li class="slide-navigation"  title="Favorite"><a href="javascript:void(0)">
 						<span data="3" class="icon favorite-icon"></span></a>
 				</li>
-				<li class="slide-navigation"><a href="javascript:void(0)">
+				<li class="slide-navigation"  title="Wallet"><a href="javascript:void(0)">
 						<span data="4" class="icon wallet-icon"></span></a>
 				</li>
-				<li class="slide-navigation"><a href="javascript:void(0)">
+				<li class="slide-navigation" title="Setting"><a href="javascript:void(0)">
 						<span data="5" class="icon setting-icon"></span></a>
 				</li>
 			</ul>
@@ -95,11 +95,12 @@
 					<p class="text-md total-bill-title">Total</p>
 					<p class="text-md total-bill-ammout"></p>
 				</div>
-				<button type="button" class="btn btn-primary cta-checkout">Checkout</button>
+				<button type="button" class="btn btn-primary cta-checkout" id="cta-open-checkout">Checkout</button>
 			</section>
 			<!-- Bill -->
 		</div>
 		<section class="history-payment">
+			<h2 class="text-bg">Payment History</h1>
 			<table class="history-table">
 				<thead>
 					<tr>
@@ -126,8 +127,8 @@
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<div class="cta-modify-product">
-				<img class="cta-update-product" src="./assets/icons/update-icon.svg" alt="">
-				<img class="cta-delete-product" src="./assets/icons/delete-icon.svg" alt="">
+				<img class="cta-update-product" id="cta-update-product" src="./assets/icons/update-icon.svg" alt="">
+				<img class="cta-delete-product" id="cta-update-product" src="./assets/icons/delete-icon.svg" alt="">
 			</div>
 			<div class="modal-product-content">
 				<img class="modal-product-image"
@@ -193,7 +194,7 @@
 					</label>
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary cta-checkout-bill">Checkout</button>
+			<button type="button" class="btn btn-primary cta-checkout-bill" id="cta-checkout">Checkout</button>
 		</div>
 	</div>
 	<!-- Modal Checkout -->
@@ -202,7 +203,7 @@
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<div class="modal-product-content">
-				<form class="add-form" id="form" action="">
+				<form class="form" id="add-form" action="">
 					<div class="add-product-infor">
 						<div class="form-control">
 							<label class="modal-title">Name</label>
@@ -226,7 +227,7 @@
 						</div>
 						<div class="form-control">
 							<label class="modal-title" for="category">Category:</label>
-							<select class="category-select" name="category" id="category">
+							<select class="category-select" name="category" id="category-select">
 							</select>
 						</div>
 						<div class="form-control">
@@ -249,7 +250,7 @@
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<div class="modal-product-content">
-				<form class="update-form" id="form" action="">
+				<form class="form" id="update-form" action="">
 					<div class="add-product-infor">
 						<div class="form-control">
 							<label class="modal-title">Name</label>
@@ -273,7 +274,7 @@
 						</div>
 						<div class="form-control">
 							<label class="modal-title" for="category">Category:</label>
-							<select class="category-select" name="category" id="category">
+							<select class="category-select" name="category" id="category-select">
 							</select>
 						</div>
 						<div class="form-control">
@@ -286,12 +287,14 @@
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary cta-update"> Add product</button>
+					<button type="submit" class="btn btn-primary cta-update" id="cta-update-product"> Update product</button>
 				</form>
 			</div>
 		</div>
 	</div>
-
+	<div id="toast">
+		 <p class="message"></p>
+	</div>
 </body>
 
 </html>
