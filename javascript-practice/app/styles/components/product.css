@@ -14,6 +14,10 @@
 	cursor: pointer;
 }
 
+.product:hover {
+	box-shadow: 16px 20px 6px -2px rgba(0,0,0,0.1);
+}
+
 .product-list {
 	margin-top: 40px;
 	display: grid;
@@ -100,4 +104,23 @@
 
 #cta-add {
 	display: none;
+	cursor: pointer;
+	transition: all 0.16s ease-in;
 }
+
+#cta-add:hover{
+  background: none;
+  color: #000;
+  box-shadow: 0 0 0 2px rgba(80, 80, 80, .5);
+}
+
+#cta-view {
+	cursor: pointer;
+	transition: all 0.16s ease-in;
+}
+
+#cta-view:hover{
+  color: #000;
+  box-shadow: 0 0 0 2px rgba(80, 80, 80, .5);
+}
+

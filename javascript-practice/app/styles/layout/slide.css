@@ -1,58 +1,58 @@
 .slide {
-  height: 100%;
-  width: 100px;
-  position: fixed;
-  top: 0px;
-  padding-top: 15px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
+	height: 100%;
+	width: 100px;
+	position: fixed;
+	top: 0px;
+	padding-top: 15px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 50px;
 }
 
 .slide-logo-image {
-  width: 60px;
-  padding: 5px;
-  background-color: #ffede3;
-  border-radius: 20px;
-  align-items: center;
+	width: 60px;
+	padding: 5px;
+	background-color: #ffede3;
+	border-radius: 20px;
+	align-items: center;
 }
 
-.slide-lists{
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+.slide-lists {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
 }
 
 .navigation-icon {
-  height: 50px;
+	height: 50px;
 }
 
 .icon {
 	display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-size: cover;
+	width: 50px;
+	height: 50px;
+	background-size: cover;
 }
 
-.bill-icon{
+.bill-icon {
 	background-image: url(/app/assets/icons/bill-icon.svg);
 }
 
-.home-icon{
+.home-icon {
 	background-image: url(/app/assets/icons/home-icon.svg);
 }
 
-.favorite-icon{
+.favorite-icon {
 	background-image: url(/app/assets/icons/favorite-icon.svg);
 }
 
-.wallet-icon{
+.wallet-icon {
 	background-image: url(/app/assets/icons/wallet-icon.svg);
 }
 
-.setting-icon{
+.setting-icon {
 	background-image: url(/app/assets/icons/setting-icon.svg);
 }
 
@@ -63,4 +63,35 @@
 
 .bill-icon.slide-active {
 	background-image: url(/app/assets/icons/bill-actice-icon.svg);
+}
+.favorite-icon.slide-active {
+	background-image: url(../../assets/icons/favorite-active-icon.svg);
+}
+
+.wallet-icon.slide-active {
+	background-image: url(../../assets/icons/wallet-active-icon.svg);
+}
+
+.setting-icon.slide-active {
+	background-image: url(../../assets/icons/setting-active-icon.svg);
+}
+
+.home-icon:hover {
+	background-image: url(/app/assets/icons/home-actice-icon.svg);
+}
+
+.bill-icon:hover {
+	background-image: url(/app/assets/icons/bill-actice-icon.svg);
+}
+
+.favorite-icon:hover {
+	background-image: url(../../assets/icons/favorite-active-icon.svg);
+}
+
+.wallet-icon:hover {
+	background-image: url(../../assets/icons/wallet-active-icon.svg);
+}
+
+.setting-icon:hover {
+	background-image: url(../../assets/icons/setting-active-icon.svg);
 }
