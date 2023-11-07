@@ -15,7 +15,7 @@ class Bill {
 		return this.productsInBill;
 	}
 
-	clearBill(){
+	clearBill() {
 		return this.productsInBill.splice(0, this.productsInBill.length);
 	}
 
@@ -46,7 +46,7 @@ class Bill {
 	}
 
 	increaseQuantity(productId, ingredients) {
-		var existingProduct = []
+		var existingProduct = [];
 		for (let i = 0; i < this.productsInBill.length; i++) {
 			existingProduct = this.productsInBill[i];
 			if (existingProduct.id === productId && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {
@@ -59,7 +59,7 @@ class Bill {
 	}
 
 	decreaseQuantity(productId, ingredients) {
-		var existingProduct = []
+		var existingProduct = [];
 		for (let i = 0; i < this.productsInBill.length; i++) {
 			existingProduct = this.productsInBill[i];
 			if (existingProduct.id === productId && JSON.stringify(existingProduct.ingredients) === JSON.stringify(ingredients)) {

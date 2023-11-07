@@ -1,5 +1,6 @@
 // controller.js
 import { KEY_CODE_ENTER } from "../constants/storageKey";
+import Bill from "../models/bill";
 import Product, { Ingredient } from "../models/product";
 import HistoryPaymentService from "../services/historypaymentService";
 class AppController {
@@ -14,14 +15,10 @@ class AppController {
 
 	init = async () => {
 		this.slidebarHandle();
-		await this.initCategoryList();
-		await this.initProductList();
+		await this.initCategory();
+		await this.initProduct();
 		await this.initBill();
 		this.searchHandle();
-		this.handleOpenAddModal();
-		this.handleOpenUpdateModal();
-		this.handleDeleteProduct();
-		this.handleAddProduct();
 	}
 
 	slidebarHandle() {
@@ -38,15 +35,33 @@ class AppController {
 				const dataValue = item.getAttribute('data');
 				switch (dataValue) {
 					case "1":
-						mainContent.style.display = "block"
-						bill.style.display = "flex"
-						history.style.display = "none"
+						mainContent.style.display = "block";
+						bill.style.display = "flex";
+						history.style.display = "none";
 						break;
 					case "2":
-						mainContent.style.display = "none"
-						bill.style.display = "none"
+						mainContent.style.display = "none";
+						bill.style.display = "none";
 						history.style.display = "block";
 						this.view.history.renderHistoryPayment(this.historyService.getLocalStorage());
+						break;
+					case "3":
+						mainContent.style.display = "none";
+						bill.style.display = "none";
+						history.style.display = "none";
+						this.view.modal.showToast("Sorry this function has not develop");
+						break;
+					case "4":
+						mainContent.style.display = "none";
+						bill.style.display = "none";
+						history.style.display = "none";
+						this.view.modal.showToast("Sorry this function has not develop");
+						break;
+					case "5":
+						mainContent.style.display = "none";
+						bill.style.display = "none";
+						history.style.display = "none";
+						this.view.modal.showToast("Sorry this function has not develop");
 						break;
 				}
 			});
@@ -60,7 +75,7 @@ class AppController {
 		searchInput.addEventListener('keypress', e => {
 			if (e.keyCode == KEY_CODE_ENTER) {
 				let count = 0;
-				const allproducts = document.querySelectorAll(`.product `)
+				const allproducts = document.querySelectorAll(`.product `);
 				const value = e.target.value;
 				const lowercaseValue = value.toLowerCase();
 				menu.style.opacity = 0.2;
@@ -83,7 +98,7 @@ class AppController {
 	}
 
 	// CONTROLLER CATEGORY
-	initCategoryList = async () => {
+	initCategory = async () => {
 		await this.model.categoryList.init();
 		this.loadListCategoryList();
 	}
@@ -95,15 +110,19 @@ class AppController {
 
 
 	// CONTROLLER product
-	initProductList = async () => {
+	initProduct = async () => {
 		await this.model.productList.init();
 		this.loadListproductList();
 		this.handleCateogyClick();
+		this.handleOpenAddProductModal();
+		this.handleOpenUpdateProductModal();
+		this.handleDeleteProduct();
+		this.handleAddProduct();
 	}
 
 	loadListproductList = () => {
 		const products = this.model.productList.getProdcutList();
-		this.renderProduct(products)
+		this.renderProduct(products);
 	}
 
 	getCategoryInforOnClick(event) {
@@ -121,8 +140,8 @@ class AppController {
 
 	hanlderproductEvent = () => {
 		this.handleproductClick();
-		this.handleViewModal();
-		this.handleAddToBill();
+		this.handleViewProductModal();
+		this.handleAddProductToBill();
 	}
 
 	handleproductClick() {
@@ -149,7 +168,7 @@ class AppController {
 		});
 	}
 
-	handleViewModal() {
+	handleViewProductModal() {
 		const viewDetailButton = document.querySelectorAll('#cta-view');
 		viewDetailButton.forEach((button) => {
 			button.addEventListener('click', (e) => {
@@ -162,42 +181,37 @@ class AppController {
 		});
 	}
 
+	handleOptionClick(options, clickedOption) {
+		options.forEach(option => {
+			if (option === clickedOption) {
+				if (!option.classList.contains('option-selected')) {
+					option.classList.add('option-selected');
+				}
+			} else {
+				option.classList.remove('option-selected');
+			}
+		});
+	}
+
 	handleNoteEvent(e) {
 		const sugarOptions = e.currentTarget.querySelectorAll('.note-sugar .note-option');
 		const iceOptions = e.currentTarget.querySelectorAll('.note-ice .note-option')
 		sugarOptions.forEach(option => {
 			option.addEventListener('click', (e) => {
 				e.stopPropagation();
-
-				if (option.classList.contains("option-selected")) {
-					option.classList.remove('option-selected');
-				}
-				else {
-					sugarOptions.forEach(otherproduct => {
-						otherproduct.classList.remove('option-selected');
-					});
-					option.classList.add('option-selected');
-				}
+				this.handleOptionClick(sugarOptions, option);
 			});
 		});
+
 		iceOptions.forEach(option1 => {
 			option1.addEventListener('click', (e) => {
 				e.stopPropagation();
-				if (option1.classList.contains("option-selected")) {
-					option1.classList.remove('option-selected');
-				}
-				else {
-					iceOptions.forEach(otherproduct => {
-						otherproduct.classList.remove('option-selected');
-					});
-					option1.classList.add('option-selected');
-				}
-
+				this.handleOptionClick(iceOptions, option1);
 			});
 		});
 	}
 
-	handleAddToBill() {
+	handleAddProductToBill() {
 		const AddToBillButton = document.querySelectorAll('#cta-add');
 		AddToBillButton.forEach((button) => {
 			button.addEventListener('click', (e) => {
@@ -229,7 +243,8 @@ class AppController {
 					const ice = new Ingredient("ice", 100);
 					ingerdients.push(ice)
 				}
-				this.addToBill(productId, productName, productUrl, productDes, +productPrice, ingerdients)
+				this.addToBill(productId, productName, productUrl, productDes, +productPrice, ingerdients);
+				this.view.modal.showToast("Product has been added to bill");
 			});
 		});
 	}
@@ -238,7 +253,6 @@ class AppController {
 		const categoryproducts = document.querySelectorAll('.category-item');
 		categoryproducts.forEach(product => {
 			product.addEventListener('click', (event) => {
-
 				categoryproducts.forEach(otherproduct => {
 					otherproduct.classList.remove('active');
 				});
@@ -248,7 +262,6 @@ class AppController {
 
 				if (this.selectedCategoryId == 0) {
 					this.renderProduct(this.model.productList.getProdcutList())
-
 				}
 				else {
 					const productsFilter = this.model.productList.getProdcutList().filter(product => product.categoryId == this.selectedCategoryId);
@@ -263,196 +276,75 @@ class AppController {
 		this.hanlderproductEvent();
 	}
 
-	// CONTROLLER BILL
-	initBill = async () => {
-		await this.model.bill.init();
-		this.renderBill();
-		await this.handleConfirmCheckout();
-	}
-
-	addToBill = (productId, productName, productUrl, productDes, productPrice, ingerdient) => {
-		const latestBill = this.model.bill.addToBill(productId, productName, productUrl, productDes, productPrice, ingerdient);
-		this.model.bill.service.setLocalStorage(latestBill);
-		this.renderBill()
-	}
-
-	renderBill() {
-		const bill = this.model.bill.getProductInBill();
-		const totalBill = this.model.bill.calculateTotalValue()
-		this.view.bill.renderBill(bill, totalBill);
-		this.handleChangeQuantity();
-		this.handleCheckout();
-	}
-
-	handleCheckout() {
-		const checkoutButton = document.querySelector('.cta-checkout');
-		checkoutButton.addEventListener('click', (e) => {
-			const bill = this.model.bill.getProductInBill();
-			const parentEl = e.currentTarget.parentNode;
-			const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
-			this.view.modal.openCheckoutModal(bill, totalBill);
-		});
-	}
-
-	handleConfirmCheckout() {
-		const checkoutButton = document.querySelector(".cta-checkout-bill");
-		const bill = this.model.bill.getProductInBill();
-		let methodName;
-		const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
-		paymentMethodInputs.forEach(function (input) {
-			if (input.checked) {
-				methodName = input.value;
-			}
-			input.addEventListener('change', function () {
-				if (input.checked) {
-					methodName = input.value;
-				}
-			});
-		});
-		checkoutButton.addEventListener('click', (event) => {
-			var now = new Date();
-			console.log(bill)
-			const history = this.historyService.getLocalStorage();
-			const modal = event.target.parentNode.parentNode;
-			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
-			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
-			if (bill.length <= 0) {
-				checkoutButton.disabled = true;
-				alert("Bill empty");
-			}
-			else {
-				checkoutButton.disabled = false;
-				history.push({
-					date: dateCheckout,
-					bill: bill,
-					totalBill: +totalBill,
-					method: methodName
-				});
-				this.historyService.setLocalStorage(history);
-				this.view.history.renderHistoryPayment(history, totalBill);
-				this.model.bill.clearBill();
-				this.model.bill.service.clearBillLocalStorage();
-				modal.style.display = "none"
-				this.renderBill();
-			}
-		});
-	}
-
-	// CONTROLLER CRUD FUNCTION
-	handleChangeQuantity() {
-		const insButtons = document.querySelectorAll(".btn-cta-ins");
-		const desButtons = document.querySelectorAll(".btn-cta-des");
-		insButtons.forEach(insButton => {
-			insButton.addEventListener('click', (event) => {
-				const parentLi = event.currentTarget.parentNode.parentNode;
-				const productId = parentLi.getAttribute("id");
-				const sugarNoteEl = parentLi.querySelector(".product-bill-sugar");
-				const iceNoteEl = parentLi.querySelector(".product-bill-ice");
-				let sugarNote, iceNote;
-				if (sugarNoteEl) {
-					sugarNote = sugarNoteEl.textContent.trim().replace('%', '');
-				} else {
-					sugarNote = 100;
-				}
-				if (iceNoteEl) {
-					iceNote = iceNoteEl.textContent.trim().replace('%', '');
-				} else {
-					iceNote = 100;
-				}
-				const ingredients = []
-				const sugar = new Ingredient("sugar", +sugarNote);
-				const ice = new Ingredient("ice", +iceNote);
-				ingredients.push(sugar, ice)
-				const latestBill = this.model.bill.increaseQuantity(productId, ingredients)
-				this.model.bill.service.setLocalStorage(latestBill);
-				this.renderBill()
-			});
-		});
-		desButtons.forEach(desButton => {
-			desButton.addEventListener('click', (event) => {
-				const parentLi = event.currentTarget.parentNode.parentNode;
-				const productId = parentLi.getAttribute("id");
-				const sugarNoteEl = parentLi.querySelector(".product-bill-sugar");
-				const iceNoteEl = parentLi.querySelector(".product-bill-ice");
-				let sugarNote, iceNote;
-				if (sugarNoteEl) {
-					sugarNote = sugarNoteEl.textContent.trim().replace('%', '');
-				} else {
-					sugarNote = 100;
-				}
-				if (iceNoteEl) {
-					iceNote = iceNoteEl.textContent.trim().replace('%', '');
-				} else {
-					iceNote = 100;
-				}
-				const ingredients = []
-				const sugar = new Ingredient("sugar", +sugarNote);
-				const ice = new Ingredient("ice", +iceNote);
-				ingredients.push(sugar, ice);
-				const latestBill = this.model.bill.decreaseQuantity(productId, ingredients)
-				this.model.bill.service.setLocalStorage(latestBill);
-				this.renderBill()
-			});
-		});
+	getFormData(form) {
+		const name = form.querySelector('#input-name');
+		const url = form.querySelector('#input-url');
+		const desc = form.querySelector('#textarea-desc');
+		const price = form.querySelector('#input-price');
+		const category = form.querySelector("#category-select");
+		const sugar = form.querySelector('#checkbox-sugar');
+		const ice = form.querySelector('#checkbox-ice');
+		const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
+		const checkNumber = this.view.modal.checkNumber(price);
+		if (checkRequired === false || checkNumber === false) {
+			return null;
+		}
+		return {
+			name: name.value,
+			url: url.value,
+			desc: desc.value,
+			category: category.value,
+			price: price.value,
+			isSugar: sugar.checked ? 1 : 0,
+			isIce: ice.checked ? 1 : 0,
+		};
 	}
 
 	handleAddProduct = () => {
 		const addButton = document.querySelector(".cta-add-product");
-		const form = document.querySelector('.add-form');
-		const name = form.querySelector('#input-name');
-		const url = form.querySelector('#input-url');
-		const desc = form.querySelector('#textarea-desc');
-		const price = form.querySelector('#input-price');
-		const category = form.querySelector(".category-select");
-		const sugar = form.querySelector('#checkbox-sugar');
-		const ice = form.querySelector('#checkbox-ice');
-		let isSugar, isIce;
+		const form = document.getElementById('add-form');
 		addButton.addEventListener('click', (e) => {
-			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
-			const checkNumber = this.view.modal.checkNumber(price);
-			if (checkRequired == false || checkNumber == false) {
-				e.preventDefault();
-			}
-			else {
+			const formData = this.getFormData(form);
+			if (formData) {
 				const product = new Product(
 					this.model.productList.generateId(),
-					name.value,
-					desc.value,
-					category.value,
-					url.value,
-					price.value,
-					0,
-					isSugar = (sugar.checked) ? 1 : 0,
-					isIce = (ice.checked) ? 1 : 0,
+					formData.name,
+					formData.desc,
+					formData.category,
+					formData.url,
+					formData.price,
+					formData.isSugar,
+					formData.isIce
 				);
 				const products = this.model.productList.addProduct(product);
+				this.view.modal.showToast("Added new product!");
 				this.renderProduct(products);
+			} else {
+				e.preventDefault();
 			}
 		});
 	}
 
-	handleUpdateProduct(productId) {
-		const form = document.querySelector('.update-form');
+	handleUpdateProduct = (productId) => {
+		const form = document.getElementById('update-form');
 		const update = form.querySelector(".cta-update");
-		const name = form.querySelector('#input-name');
-		const url = form.querySelector('#input-url');
-		const desc = form.querySelector('#textarea-desc');
-		const price = form.querySelector('#input-price');
-		const category = form.querySelector(".category-select");
-		const sugar = form.querySelector('#checkbox-sugar');
-		const ice = form.querySelector('#checkbox-ice');
-		let isSugar, isIce;
 		update.addEventListener("click", (e) => {
-			const checkRequired = this.view.modal.checkRequired([name, url, desc, price]);
-			const checkNumber = this.view.modal.checkNumber(price);
-			if (checkRequired == false || checkNumber == false) {
-				e.preventDefault();
-			}
-			else {
-				isSugar = (sugar.checked) ? 1 : 0;
-				isIce = (ice.checked) ? 1 : 0;
-				const products = this.model.productList.updateProduct(productId, name.value, desc.value, category.value, url.value, price.value, isSugar, isIce);
+			const formData = this.getFormData(form);
+			if (formData) {
+				const products = this.model.productList.updateProduct(
+					productId,
+					formData.name,
+					formData.desc,
+					formData.category,
+					formData.url,
+					formData.price,
+					formData.isSugar,
+					formData.isIce
+				);
+				this.view.modal.showToast("Updated product!");
 				this.renderProduct(products);
+			} else {
+				e.preventDefault();
 			}
 		});
 	}
@@ -466,15 +358,15 @@ class AppController {
 				if (userChoice) {
 					const productId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id");
 					const products = this.model.productList.deleteProduct(productId);
+					this.view.modal.showToast("Deleted product!");
 					this.renderProduct(products);
 					this.view.modal.closeModal(modalEl);
 				}
 			});
 		});
-
 	}
 
-	handleOpenUpdateModal() {
+	handleOpenUpdateProductModal() {
 		const updateButtons = document.querySelectorAll(".cta-update-product")
 		const categories = this.model.categoryList.getCategoryList();
 		updateButtons.forEach(updateButton => {
@@ -487,11 +379,133 @@ class AppController {
 		});
 	}
 
-	handleOpenAddModal = () => {
+	handleOpenAddProductModal = () => {
 		const addButton = document.querySelector(".cta-add-modal");
 		const categories = this.model.categoryList.getCategoryList();
 		addButton.addEventListener('click', () => {
 			this.view.modal.openAddModal(categories, this.selectedCategoryId);
+		});
+	}
+
+	// CONTROLLER BILL
+	initBill = async () => {
+		await this.model.bill.init();
+		this.renderBill();
+		this.handleConfirmCheckout();
+	}
+
+	addToBill = (productId, productName, productUrl, productDes, productPrice, ingerdient) => {
+		const latestBill = this.model.bill.addToBill(productId, productName, productUrl, productDes, productPrice, ingerdient);
+		this.model.bill.service.setLocalStorage(latestBill);
+		this.renderBill();
+	}
+
+	renderBill() {
+		const bill = this.model.bill.getProductInBill();
+		const totalBill = this.model.bill.calculateTotalValue();
+		this.view.bill.renderBill(bill, totalBill);
+		this.handleUpdateQuantityButton();
+		this.handleOpenCheckoutModal();
+	}
+
+	handleChangeQuantity(event, action) {
+		const parentLi = event.currentTarget.parentNode.parentNode;
+		const productId = parentLi.getAttribute("id");
+		const sugarNoteEl = parentLi.querySelector(".product-bill-sugar");
+		const iceNoteEl = parentLi.querySelector(".product-bill-ice");
+		let sugarNote, iceNote;
+		if (sugarNoteEl) {
+			sugarNote = sugarNoteEl.textContent.trim().replace('%', '');
+		} else {
+			sugarNote = 100;
+		}
+		if (iceNoteEl) {
+			iceNote = iceNoteEl.textContent.trim().replace('%', '');
+		} else {
+			iceNote = 100;
+		}
+		const ingredients = []
+		const sugar = new Ingredient("sugar", +sugarNote);
+		const ice = new Ingredient("ice", +iceNote);
+		ingredients.push(sugar, ice);
+		if (action === "increase") {
+			const latestBill = this.model.bill.increaseQuantity(productId, ingredients);
+			this.model.bill.service.setLocalStorage(latestBill);
+		} else if (action === "decrease") {
+			const latestBill = this.model.bill.decreaseQuantity(productId, ingredients);
+			this.model.bill.service.setLocalStorage(latestBill);
+		}
+		this.renderBill();
+	}
+
+	handleUpdateQuantityButton = () => {
+		const insButtons = document.querySelectorAll(".btn-cta-ins");
+		const desButtons = document.querySelectorAll(".btn-cta-des");
+		insButtons.forEach(insButton => {
+			insButton.addEventListener('click', (event) => {
+				this.handleChangeQuantity(event, "increase");
+			});
+		});
+
+		desButtons.forEach(desButton => {
+			desButton.addEventListener('click', (event) => {
+				this.handleChangeQuantity(event, "decrease");
+			});
+		});
+	}
+
+	handleOpenCheckoutModal() {
+		const checkoutButton = document.getElementById('cta-open-checkout');
+		checkoutButton.addEventListener('click', (e) => {
+			const bill = this.model.bill.getProductInBill();
+			const parentEl = e.currentTarget.parentNode;
+			const totalBill = parentEl.querySelector(".total-bill-ammout").textContent.trim().replace('$', '');
+			this.view.modal.openCheckoutModal(bill, totalBill);
+		});
+	}
+
+
+	handleConfirmCheckout() {
+		const checkoutButton = document.getElementById("cta-checkout");
+		let methodName;
+		const paymentMethodInputs = document.querySelectorAll('input[name="paymentMethod"]');
+		paymentMethodInputs.forEach(function (input) {
+			if (input.checked) {
+				methodName = input.value;
+			}
+			input.addEventListener('change', function () {
+				if (input.checked) {
+					methodName = input.value;
+				}
+			});
+		});
+		checkoutButton.addEventListener('click', (event) => {
+			const bill = this.model.bill.getProductInBill();
+			var now = new Date();
+			const history = this.historyService.getLocalStorage();
+			const modal = event.target.parentNode.parentNode;
+			const totalBill = event.target.parentNode.querySelector(".table-product-total-bill").textContent.trim().replace('$', '');
+			const dateCheckout = `${now.getDate()}/${now.getUTCMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()} `;
+			if (bill.length == 0) {
+				event.preventDefault();
+				this.view.modal.showToast("Your bill is empty!");
+			}
+			else {
+				checkoutButton.disabled = false;
+				history.push({
+					date: dateCheckout,
+					bill: bill,
+					totalBill: +totalBill,
+					method: methodName
+				});
+				this.historyService.setLocalStorage(history);
+				this.view.history.renderHistoryPayment(history, totalBill);
+				this.model.bill.clearBill();
+				this.model.bill.service.clearBillLocalStorage();
+				modal.style.display = "none";
+				this.view.modal.showToast("Successful checkout");
+				this.renderBill();
+			}
 		});
 	}
 }

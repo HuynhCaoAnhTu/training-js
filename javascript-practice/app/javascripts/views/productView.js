@@ -10,7 +10,7 @@ class ProductView {
 	}
 
 	renderProductList = (productList, categoryName) => {
-		this.loading.className = "loader"
+		this.loading.className = "loader";
 		this.Menu.appendChild(this.loading);
 		this.MenuTitle.innerHTML = categoryName;
 		this.ProductTotal.innerHTML = `${productList.length} result`;

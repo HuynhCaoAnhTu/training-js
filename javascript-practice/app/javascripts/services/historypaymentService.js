@@ -3,7 +3,7 @@ import LocalStorageService from "./localstorageService";
 import BaseService from "./baseService";
 class HistoryPaymentService extends BaseService {
 	constructor(){
-		super(HISTORYPAYMENT_STORAGE_KEY)
+		super(HISTORYPAYMENT_STORAGE_KEY);
 	}
 
 	getLocalStorage() {

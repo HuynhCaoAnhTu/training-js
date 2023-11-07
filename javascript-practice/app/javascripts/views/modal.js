@@ -1,5 +1,3 @@
-import Category from "../models/category";
-
 class ModalView {
 	constructor() {
 		this.tableContent = document.querySelector("#bill-table tbody");
@@ -14,14 +12,14 @@ class ModalView {
 			modalEl.querySelector('.modal-product-name').textContent = product.productName;
 			modalEl.querySelector('.modal-product-des').textContent = product.productDes;
 			modalEl.querySelector('.modal-product-price').innerHTML = `&dollar;${product.productPrice}`;
-			modalEl.style.display = 'block'
+			modalEl.style.display = 'block';
 		};
 	}
 
-	handleCloseModal(modalEl){
+	handleCloseModal(modalEl) {
 		const close = modalEl.querySelector(".close");
-		const forms = document.querySelectorAll('#form');
-		close.onclick = ()=> {
+		const forms = document.querySelectorAll('.form');
+		close.onclick = () => {
 			modalEl.style.display = "none";
 			this.resetForms(forms);
 		}
@@ -31,15 +29,20 @@ class ModalView {
 				this.resetForms(forms);
 			}
 		});
+		document.addEventListener('keydown', (event) => {
+			if (event.keyCode === 27) {
+				modalEl.style.display = "none";
+			}
+		});
 	}
 
-	 resetForms(forms) {
+	resetForms(forms) {
 		forms.forEach(form => {
 			form.reset();
 		});
 	}
 
-	closeModal(modalEl){
+	closeModal(modalEl) {
 		modalEl.style.display = "none";
 	}
 
@@ -51,9 +54,9 @@ class ModalView {
 			this.tableContent.innerHTML = "";
 			bill.forEach(product => {
 				this.renderProductPreCheckout(product);
-			})
+			});
 			totalBill.innerHTML = `&dollar;${total}`;
-			modalEl.style.display = 'block'
+			modalEl.style.display = 'block';
 		};
 	}
 
@@ -63,14 +66,14 @@ class ModalView {
 		this.tableContent.innerHTML +=
 			`<tr>
 			<td class="table-product-name">${product.name}</td>
-			${sugar!== 100 ? `	<td class="table-product-sugar">${sugar} %</td>` : '<td class="table-product-sugar"></td>'}
-			${ice!== 100 ? `<td class="table-product-ice">${ice} %</td>` : '<td class="table-product-ice"></td>'}
+			${sugar !== 100 ? `	<td class="table-product-sugar">${sugar} %</td>` : '<td class="table-product-sugar"></td>'}
+			${ice !== 100 ? `<td class="table-product-ice">${ice} %</td>` : '<td class="table-product-ice"></td>'}
 			<td class="table-product-quantity">${product.quantity}</td>
 			<td class="table-product-total">&dollar;${product.total}</td>
 		</tr>`;
 	}
 
-	openAddModal(categories,selectedCategoryId) {
+	openAddModal(categories, selectedCategoryId) {
 		const modalEl = document.getElementById("addModal");
 		const categoryContent = modalEl.querySelector(".category-select");
 		this.handleCloseModal(modalEl);
@@ -78,19 +81,19 @@ class ModalView {
 		categories.forEach(category => {
 			this.renderCategoryOption(category, modalEl);
 		});
-		if(selectedCategoryId!=0){
-			categoryContent.value = selectedCategoryId
+		if (selectedCategoryId != 0) {
+			categoryContent.value = selectedCategoryId;
 			categoryContent.disabled = true;
 		}
-		else{
+		else {
 			categoryContent.disabled = false;
 		}
 		modalEl.style.display = 'block'
 	}
 
 	renderCategoryOption(category, modalEl) {
-		const categoryContent = modalEl.querySelector(".category-select")
-		categoryContent.innerHTML += `<option class=category-option" value="${category.categoryId}">${category.categoryName}</option>`
+		const categoryContent = modalEl.querySelector(".category-select");
+		categoryContent.innerHTML += `<option class=category-option" value="${category.categoryId}">${category.categoryName}</option>`;
 	}
 
 	showError = (input, message) => {
@@ -138,12 +141,12 @@ class ModalView {
 			this.renderCategoryOption(category, modalEl);
 		});
 		modalEl.style.display = 'block'
-		const form = document.querySelector('.update-form');
+		const form = document.getElementById('update-form');
 		const name = form.querySelector('#input-name');
 		const url = form.querySelector('#input-url');
 		const desc = form.querySelector('#textarea-desc');
 		const price = form.querySelector('#input-price');
-		const category = form.querySelector(".category-select");
+		const category = form.querySelector("#category-select");
 		const sugar = form.querySelector('#checkbox-sugar');
 		const ice = form.querySelector('#checkbox-ice');
 		name.value = product.productName;
@@ -161,6 +164,14 @@ class ModalView {
 		} else {
 			ice.checked = false;
 		}
+	}
+
+	showToast(message) {
+		const toast = document.getElementById("toast");
+		const messageEl = toast.querySelector(".message");
+		messageEl.textContent = message;
+		toast.className = "show";
+		setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 1000);
 	}
 
 }
