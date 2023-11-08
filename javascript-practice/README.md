@@ -5,7 +5,7 @@
 - Apply knowledge of HTML5/CSS3/JavaScript (with ES6 syntax)
 - Understand and apply MVC pattern
 - Understand and apply DOM manipulation, form validation
-- Apply localstorage 
+- Apply localstorage
 
 ## Design on figma
 
@@ -23,12 +23,12 @@ The app has 4 features:
 - Show menu item by category
 - Add a new menu item
 - Add to bill
-- Take note 
+- Take note
 - Update quantity
 - Remove from bill
-- Search item by item name 
+- Search item by item name
 - Checkout the bill ( displaying the pop up to confirm action )
-- View Payment history ( Shows payment date ) 
+- View Payment history ( Shows payment date )
 
 
 ## Team size
@@ -58,6 +58,7 @@ The app has 4 features:
 │   │   ├── services/
 │   │   ├── views/
 │   │   ├── app.js
+│   │   ├── index.js
 │   ├── styles/
 │   │   ├── base/
 │   │   ├── components/
@@ -67,10 +68,52 @@ The app has 4 features:
 │   │   └── main.css
 |   ├── json-server/
 │   │   ├── db.js
-│   │   └── package.json
 │   └── index.html
 └── .editorconfig
 └── .gitignore
 └── package.json
 └── README.md
+```
+## Getting started:
+
+- Step 01: Clone repository with HTTPS:
+
+```bash
+git clone https://github.com/HuynhCaoAnhTu/training-js
+```
+
+- Step 02: Go to folder javascript-practice:
+
+```bash
+cd javascript-practice
+```
+
+- Step 03: Change to branch feature/practice:
+
+```bash
+git checkout feature/practice
+```
+
+- Step 04: Install dependencies project
+
+```bash
+npm i
+```
+
+- Step 05: Run json-server
+
+```bash
+npm run start
+```
+
+- Step 06: Run json-server in new terminal
+
+```bash
+npm run dev
+```
+
+- Step 07: Website run :
+
+```bash
+http://localhost:1234
 ```
