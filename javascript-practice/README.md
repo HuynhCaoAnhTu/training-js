@@ -18,7 +18,7 @@
 
 ## Requirement
 
-The app has 4 features:
+The app features:
 
 - Show menu item by category
 - Add a new menu item
@@ -29,6 +29,7 @@ The app has 4 features:
 - Search item by item name
 - Checkout the bill ( displaying the pop up to confirm action )
 - View Payment history ( Shows payment date )
+- Add, Update, Delete Product
 
 
 ## Team size
@@ -40,6 +41,7 @@ The app has 4 features:
 - Visual Studio Code
 - HTML & CSS & Javascript
 - [Github](https://github.com/HuynhCaoAnhTu/training-js)
+- Nodejs version: v18.16.1
 
 ## Folder structure
 
