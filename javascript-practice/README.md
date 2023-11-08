@@ -79,40 +79,48 @@ The app has 4 features:
 - Step 01: Clone repository with HTTPS:
 
 ```bash
-git clone https://github.com/HuynhCaoAnhTu/training-js
+git clone https://github.com/HuynhCaoAnhTu/training-js.git
 ```
 
-- Step 02: Go to folder javascript-practice:
+- Step 02: Go to folder training-js:
 
 ```bash
-cd javascript-practice
+cd training-js
 ```
 
-- Step 03: Change to branch feature/practice:
+- Step 04: Change to branch feature/practice:
 
 ```bash
 git checkout feature/practice
 ```
 
-- Step 04: Install dependencies project
+- Step 05: Go to folder javascript-practice:
+
+```bash
+cd javascript-practice
+```
+
+
+
+- Step 06: Install dependencies project
 
 ```bash
 npm i
 ```
 
-- Step 05: Run json-server
+- Step 07: Run json-server
 
 ```bash
 npm run start
 ```
 
-- Step 06: Run json-server in new terminal
+- Step 08: Run json-server in new terminal
 
 ```bash
 npm run dev
 ```
 
-- Step 07: Website run :
+- Step 09: Website run :
 
 ```bash
 http://localhost:1234
