@@ -64,6 +64,7 @@
 .bill-icon.slide-active {
 	background-image: url(/app/assets/icons/bill-actice-icon.svg);
 }
+
 .favorite-icon.slide-active {
 	background-image: url(../../assets/icons/favorite-active-icon.svg);
 }

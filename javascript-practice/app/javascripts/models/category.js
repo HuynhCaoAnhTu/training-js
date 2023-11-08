@@ -1,4 +1,3 @@
-// model.js
 class Category {
 	constructor(id, name, url) {
 		this.categoryId = id;

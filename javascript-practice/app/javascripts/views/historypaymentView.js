@@ -6,11 +6,9 @@ class HistoryPaymentView {
 	renderHistoryPayment = (hisroryList) => {
 		if (hisroryList) {
 			this.tableContent.innerHTML = "";
-
 			hisroryList.forEach(history => {
 				const billLength = history.bill.length;
 				this.renderBillPaied(history, billLength);
-
 			})
 		};
 	}
@@ -18,10 +16,10 @@ class HistoryPaymentView {
 	renderBillPaied(bill, billLength) {
 		this.tableContent.innerHTML +=
 			`<tr>
-			<td class="table-product-date" rowspan="${billLength + 1}">${bill.date}</td>
-			<td class="table-product-method"rowspan="${billLength + 1}" >${bill.method}</td>
-			<td class="table-product-total"rowspan="${billLength + 1}" >&dollar;${bill.totalBill}</td>
-		</tr>`;
+				<td class="table-product-date" rowspan="${billLength + 1}">${bill.date}</td>
+				<td class="table-product-method"rowspan="${billLength + 1}" >${bill.method}</td>
+				<td class="table-product-total"rowspan="${billLength + 1}" >&dollar;${bill.totalBill}</td>
+			</tr>`;
 		bill.bill.forEach(bill => {
 			this.renderProductInBill(bill);
 		});
@@ -38,6 +36,5 @@ class HistoryPaymentView {
 		<td class="table-product-quantity">${bill.quantity}</td>
 	</tr>`;
 	}
-
 }
 export default HistoryPaymentView;

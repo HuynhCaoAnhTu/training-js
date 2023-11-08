@@ -1,9 +1,8 @@
-// view.js
 class CategoryView {
-
 	constructor() {
 		this.CategoryListEl = document.getElementById('categories');
 	}
+
 	renderCategoryList = (categoryList) => {
 		categoryList.forEach(Category => {
 			this.renderCategory(Category);

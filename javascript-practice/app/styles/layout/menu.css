@@ -1,16 +1,15 @@
 .menu {
-  padding: 40px 20px 0 0;
+	padding: 40px 20px 0 0;
 }
 
 .menu-des {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 #menu-total {
-  font-family: Poppins-Light;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--gray-color);
+	font-family: Poppins-Light;
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--gray-color);
 }
-

@@ -1,3 +1,5 @@
+import { KEY_CODE_ESC } from "../constants/keyCode";
+
 class ModalView {
 	constructor() {
 		this.tableContent = document.querySelector("#bill-table tbody");
@@ -30,7 +32,7 @@ class ModalView {
 			}
 		});
 		document.addEventListener('keydown', (event) => {
-			if (event.keyCode === 27) {
+			if (event.keyCode === KEY_CODE_ESC) {
 				modalEl.style.display = "none";
 			}
 		});

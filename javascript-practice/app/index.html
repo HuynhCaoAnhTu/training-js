@@ -13,7 +13,7 @@
 <body>
 	<div class="wrapper">
 
-		<!-- HEADER -->
+		<!-- header -->
 		<header class="main-header">
 			<div class="header-title">
 				<h1 class="text-bg">Welcome to Coffeehouse</h1>
@@ -36,23 +36,23 @@
 				<img class="notification-icon" src="./assets/icons/notification-icon.svg" alt="Notification-Icon">
 			</div>
 		</header>
-		<!-- HEADER -->
+		<!-- header -->
 
-		<!-- SLIDE -->
+		<!-- Slide -->
 		<section class="slide">
-			<a class="slide-logo" href="https://practice-javajscript-anhtu.vercel.app"><img class="slide-logo-image" src="./assets/images/logo.svg"
-					alt="Logo"></a>
+			<a class="slide-logo" href="https://practice-javajscript-anhtu.vercel.app"><img class="slide-logo-image"
+					src="./assets/images/logo.svg" alt="Logo"></a>
 			<ul class="slide-lists">
 				<li class="slide-navigation" title="Home"><a href="javascript:void(0)">
 						<span data="1" class="icon home-icon slide-active"></span></a>
 				</li>
-				<li class="slide-navigation"  title="Bill"><a href="javascript:void(0)">
+				<li class="slide-navigation" title="Bill"><a href="javascript:void(0)">
 						<span data="2" class="icon bill-icon"></span></a>
 				</li>
-				<li class="slide-navigation"  title="Favorite"><a href="javascript:void(0)">
+				<li class="slide-navigation" title="Favorite"><a href="javascript:void(0)">
 						<span data="3" class="icon favorite-icon"></span></a>
 				</li>
-				<li class="slide-navigation"  title="Wallet"><a href="javascript:void(0)">
+				<li class="slide-navigation" title="Wallet"><a href="javascript:void(0)">
 						<span data="4" class="icon wallet-icon"></span></a>
 				</li>
 				<li class="slide-navigation" title="Setting"><a href="javascript:void(0)">
@@ -60,11 +60,11 @@
 				</li>
 			</ul>
 		</section>
-		<!-- SLIDE -->
+		<!-- Slide -->
 
 		<div class="content-container">
 			<div class="main-content">
-				<!-- CATEGORY -->
+				<!-- Category -->
 				<section class="categories">
 					<ul class="category-list" id="categories">
 						<li class="category-item active" category-id="0">
@@ -73,7 +73,7 @@
 						</li>
 					</ul>
 				</section>
-				<!-- CATEGORY -->
+				<!-- Category -->
 				<button class="btn btn-primary cta-add-modal"> Add product</button>
 				<!-- product -->
 				<section class="menu">
@@ -101,24 +101,24 @@
 		</div>
 		<section class="history-payment">
 			<h2 class="text-bg">Payment History</h1>
-			<table class="history-table">
-				<thead>
-					<tr>
-						<th class="text-md head-table-date" rowspan="2">Date</th>
-						<th class="text-md head-table-method" rowspan="2">Method</th>
-						<th class="text-md head-table-total" rowspan="2">Total Bill</th>
-						<th class="text-md head-table-name" rowspan="2">Product Name</th>
-						<th class="text-md head-table-ingerdients" colspan="2">Ingerdients</th>
-						<th class="text-md head-table-qnty" rowspan="2">Quantity</th>
-					</tr>
-					<tr>
-						<th class="text-md">Sugar</th>
-						<th class="text-md">Ice</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
+				<table class="history-table">
+					<thead>
+						<tr>
+							<th class="text-md head-table-date" rowspan="2">Date</th>
+							<th class="text-md head-table-method" rowspan="2">Method</th>
+							<th class="text-md head-table-total" rowspan="2">Total Bill</th>
+							<th class="text-md head-table-name" rowspan="2">Product Name</th>
+							<th class="text-md head-table-ingerdients" colspan="2">Ingerdients</th>
+							<th class="text-md head-table-qnty" rowspan="2">Quantity</th>
+						</tr>
+						<tr>
+							<th class="text-md">Sugar</th>
+							<th class="text-md">Ice</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 		</section>
 	</div>
 
@@ -199,6 +199,7 @@
 	</div>
 	<!-- Modal Checkout -->
 
+	<!-- Modal add product -->
 	<div id="addModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
@@ -245,7 +246,9 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal add product -->
 
+	<!-- Modal update product -->
 	<div id="updateModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
@@ -292,9 +295,13 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal update product -->
+
+	<!-- Toast -->
 	<div id="toast">
-		 <p class="message"></p>
+		<p class="message"></p>
 	</div>
+	<!-- Toast -->
 </body>
 
 </html>

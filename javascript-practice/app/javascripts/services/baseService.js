@@ -1,10 +1,10 @@
 import LocalStorageService from "./localstorageService";
 import { API_BASE_URL } from "../constants/api";
-class  BaseService {
-	constructor(storage_key,resource)
-	{
-		this.storage_key=storage_key;
-		this.resource=resource;
+
+class BaseService {
+	constructor(storage_key, resource) {
+		this.storage_key = storage_key;
+		this.resource = resource;
 	}
 
 	getLocalStorage() {

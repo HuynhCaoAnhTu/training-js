@@ -1,5 +1,6 @@
 import { BILL_STORAGE_KEY } from "../constants/storageKey";
 import BaseService from "./baseService";
+
 class BillService extends BaseService {
 	constructor() {
 		super(BILL_STORAGE_KEY);
@@ -14,7 +15,7 @@ class BillService extends BaseService {
 		return data;
 	}
 
-	clearBillLocalStorage(){
+	clearBillLocalStorage() {
 		localStorage.removeItem(BILL_STORAGE_KEY);
 	}
 }

@@ -1,4 +1,5 @@
 import BillService from "../services/billService";
+
 class Bill {
 	constructor() {
 		this.service = new BillService();

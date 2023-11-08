@@ -74,7 +74,8 @@
 	font-family: Poppins-Bold;
 	font-size: 35px;
 }
-.cta-modify-product{
+
+.cta-modify-product {
 	float: right;
 	cursor: pointer;
 	margin-right: 30px;
@@ -88,7 +89,7 @@
 	max-width: 25px;
 }
 
-.cta-add-modal{
+.cta-add-modal {
 	margin-top: 20px;
 }
 
@@ -234,6 +235,6 @@
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }

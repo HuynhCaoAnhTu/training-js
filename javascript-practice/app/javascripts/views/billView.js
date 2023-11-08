@@ -1,6 +1,5 @@
 // view.js
 class BillView {
-
 	constructor() {
 		this.contentContainer = document.querySelector('.content-container');
 		this.mainContent = document.querySelector('.main-content');
@@ -36,7 +35,6 @@ class BillView {
 								<p class="product-bill-sugar">${sugar}<span>&percnt;</span></p>` : ''}
 								${ice !== 100 ? `<label class="note-label-ice" for="product-bill-ice">Ice:</label>
 								<p class="product-bill-ice">${ice}<span>&percnt;</span></p>` : ''}
-
                 </div>
 					<p class="product-bill-price"><span>$</span>${product.total}</p>
 				</div>
@@ -48,5 +46,4 @@ class BillView {
 		</li>`;
 	}
 }
-
 export default BillView;
