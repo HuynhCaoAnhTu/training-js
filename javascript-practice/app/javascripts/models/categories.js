@@ -1,23 +1,23 @@
-import Category from "./category";
-import CategoryService from "../services/categoryService";
+import Category from './category';
+import CategoryService from '../services/categoryService';
 
 class CategoryList {
-	constructor() {
-		this.service = new CategoryService();
-		this.categoryList = [];
-	}
+  constructor () {
+    this.service = new CategoryService();
+    this.categoryList = [];
+  }
 
-	init = async () => {
-		const data = await this.service.getLocalStorageData();
-		this.categoryList = this.parseData(data);
-	}
+  init = async () => {
+    const data = await this.service.getLocalStorageData();
+    this.categoryList = this.parseData(data);
+  }
 
-	parseData = (data) => {
-		return data.map((item) => new Category(item.categoryId, item.categoryName, item.categoryUrl));
-	}
+  parseData = (data) => {
+    return data.map((item) => new Category(item.categoryId, item.categoryName, item.categoryUrl));
+  }
 
-	getCategoryList = () => {
-		return this.categoryList;
-	}
+  getCategoryList = () => {
+    return this.categoryList;
+  }
 }
 export default CategoryList;
