@@ -108,13 +108,13 @@ cd javascript-practice
 npm i
 ```
 
-- Step 07: Run json-server
+- Step 07: Run json-server in new terminal
 
 ```bash
 npm run start
 ```
 
-- Step 08: Run json-server in new terminal
+- Step 08: Run project
 
 ```bash
 npm run dev
