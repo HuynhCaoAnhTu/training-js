@@ -6,6 +6,7 @@
 - Understand and apply MVC pattern
 - Understand and apply DOM manipulation, form validation
 - Apply localstorage
+- Apply Json-server
 
 ## Design on figma
 
@@ -15,6 +16,7 @@
 
 - Time line: (14 days) 2023/09/25 – 2023/10/12
 - Editor: Visual Studio Code
+- Note : Part-time
 
 ## Requirement
 
