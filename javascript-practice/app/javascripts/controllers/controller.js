@@ -223,6 +223,9 @@ class AppController {
 				if (!option.classList.contains('option-selected')) {
 					option.classList.add('option-selected');
 				}
+				else{
+					option.classList.remove('option-selected');
+				}
 			} else {
 				option.classList.remove('option-selected');
 			}
@@ -376,7 +379,6 @@ class AppController {
 
 		addButton.addEventListener('click', (e) => {
 			const formData = this.getFormData(form);
-
 			if (formData) {
 				const product = new Product(
 					this.model.productList.generateId(),
@@ -385,6 +387,7 @@ class AppController {
 					formData.category,
 					formData.url,
 					formData.price,
+					100,
 					formData.isSugar,
 					formData.isIce
 				);
